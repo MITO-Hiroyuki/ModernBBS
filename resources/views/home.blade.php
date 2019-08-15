@@ -14,8 +14,14 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    <h3>You are logged in!</h3>
+                    
+                    <div class="col-md-6">
+                        <a href="{{ action('ProfileController@add') }}" role="button" class="btn bt-block btn-primary">プロフィール作成</a>
+                    </div>
+                    
                 </div>
+                
             </div>
         </div>
     </div>
