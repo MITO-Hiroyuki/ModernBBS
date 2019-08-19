@@ -28,7 +28,7 @@ class CommentController extends Controller
 			'comment_text.required' => '本文を正しく入力して下さい',
 			);
 		
-		$thread->user_id = $request->user()->id;
+		$comment->user_id = $request->user()->id;
 		
 		$validator = $Varidator::make(Input::all(), $rules, $messages);
 		
