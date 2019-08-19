@@ -1,19 +1,23 @@
 @extends('layout.default')
-@section('title', 'コメント表示')
+@section('title', 'スレッド表示')
 @section('content')
 	<div class="col-md-8 mx-auto">
-		<h2>
-			<small>投稿日：{{ date("Y年 m月 d日", strtotime($comment->created_at)) }}</small>
+		<h2>タイトル：{{ $thread->thread_title }}
+			<small>投稿日：{{ date("Y年 m月 d日", strtotime($thread->created_at)) }}</small>
 		</h2>
-		<p>{{ $comment->comment_text }}</p>
+		<p>投稿者：{{ $thread->user->name }}</p>
+		<p>カテゴリー：{{ $thread->category->name }}</p>
+		<p>{{ $thread->body }}</p>
 		<hr />
-		<h3>レスポンス一覧</h3>
-			@foreach($comment->response as $comment_response)
-				<p>レスポンスユーザー：{{ $comment_response->user_id->name }}</p>
-				<p>{{ $comment_response->response_text }}</p><br />
+		
+		<h3>コメント一覧</h3>
+			@foreach($thread->comment as $thread_comment)
+				<p>コメントユーザー：{{ $thread_comment->user_id->name }}</p>
+				<p>{{ $thread_comment->comment_text }}</p>
+				<p>{{ link_to("/comment/{comment->id}", 'レスポンスを読む', array('class' => 'btn btn-primary')) }}</p><br />
 			@endforeach
 			
-		<form method="response" action="post">
+		<form method="comment" action="post">
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			
 			@foreach($errors->all() as $message)
@@ -21,14 +25,14 @@
 			@endforeach
 		
 			<div class="form-group">
-				<label for="response" class="">レスポンス</label>
+				<label for="comment" class="">コメント</label>
 				<div class="">
-						{{ Form::textarea('response_text', null, array('class => '')) }}
+						{{ Form::textarea('comment_text', null, array('class => '')) }}
 				</div>
 			</div>
 			
 			<div class="form-group">
-				<button type="submit" class="btn btn-primary">レスポンスを送る</button>
+				<button type="submit" class="btn btn-primary">コメントする</button>
 			</div>
 			
 		</form>
