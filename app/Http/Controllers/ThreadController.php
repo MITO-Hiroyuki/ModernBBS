@@ -23,7 +23,7 @@ class ThreadController extends Controller
 		return view::make('thread.detail')->with('thread, $thread');
 	}
 	
-	public function store()
+	public function store(Request $request)
 	{
 		$rules = [
 			'thread_title' => 'required',
@@ -36,6 +36,8 @@ class ThreadController extends Controller
 			'body.required' => '本文を正しく入力して下さい',
 			'category_id.required' => 'カテゴリーを選択して下さい',
 			);
+		
+		$thread->user_id = $request->user()->id;
 		
 		$validator = $Varidator::make(Input::all(), $rules, $messages);
 		
@@ -53,10 +55,10 @@ class ThreadController extends Controller
 		}
 	}
 	
-	public function delete(Request $request_thread)
+	public function delete(Request $request)
 	{
-		$thread = thread::find($request_thread->id);
+		$thread = thread::find($request->id);
 		$thread->delete();
-		return redirect('thread');
+		return redirect('thread.index');
 	}
 }
