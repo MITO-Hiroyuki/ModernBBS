@@ -35,8 +35,8 @@ class CommentController extends Controller
 		if ($validator->passes()) {
 			$comment = new Comment;
 			$comment->comment_text = Input::get('comment_text');
-			$thread->thread_id = Input::get('thread_id');
-			$thread->save();
+			$comment->thread_id = Input::get('thread_id');
+			$comment->save();
 			return Redirect::back()->with('message', '投稿が完了しました');
 		} else {
 			return Redirect::back()
