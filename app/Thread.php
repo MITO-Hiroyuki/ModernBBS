@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Thread extends Eloquent
 {
+	public function User()
+	{
+		return $this->belongsTo('App\User');
+	}
 	public function Comment()
 	{
 		return $this->hasMany('Comment', 'thread_id');
@@ -13,6 +17,6 @@ class Thread extends Eloquent
 	
 	public function Category()
 	{
-		return $this->beLongsTo('Category', 'category_id');
+		return $this->belongsTo('Category', 'category_id');
 	}
 }
