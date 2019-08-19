@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layout.default')
 @section('title', 'スレッド新規作成')
 @section('content')
 	<div class="container">

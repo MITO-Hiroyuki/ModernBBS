@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layout.default')
 @section('title', 'スレッド一覧')
 @section('content')
 	<div class="col-md-8 mx-auto">
@@ -8,8 +8,7 @@
 			</h2>
 			<p>カテゴリー：{{ $thread->category->name }}</p>
 			<p>{{ $thread->body }}</p>
-			<p>{{ link_to("/thread/{thread->id}", '続きを読む', array('class' => 'btn btn-primary')) }}</p>
-			<p>コメント数:{{ $thread->comment_count }}</p>
+			<p>{{ link_to("/thread/{thread->id}", 'コメントを読む', array('class' => 'btn btn-primary')) }}</p>
 			<hr />
 		@endforeach
 	</div>

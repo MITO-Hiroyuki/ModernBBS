@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layout.default')
 @section('title', 'スレッド表示')
 @section('content')
 	<div class="col-md-8 mx-auto">
@@ -10,7 +10,8 @@
 		<hr />
 		<h3>コメント一覧</h3>
 			@foreach($thread->comment as $thread_comment)
-				<p>{{ $thread_comment->comment_text }}</p><br />
+				<p>{{ $thread_comment->comment_text }}</p>
+				<p>{{ link_to("/comment/{comment->id}", 'レスポンスを読む', array('class' => 'btn btn-primary')) }}</p><br />
 			@endforeach
 	</div>
 @endsection
