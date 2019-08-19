@@ -6,11 +6,6 @@ use Illuminate\Http\Request;
 
 class ThreadController extends Controller
 {
-	public function add()
-	{
-		return view('thread.create');
-	}
-	
 	public function index()
 	{
 		$threads = Thread::all();
@@ -20,7 +15,7 @@ class ThreadController extends Controller
 	public function show()
 	{
 		$thread = Thread::find($id);
-		return view::make('thread.detail')->with('thread, $thread');
+		return view::make('thread.comment')->with('thread, $thread');
 	}
 	
 	public function store(Request $request)
