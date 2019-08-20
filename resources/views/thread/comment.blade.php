@@ -17,8 +17,7 @@
 				<p>{{ link_to("/comment/{comment->id}", 'レスポンスを読む', array('class' => 'btn btn-primary')) }}</p><br />
 			@endforeach
 			
-		<form method="comment" action="post">
-			<input type="hidden" name="_token" value="{{ csrf_token() }}">
+		{{ Form::open([''route' => 'bbs.store'], array('class' => 'form')) }}
 			
 			@foreach($errors->all() as $message)
 				<p class="bg-danger">{{ $message }}</p>
@@ -32,10 +31,11 @@
 			</div>
 			
 			<div class="form-group">
-				<button type="submit" class="btn btn-primary">コメントする</button>
+				<button type="submit" class="btn btn-primary">コメントを送信する</button>
 			</div>
 			
-		</form>
+		{{ Form::close() }}
 		
 	</div>
+	
 @endsection
