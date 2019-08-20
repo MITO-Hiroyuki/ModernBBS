@@ -901,6 +901,7 @@
                 "php"
             ],
             "time": "2019-08-12T20:17:41+00:00"
+<<<<<<< HEAD
         },
         {
             "name": "opis/closure",
@@ -962,6 +963,8 @@
                 "serialize"
             ],
             "time": "2019-07-09T21:58:11+00:00"
+=======
+>>>>>>> kenji-develop
         },
         {
             "name": "paragonie/random_compat",
