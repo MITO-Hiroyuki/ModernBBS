@@ -21,7 +21,7 @@
 					</ul>
 				@endif
 					
-				
+				{{ Form::open(['route' => 'bbs.store'], array('class' => 'form')) }}
 					
 					<div class="form-group row">
 						<label for="title" class="col-md-2">タイトル</label>
