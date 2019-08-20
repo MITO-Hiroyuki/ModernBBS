@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Comment extends Eloquent
+class Comment extends Model
 {
 	public function User()
 	{
