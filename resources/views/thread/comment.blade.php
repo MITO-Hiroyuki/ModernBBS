@@ -1,4 +1,4 @@
-@extends('layout.default')
+@extends('layouts.default')
 @section('title', 'スレッド表示')
 @section('content')
 	<div class="col-md-8 mx-auto">

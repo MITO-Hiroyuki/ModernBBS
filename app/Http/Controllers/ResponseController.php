@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\User;
+use App\Thread;
+use App\Comment;
+use App\Response;
 
 class ResponseController extends Controller
 {

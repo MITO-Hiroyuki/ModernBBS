@@ -3,19 +3,24 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\User;
+use App\Thread;
+use App\Comment;
+use App\Response;
 
 class ThreadController extends Controller
 {
 	public function index()
 	{
 		$threads = Thread::all();
-		return view::make('thread.index')->with('threads', $threads);
+		return view('thread.index', ['threads' => $threads]);
 	}
 	
 	public function show()
 	{
 		$thread = Thread::find($id);
-		return view::make('thread.comment')->with('thread, $thread');
+		return view('thread.comment', ['thread => $thread']);
 	}
 	
 	public function store(Request $request)
