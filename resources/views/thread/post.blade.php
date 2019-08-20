@@ -4,20 +4,24 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-8 mx-auto">
+				
 				<h2>スレッド新規作成</h2>
+				
 				@if(Session::has('message'))
 					<div class="bg-info">
 						<p>{{ Session::get('message') }}</p>
 					</div>
 				@endif
-				<form action="{{ action('ThreadController@create') }}" method="post" enctype="multipart/form-date">
-					@if(count($errors) > 0)
-						<ul>
-							@foreach($errors->all() as $e)
-								<li>{{ $e }}</li>
-							@endforeach
-						</ul>
-					@endif
+				
+				@if(count($errors) > 0)
+					<ul>
+						@foreach($errors->all() as $e)
+							<li>{{ $e }}</li>
+						@endforeach
+					</ul>
+				@endif
+					
+				
 					
 					<div class="form-group row">
 						<label for="title" class="col-md-2">タイトル</label>
@@ -51,9 +55,12 @@
 						</div>
 					</div>
 					
-					{{ csrf_field() }}
-					<input type="submit" class="btn btn-primary" value="投稿">
-				</form>
+					<div class="from-group">
+						<input type="submit" class="btn btn-primary" value="投稿">
+					</div>
+					
+				{{ Form::close() }}
+				
 			</div>
 		</div>
 	</div>
