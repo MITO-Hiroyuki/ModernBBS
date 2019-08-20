@@ -14,13 +14,13 @@ class CommentController extends Controller
 		public function comment()
 	{
 		$comment = Comment::all();
-		return view::make('thread.comment')->with('comments', $comments);
+		return view('thread.comment', ['comments' => $comments]);
 	}
 	
 	public function show()
 	{
 		$comment = Comment::find($id);
-		return view::make('thread.response')->with('comment, $comment');
+		return view('thread.response', ['comment' => $comment]);
 	}
 	
 	public function store(Request $request)

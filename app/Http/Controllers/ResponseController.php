@@ -14,7 +14,7 @@ class ResponseController extends Controller
 	public function Response()
 	{
 		$response = Response::all();
-		return view::make('thread.response')->with('responses', $responses);
+		return view('thread.response', ['responses' => $responses]);
 	}
 	
 	public function store(Request $request)
