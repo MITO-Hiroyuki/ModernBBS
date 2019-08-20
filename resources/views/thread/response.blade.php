@@ -13,8 +13,7 @@
 				<p>{{ $comment_response->response_text }}</p><br />
 			@endforeach
 			
-		<form method="response" action="post">
-			<input type="hidden" name="_token" value="{{ csrf_token() }}">
+		{[ Form::open(['route' => 'bbs.store'], array('class' => 'form')) }}
 			
 			@foreach($errors->all() as $message)
 				<p class="bg-danger">{{ $message }}</p>
@@ -28,10 +27,11 @@
 			</div>
 			
 			<div class="form-group">
-				<button type="submit" class="btn btn-primary">レスポンスを送る</button>
+				<button type="submit" class="btn btn-primary">レスポンスを送信する</button>
 			</div>
 			
-		</form>
+		{{ Form::close() }}
 		
 	</div>
+	
 @endsection
