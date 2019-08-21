@@ -13,11 +13,11 @@ class ProfileController extends Controller
         $user = Auth::user();
         $user_id = $user->id;
         $profile = Profile::where('user_id',$user_id)->get();
+        
         if(!$profile->isEmpty()){
-            
                 return view('profile.error');
-                
             }
+            
         return view('profile.create');
         
     }
@@ -31,6 +31,7 @@ class ProfileController extends Controller
         $user = Auth::user();
         $profile->user_id = $user->id;
         $profile->fill($form)->save();
+        
         return redirect()->route('myprofile');
         
     }
@@ -40,9 +41,11 @@ class ProfileController extends Controller
         
         $user_id = Auth::user()->id;
         $profile = Profile::find($request->id);
+        
         if (empty($profile)) {
         abort(404);    
         }
+        
         return view('profile.edit', ['profile' => $profile]);
         
     }
@@ -64,9 +67,11 @@ class ProfileController extends Controller
         
         $user = Auth::user();
         $user_id = $user->id;
+        $user_name = $user->name;
         $profile = Profile::where('user_id',$user_id)->get();
         $profile = $profile[0];
-        return view('profile.myprofile', ['profile' => $profile]);
+        
+        return view('profile.myprofile', ['profile' => $profile, 'user_name' => $user_name]);
         
     }
     

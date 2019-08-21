@@ -12,13 +12,13 @@
         <div class="row">
             <label class="col-md-2">ポストネーム</label>
             <div class="col-md-8 mx-auto">
-                {{$profile->user_id }}
+                {{ $user_name }}
             </div>
         </div>
         <div class="row">
             <label class="col-md-2">自己紹介</label>
             <div class="col-md-8 mx-auto">
-                {{$profile->introduction }}
+                {{ $profile->introduction }}
             </div>
         </div>
     </div>

@@ -30,3 +30,5 @@ Route::group(['prefix' => 'bbs','middleware'=>'auth'], function()
     Route::resource('comment', 'CommentController');
     Route::resource('response', 'ResponseController');
 });
+
+Route::get('category/index','CategoryController@index');
