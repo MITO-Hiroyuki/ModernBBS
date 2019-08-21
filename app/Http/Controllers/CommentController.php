@@ -41,11 +41,9 @@ class CommentController extends Controller
 			$comment->comment_text = Input::get('comment_text');
 			$comment->thread_id = Input::get('thread_id');
 			$comment->save();
-			return Redirect::back()->with('message', '投稿が完了しました');
+			return redirect()->back()->with('message', '投稿が完了しました');
 		} else {
-			return Redirect::back()
-				->withErrors($validator)
-				->withInput();
+			return redirect()->back()->withErrors($validator)->withInput();
 		}
 	}
 }

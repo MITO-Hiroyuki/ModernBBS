@@ -46,11 +46,9 @@ class ThreadController extends Controller
 			$thread->body = Input::get('body');
 			$thread->category_id = Input::get('category_id');
 			$thread->save();
-			return Redirect::back()->with('message', '投稿が完了しました');
+			return redirect()->back()->with('message', '投稿が完了しました');
 		} else {
-			return Redirect::back()
-				->withErrors($validator)
-				->withInput();
+			return redirect()->back()->withErrors($validator)->withInput();
 		}
 	}
 	

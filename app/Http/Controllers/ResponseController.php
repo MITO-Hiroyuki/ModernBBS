@@ -35,11 +35,9 @@ class ResponseController extends Controller
 			$response->response_text = Input::get('response_text');
 			$response->comment_id = Input::get('comment_id');
 			$response->save();
-			return Redirect::back()->with('message', '投稿が完了しました');
+			return redirect()->back()->with('message', '投稿が完了しました');
 		} else {
-			return Redirect::back()
-				->withErrors($validator)
-				->withInput();
+			return redirect()->back()->withErrors($validator)->withInput();
 		}
 	}
 }
