@@ -19,7 +19,9 @@
                     <div class="col-md-6">
                         <a href="{{ action('ProfileController@add') }}" role="button" class="btn bt-block btn-primary">プロフィール作成</a>
                     </div>
-                    
+                    <div class="col-md-6">
+                    <a href="{{ action('CategoryController@index') }}" role="button" class="btn btn-success">TOP画面</a>
+                    </div>
                 </div>
                 
             </div>
