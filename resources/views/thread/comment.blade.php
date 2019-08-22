@@ -8,6 +8,23 @@
 		<p>投稿者：{{ $thread->user->name }}</p>
 		<p>カテゴリー：{{ $thread->category->name }}</p>
 		<p>{{ $thread->body }}</p>
+		
+		{{ Form::open(['route' => 'bbs.store'], array('class' => 'form')) }}
+			<div class="form-group row">
+				<label for="per_thread_status" class="col-md-2">確認ステータス</label>
+					<div class="col-md-10">
+						<select name="per_thread_status" type="text" class="">
+							<option></option>
+							<option value="1" name="1">確認中</option>
+							<option value="2" name="2">確認済</option>
+							<option value="3" name="3">出来ました！</option>
+							<option value="4" name="4">出来ません！</option>
+							<optiin value="5" name="5">助けが必要です</optiin>
+						</select>
+					</div>
+			</div>
+		{{ Form::close() }}
+		
 		<hr />
 		
 		<h3>コメント一覧</h3>
