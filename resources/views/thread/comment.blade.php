@@ -19,7 +19,7 @@
 							<option value="2" name="2">確認済</option>
 							<option value="3" name="3">出来ました！</option>
 							<option value="4" name="4">出来ません！</option>
-							<optiin value="5" name="5">助けが必要です</optiin>
+							<option value="5" name="5">助けが必要です</option>
 						</select>
 					</div>
 			</div>
