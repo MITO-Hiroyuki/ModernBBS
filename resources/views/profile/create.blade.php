@@ -15,6 +15,24 @@
                             @endforeach
                         </ul>
                     @endif
+                    <div class="row">
+                        <label class="col-md-2" for="name">氏名</label>
+                            <div class="col-md-10">
+                                {{ Auth::user()->name }}
+                            </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2" for="gender">性別</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" name="gender" value="{{ old('gender') }}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2" for="hobby">趣味</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" name="hobby" value="{{ old('hobby') }}">
+                        </div>
+                    </div>
                     <div class="form-group row">
                         <label class="col-md-2" for="introduction">自己紹介</label>
                         <div class="col-md-10">
