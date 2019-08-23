@@ -14,12 +14,12 @@
                         </div>
                     @endif
 
-                    <h3>You are logged in!</h3>
+                    <h3 class="text-center">You are logged in!</h3>
                     
-                    <div class="col-md-6">
+                    <div class="col-md-4 col-md-offset-2">
                         <a href="{{ action('ProfileController@add') }}" role="button" class="btn bt-block btn-primary">プロフィール作成</a>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-3 col-md-offset-1">
                     <a href="{{ action('CategoryController@index') }}" role="button" class="btn btn-success">TOP画面</a>
                     </div>
                 </div>
