@@ -22,6 +22,7 @@
                                         <strong>{{ $errors->first('name') }}</strong>
                                     </span>
                                 @endif
+                                
                             </div>
                         </div>
 
@@ -60,7 +61,12 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
-
+                        <div class="form-group">
+                            <div class="col-md-6 ">
+                                <label><input type="radio" value="1" name="t_s_filter" checked >生徒</label> 
+                                <label><input type="radio" value="2" name="t_s_filter" >教員</label>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
