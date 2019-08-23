@@ -75,5 +75,12 @@ class ProfileController extends Controller
         
     }
     
-    
+    public function get_profile(Request $request){
+        
+        $user_id = $request->id;
+        $profile = Profile::where('user_id',$user_id)->get();
+        $profile = $profile[0];
+        
+        return view('profile.myprofile', ['profile' => $profile,]);
+    }
 }
