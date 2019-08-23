@@ -4,6 +4,7 @@
 	<div class="col-md-8 mx-auto">
 		<h2>タイトル：{{ $thread->thread_title }}
 			<small>投稿日：{{ date("Y年 m月 d日", strtotime($thread->created_at)) }}</small>
+			
 		</h2>
 		<p>投稿者：{{ $thread->user->name }}</p>
 		<p>カテゴリー：{{ $thread->category->name }}</p>
