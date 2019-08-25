@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Thread extends Eloquent
+class Thread extends Model
 {
 	public function User()
 	{
