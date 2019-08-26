@@ -8,7 +8,7 @@
                 @foreach($categories as $category)
                 <!--Bootstrap3 offset-->
                         <div class="card bg-primary col-md-3 col-md-offset-1">
-                            <h3 class="card-title text-center">{{ $category->category }}</h3>
+                            <h3 class="card-title text-center">{{ $category->name }}</h3>
                         </div>
                 @endforeach
             </div>
@@ -25,28 +25,23 @@
               <th>投稿日</th>
             </tr>
           </thead>
+          @foreach($threads as $thread)
           <tbody>
             <tr>
-              @foreach($new_threads as $new_thread)
-              <td>{{ $new_thread->title }}</td>
-              <td>{{ $new_thread->categories->category }}</td>
-              <td>{{ $new_thread->profiles->users->name }}</td>
-              <td>{{ $new_thread->created_at }}</td>
-              @endforeach
+              
+              <td>{{ $thread->thread_title }}</td>
+              <td>{{ $thread->Category->name }}</td>
+              <td>{{ $thread->Profile->User->name }}</td>
+              <td>{{ $thread->created_at }}</td>
+              
             </tr>
           </tbody>
+          @endforeach
         </table>
-        <nav>
-            <ul class="pagenation">
-                <li><a class="page-link" href="#">Prev</a></li>
-                <li>
-                    1
-                </li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-            </ul>
-        </nav>
+        <div class="text-center">
+        {{ $threads->links() }}
         </div>
+        </div>
+    </div>
     </div>
 @endsection

@@ -17,6 +17,6 @@ class Thread extends Model
 	
 	public function Category()
 	{
-		return $this->belongsTo('Category', 'category_id');
+		return $this->belongsTo('App\Category', 'category_id');
 	}
 }

@@ -5,12 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Thread;
+use App\Profile;
 
 class CategoryController extends Controller
 {
     public function index(){
-        $categoties = Category::all();
-        $new_threads = Thread::orderBy('created_at','desc')->get();
-        return view('category.index',['categories' => $categoties, 'new_threads'=> $new_threads]);
+        
+        $categories = Category::all();
+        $threads = Thread::orderBy('created_at','desc')->paginate(10);
+        return view('category.index', ['categories' => $categories,
+                                        'threads'=> $threads,
+                                        compact('threads')]);
+        
     }
 }

@@ -12,28 +12,29 @@ class CategoriesTableSeeder extends Seeder
     public function run()
     {
         DB::table('categories')->insert([
+            
             [
-                'category'=>'お知らせ'
+                'name'=>'お知らせ'
             ],
             
             [
-                'category'=>'宿題'
+                'name'=>'宿題'
             ],
             
             [
-                'category'=>'部活'
+                'name'=>'部活'
             ],
             
             [
-                'category'=>'友達'
+                'name'=>'友達'
             ],
             
             [
-                'category'=>'生徒'
+                'name'=>'生徒'
             ],
             
             [
-                'category'=>'ミニゲーム'
+                'name'=>'ミニゲーム'
             ],
            
             
