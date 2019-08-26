@@ -19,7 +19,11 @@ class CommentController extends Controller
 	public function show()
 	{
 		$comment = Comment::find($id);
-		return view('thread.response', ['comment' => $comment]);
+		
+		$comment = Comment::findOrFail($id);
+		$good = $comment->$good()->where('user_id', Auth::user()->id)->first();
+		
+		return view('thread.response')->with(array('comment' => $comment, 'good' => $good));
 	}
 	
 	public function store(Request $request)

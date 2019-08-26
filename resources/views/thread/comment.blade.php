@@ -10,28 +10,27 @@
 		<p>カテゴリー：{{ $thread->category->name }}</p>
 		<p>{{ $thread->body }}</p>
 		
-		{{ Form::open(['route' => 'bbs.store'], array('class' => 'form')) }}
-			<div class="form-group row">
-				<label for="per_thread_status" class="col-md-2">確認ステータス</label>
-					<div class="col-md-10">
-						<select name="per_thread_status" type="text" class="">
-							<option></option>
-							<option value="1" name="1">確認中</option>
-							<option value="2" name="2">確認済</option>
-							<option value="3" name="3">出来ました！</option>
-							<option value="4" name="4">出来ません！</option>
-							<option value="5" name="5">助けが必要です</option>
-						</select>
-					</div>
-			</div>
-		{{ Form::close() }}
-		
 		<hr />
 		
 		<h3>コメント一覧</h3>
 			@foreach($thread->comment as $thread_comment)
 				<p>コメントユーザー：{{ $thread_comment->user_id->name }}</p>
 				<p>{{ $thread_comment->comment_text }}</p>
+				
+						@if($Good)
+							{{ Form::model($comment, array('action' => array('GoodController@destroy', $comment->id, $good->id))) }}
+								<button type="submit">
+									Good!{{ $comment->good_count }}
+								</button>
+							{{!! Form::close() !!}
+						@else
+							{{ Form::model($comment, array('action' => array(GoodController@store', $comment->id))) }}
+								<button type="submit">
+									Good!{{ $comment->good_count }}
+								</button>
+							{!! Form::close() !!}
+						@endif
+						
 				<p>{{ link_to("/comment/{comment->id}", 'レスポンスを読む', array('class' => 'btn btn-primary')) }}</p><br />
 			@endforeach
 			
