@@ -20,13 +20,13 @@
 						@if($Good)
 							{{ Form::model($comment, array('action' => array('GoodController@destroy', $comment->id, $good->id))) }}
 								<button type="submit">
-									Good!{{ $comment->good_count }}
+									<i class="fas fa-thumbs-up"></i>{{ $comment->good_count }}
 								</button>
 							{{!! Form::close() !!}
 						@else
 							{{ Form::model($comment, array('action' => array(GoodController@store', $comment->id))) }}
 								<button type="submit">
-									Good!{{ $comment->good_count }}
+									<i class="far fa-thumbs-up"></i>{{ $comment->good_count }}
 								</button>
 							{!! Form::close() !!}
 						@endif
