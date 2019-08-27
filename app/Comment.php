@@ -20,7 +20,7 @@ class Comment extends Model
 	
 	public function Response()
 	{
-		return $this->hasMany('App\Response');
+		return $this->hasMany('App\Response', 'response_id');
 	}
 	
 	public function Good()

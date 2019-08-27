@@ -44,6 +44,7 @@ class CommentController extends Controller
 			$comment = new Comment;
 			$comment->comment_text = Input::get('comment_text');
 			$comment->thread_id = Input::get('thread_id');
+			$comment->response_count = 0;
 			$comment->save();
 			return redirect()->back()->with('message', '投稿が完了しました');
 		} else {

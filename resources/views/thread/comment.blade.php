@@ -31,6 +31,7 @@
 							{!! Form::close() !!}
 						@endif
 						
+				<p>レスポンス数：{{ $comment->response_count }}</p>
 				<p>{{ link_to("/comment/{comment->id}", 'レスポンスを読む', array('class' => 'btn btn-primary')) }}</p><br />
 			@endforeach
 			
