@@ -19,4 +19,9 @@ class Thread extends Model
 	{
 		return $this->belongsTo('Category', 'category_id');
 	}
+	
+	public function Profile()
+	{
+		return $this->belongsTo('Profile', 'thread_profile_id');
+	}
 }
