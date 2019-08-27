@@ -9,6 +9,7 @@
 			<p>{{ link_to("/profile/{$thread->user->id}", '投稿者：{ $thread->user->name }', array('class => 'btn btn-primary')) }}</p>
 			<p>カテゴリー：{{ $thread->category->name }}</p>
 			<p>{{ $thread->body }}</p>
+			<p>コメント数：{{ $thread->comment_count }}</p>
 			<p>{{ link_to("/thread/{thread->id}", 'コメントを読む', array('class' => 'btn btn-primary')) }}</p>
 			<hr />
 		@endforeach

@@ -45,6 +45,7 @@ class ThreadController extends Controller
 			$thread->thread_title = Input::get('thread_title');
 			$thread->body = Input::get('body');
 			$thread->category_id = Input::get('category_id');
+			$thread->comment_count = 0;
 			$thread->save();
 			return redirect()->back()->with('message', '投稿が完了しました');
 		} else {
