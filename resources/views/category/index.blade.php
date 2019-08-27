@@ -1,17 +1,35 @@
-@extends('layouts.app')
+@extends('layouts.bbs')
 @section('title', 'ModernBBS')
 
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="card-deck">
-                @foreach($categories as $category)
-                <!--Bootstrap3 offset-->
-                        <div class="card bg-primary col-md-3 col-md-offset-1">
-                            <h3 class="card-title text-center">{{ $category->name }}</h3>
+            
+
+                <!--Bootstrap4 offset(Bootstrap3"col-md-offset-1")-->
+                        <div class="panel col-md-3 col-md-offset-1">
+                            <h3 class="card-title text-center">{{ $category1->name }}</h3>
                         </div>
-                @endforeach
-            </div>
+                        <div class="panel col-md-3 col-md-offset-1">
+                            <h3 class="card-title text-center">{{ $category2->name }}</h3>
+                        </div>
+                        <div class="panel col-md-3 col-md-offset-1">
+                            <h3 class="card-title text-center">{{ $category3->name }}</h3>
+                        </div>
+                        
+                        <div class="panel col-md-3 col-md-offset-1">
+                            <h3 class="card-title text-center">{{ $category4->name }}</h3>
+                        </div>
+                        <div class="panel col-md-3 col-md-offset-1">
+                            <h3 class="card-title text-center">{{ $category5->name }}</h3>
+                        </div>
+                        <div class="panel col-md-3 col-md-offset-1">
+                            <h3 class="card-title text-center">{{ $category6->name }}</h3>
+                        </div>
+                        
+                        
+
+
         </div>
         <div class="row">
         <h5>新着スレッド一覧</h5>
@@ -28,12 +46,10 @@
           @foreach($threads as $thread)
           <tbody>
             <tr>
-              
               <td>{{ $thread->thread_title }}</td>
               <td>{{ $thread->Category->name }}</td>
-              <td>{{ $thread->Profile->User->name }}</td>
+              <td>test</td>
               <td>{{ $thread->created_at }}</td>
-              
             </tr>
           </tbody>
           @endforeach
