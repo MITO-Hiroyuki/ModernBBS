@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.bbs')
 @section('title', 'プロフィールの編集')
 
 @section('content')
@@ -7,7 +7,6 @@
             <div class="col-md-8 mx-auto">
                 <h2>プロフィール編集</h2>
                 <form action="{{ action('ProfileController@update',['id' => $profile->id]) }}" method="post" enctype="multipart/form-data">
-
                     @if (count($errors) > 0)
                         <ul>
                             @foreach($errors->all() as $e)

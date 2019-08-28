@@ -1,13 +1,13 @@
-@extends('layouts.app')
+@extends('layouts.bbs')
 
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+        <div class="col-md-8 offset-md-2">
+            <div class="card card-default">
+                <div class="card-heading">Register</div>
 
-                <div class="panel-body">
+                <div class="card-body">
                     <form class="form-horizontal" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
 

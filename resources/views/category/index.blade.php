@@ -5,33 +5,29 @@
     <div class="container">
         <div class="row">
             
-
-                <!--Bootstrap4 offset(Bootstrap3"col-md-offset-1")-->
-                        <div class="panel col-md-3 col-md-offset-1">
-                            <h3 class="card-title text-center">{{ $category1->name }}</h3>
+            
+                <!--Bootstrap4 offset(Bootstrap3"offset-md-1")-->
+                        <div class="card card1 col-md-3 offset-md-1">
+                            <h3 class="text-center">{{ $category1->name }}</h3>
                         </div>
-                        <div class="panel col-md-3 col-md-offset-1">
-                            <h3 class="card-title text-center">{{ $category2->name }}</h3>
+                        <div class="card card2 col-md-3 offset-md-1">
+                            <h3 class="text-center">{{ $category2->name }}</h3>
                         </div>
-                        <div class="panel col-md-3 col-md-offset-1">
-                            <h3 class="card-title text-center">{{ $category3->name }}</h3>
-                        </div>
-                        
-                        <div class="panel col-md-3 col-md-offset-1">
-                            <h3 class="card-title text-center">{{ $category4->name }}</h3>
-                        </div>
-                        <div class="panel col-md-3 col-md-offset-1">
-                            <h3 class="card-title text-center">{{ $category5->name }}</h3>
-                        </div>
-                        <div class="panel col-md-3 col-md-offset-1">
-                            <h3 class="card-title text-center">{{ $category6->name }}</h3>
+                        <div class="card card3 col-md-3 offset-md-1">
+                            <h3 class="text-center">{{ $category3->name }}</h3>
                         </div>
                         
-                        
-
-
+                        <div class="card card4 col-md-3 offset-md-1">
+                            <h3 class="text-center">{{ $category4->name }}</h3>
+                        </div>
+                        <div class="card card5 col-md-3 offset-md-1">
+                            <h3 class="text-center">{{ $category5->name }}</h3>
+                        </div>
+                        <div class="card card6 col-md-3 offset-md-1">
+                            <h3 class="text-center">{{ $category6->name }}</h3>
+                        </div>
         </div>
-        <div class="row">
+    <div class="row">
         <h5>新着スレッド一覧</h5>
       <div class="table-responsive">
         <table class="table table-bordered table-striped">
@@ -54,9 +50,7 @@
           </tbody>
           @endforeach
         </table>
-        <div class="text-center">
         {{ $threads->links() }}
-        </div>
         </div>
     </div>
     </div>
