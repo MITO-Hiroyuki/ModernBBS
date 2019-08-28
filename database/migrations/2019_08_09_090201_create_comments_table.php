@@ -18,6 +18,7 @@ class CreateCommentsTable extends Migration
             $table->integer('thread_id');
             $table->integer('comment_profile_id');
             $table->text('comment_text');
+            $table->unsignedInteger('response_count');
             $table->timestamps();
         });
     }

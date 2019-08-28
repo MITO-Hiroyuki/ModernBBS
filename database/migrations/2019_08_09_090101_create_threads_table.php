@@ -19,6 +19,7 @@ class CreateThreadsTable extends Migration
             $table->integer('category_id');
             $table->string('thread_title');
             $table->text('body');
+            $table->unsignedInteger('comment_count');
             $table->timestamps();
         });
     }

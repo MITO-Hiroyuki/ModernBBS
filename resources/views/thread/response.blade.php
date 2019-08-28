@@ -1,4 +1,4 @@
-@extends('layout.default')
+@extends('layouts.default')
 @section('title', 'コメント表示')
 @section('content')
 	<div class="col-md-8 mx-auto">
@@ -6,10 +6,13 @@
 			<small>投稿日：{{ date("Y年 m月 d日", strtotime($comment->created_at)) }}</small>
 		</h2>
 		<p>{{ $comment->comment_text }}</p>
+		
+			<button type="submit" class="btn btn-primary">いいね！</button>
+		
 		<hr />
 		<h3>レスポンス一覧</h3>
 			@foreach($comment->response as $comment_response)
-				<p>レスポンスユーザー：{{ $comment_response->user_id->name }}</p>
+				<p>{{ link_to("/profile/{$response->user->id}", 'レスポンスユーザー：{ $comment_response->user->name }', array('class => 'btn btn-primary')) }}</p>
 				<p>{{ $comment_response->response_text }}</p><br />
 			@endforeach
 			

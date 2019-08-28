@@ -3,13 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use App\Thread;
+use App\Comment;
+use App\Response;
 
 class ResponseController extends Controller
 {
 	public function Response()
 	{
 		$response = Response::all();
-		return view::make('thread.response')->with('responses', $responses);
+		return view('thread.response', ['responses' => $responses]);
 	}
 	
 	public function store(Request $request)
@@ -31,11 +35,9 @@ class ResponseController extends Controller
 			$response->response_text = Input::get('response_text');
 			$response->comment_id = Input::get('comment_id');
 			$response->save();
-			return Redirect::back()->with('message', '投稿が完了しました');
+			return redirect()->back()->with('message', '投稿が完了しました');
 		} else {
-			return Redirect::back()
-				->withErrors($validator)
-				->withInput();
+			return redirect()->back()->withErrors($validator)->withInput();
 		}
 	}
 }

@@ -10,7 +10,7 @@
 	
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 	
-	<title>BBS</title>
+	<title>@yield('title')</title>
 	</head>
 	<body>
 		<div id="default">

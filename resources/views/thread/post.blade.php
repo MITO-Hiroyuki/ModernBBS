@@ -1,4 +1,4 @@
-@extends('layout.default')
+@extends('layouts.default')
 @section('title', 'スレッド新規作成')
 @section('content')
 	<div class="container">
@@ -35,15 +35,11 @@
 						<div class="col-md-10">
 							<select name="category_id" type="text" class="">
 								<option></option>
-								<option value="1" name="1">総合</option>
-								<option value="2" name="2">芸能</option>
-								<option value="3" name="3">政治</option>
-								<option value="4" name="4">経済</option>
-								<optiin value="5" name="5">ＩＴ</optiin>
-								<option value="6" name="6">スポーツ</option>
-								<option value="7" name="7">映画</option>
-								<option value="8" name="8">音楽</option>
-								<option value="9" name="9">漫画</option>
+								<option value="1" name="1">お知らせ</option>
+								<option value="2" name="2">宿題</option>
+								<option value="3" name="3">部活</option>
+								<option value="4" name="4">生徒</option>
+								<option value="5" name="5">友達</option>
 							</select>
 						</div>
 					</div>

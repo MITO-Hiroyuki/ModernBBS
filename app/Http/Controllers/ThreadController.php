@@ -3,19 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use App\Thread;
+use App\Comment;
+use App\Response;
 
 class ThreadController extends Controller
 {
 	public function index()
 	{
 		$threads = Thread::all();
-		return view::make('thread.index')->with('threads', $threads);
+		return view('thread.index', ['threads' => $threads]);
 	}
 	
 	public function show()
 	{
 		$thread = Thread::find($id);
-		return view::make('thread.comment')->with('thread, $thread');
+		return view('thread.comment', ['thread' => $thread]);
 	}
 	
 	public function store(Request $request)
@@ -41,12 +45,11 @@ class ThreadController extends Controller
 			$thread->thread_title = Input::get('thread_title');
 			$thread->body = Input::get('body');
 			$thread->category_id = Input::get('category_id');
+			$thread->comment_count = 0;
 			$thread->save();
-			return Redirect::back()->with('message', '投稿が完了しました');
+			return redirect()->back()->with('message', '投稿が完了しました');
 		} else {
-			return Redirect::back()
-				->withErrors($validator)
-				->withInput();
+			return redirect()->back()->withErrors($validator)->withInput();
 		}
 	}
 	

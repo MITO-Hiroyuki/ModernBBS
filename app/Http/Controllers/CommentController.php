@@ -3,19 +3,27 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use App\Thread;
+use App\Comment;
+use App\Response;
 
 class CommentController extends Controller
 {
 		public function comment()
 	{
 		$comment = Comment::all();
-		return view::make('thread.comment')->with('comments', $comments);
+		return view('thread.comment', ['comments' => $comments]);
 	}
 	
 	public function show()
 	{
 		$comment = Comment::find($id);
-		return view::make('thread.response')->with('comment, $comment');
+		
+		$comment = Comment::findOrFail($id);
+		$good = $comment->$good()->where('user_id', Auth::user()->id)->first();
+		
+		return view('thread.response')->with(array('comment' => $comment, 'good' => $good));
 	}
 	
 	public function store(Request $request)
@@ -36,12 +44,11 @@ class CommentController extends Controller
 			$comment = new Comment;
 			$comment->comment_text = Input::get('comment_text');
 			$comment->thread_id = Input::get('thread_id');
+			$comment->response_count = 0;
 			$comment->save();
-			return Redirect::back()->with('message', '投稿が完了しました');
+			return redirect()->back()->with('message', '投稿が完了しました');
 		} else {
-			return Redirect::back()
-				->withErrors($validator)
-				->withInput();
+			return redirect()->back()->withErrors($validator)->withInput();
 		}
 	}
 }
