@@ -1,26 +1,23 @@
 @extends('layouts.app')
-@section('title',"MYプロフィール")
+@section('title',"プロフィール")
 
 @section('content')
     <div class="container">
         <div class="row">
-            <h2>MYプロフィール</h2>
-            <div class="col-md-2">
-                <a href="{{ action('ProfileController@edit',['id' => $profile->id]) }}" role="button" class="btn btn-primary">編集</a>
-            </div>
+            <h2>{{ $profile->users->name }}プロフィール</h2>
         </div>
         <div class="row">
             <label class="col-md-2">氏名</label>
                 <div class="col-md-8">
-                    {{ $user_name }}
+                    {{ $profile->users->name }}
                 </div>
         </div>
         <div class="row">
             <label class="col-md-2">誕生日</label>
                 <div class="col-md-8">
-                    {{$profile->birth_year}}年
-                    {{$profile->birth_month}}月
-                    {{$profile->birth_day}}日
+                    {{ $profile->birth_year }}年
+                    {{ $profile->birth_month }}月
+                    {{ $profile->birth_day }}日
                 </div>
         </div>
         <div class="row">
