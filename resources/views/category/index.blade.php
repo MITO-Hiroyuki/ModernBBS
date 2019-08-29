@@ -42,7 +42,7 @@
           @foreach($threads as $thread)
           <tbody>
             <tr>
-              <td>{{ $thread->thread_title }}</td>
+              <td><a href="{{ action('ThreadController@show',['id' => $thread->id] ) }}">{{ $thread->thread_title }}</td>
               <td>{{ $thread->Category->name }}</td>
               <td>{{ $thread->Profile->User->name }}</td>
               <td>{{ $thread->created_at }}</td>
