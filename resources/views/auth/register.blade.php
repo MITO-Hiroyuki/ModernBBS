@@ -3,18 +3,17 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 offset-md-2">
-            <div class="card card-default">
-                <div class="card-heading">Register</div>
+        <div class="col-md-8 mx-auto">
+            <div class="card card-default bg-light py-5">
 
-                <div class="card-body">
+                <div class="card-body offset-md-3">
                     <form class="form-horizontal" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">{{ __('messages.Name') }}</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-8">
                                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
 
                                 @if ($errors->has('name'))
@@ -29,7 +28,7 @@
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">{{ __('messages.E-Mail Address') }}</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-8">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
 
                                 @if ($errors->has('email'))
@@ -43,7 +42,7 @@
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">{{ __('messages.Password') }}</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-8">
                                 <input id="password" type="password" class="form-control" name="password" required>
 
                                 @if ($errors->has('password'))
@@ -57,13 +56,13 @@
                         <div class="form-group">
                             <label for="password-confirm" class="col-md-4 control-label">{{ __('messages.Confirm Password') }}</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-8">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <!--Bootstrap3 offset -->
-                            <div class="col-md-offset-4">
+                            <div class="row offset-md-1">
                                 <div class="col-md-4">
                                     <label><input type="radio" value="1" name="t_s_filter" checked >生徒</label>
                                 </div>
