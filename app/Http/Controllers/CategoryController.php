@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Category;
 use App\Thread;
 use App\Profile;
+use App\User;
 
 class CategoryController extends Controller
 {

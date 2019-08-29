@@ -39,9 +39,8 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     @if (Auth::guest())
-                    <li><a href="{{ route('login') }}">Login</a></li>
-                    <span class="sr-only">(current)</span>
-                    <li><a href="{{ route('register') }}">Register</a></li>
+                    <li><a class="nav-link" href="{{ route('login') }}">{{ __('messages.Login') }}</a></li>
+                    <li class="ml-5"><a class="nav-link" href="{{ route('register') }}">{{ __('messages.Register') }}</a></li>
                     @else
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true"

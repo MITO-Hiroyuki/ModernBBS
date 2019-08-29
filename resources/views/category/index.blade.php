@@ -27,7 +27,7 @@
                             <h3 class="text-center">{{ $category6->name }}</h3>
                         </div>
         </div>
-    <div class="row">
+    <div class="row mx-auto">
         <h5>新着スレッド一覧</h5>
       <div class="table-responsive">
         <table class="table table-bordered table-striped">
@@ -44,7 +44,7 @@
             <tr>
               <td>{{ $thread->thread_title }}</td>
               <td>{{ $thread->Category->name }}</td>
-              <td>test</td>
+              <td>{{ $thread->Profile->User->name }}</td>
               <td>{{ $thread->created_at }}</td>
             </tr>
           </tbody>

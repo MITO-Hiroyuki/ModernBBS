@@ -10,9 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Auth::routes();
 
@@ -24,10 +24,12 @@ Route::group(['prefix' => 'bbs','middleware'=>'auth'], function()
     Route::post('profile/create', 'ProfileController@create');
     Route::get('profile/edit', 'ProfileController@edit');
     Route::post('profile/edit', 'ProfileController@update');
-    Route::get('profile/myprofile', 'ProfileController@description')->name('myprofile');;
+    Route::get('profile/show', 'ProfileController@description')->name('myprofile');
     Route::resource('thread', 'ThreadController');
     Route::resource('comment', 'CommentController');
     Route::resource('response', 'ResponseController');
 });
 
 Route::get('category/index','CategoryController@index');
+
+Route::get('profile/profile', 'ProfileController@get_profile');

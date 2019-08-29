@@ -43,6 +43,7 @@
         </div>
         <div class="row">
             <a href="{{ action('CategoryController@index') }}" role="button" class="btn btn-success">TOP画面</a>
+            <a href="{{ action('ProfileController@get_profile') }}" role="button" class="btn btn-success">profile</a>
         </div>
     </div>
 @endsection

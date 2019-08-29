@@ -4,12 +4,12 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <h2>{{ $profile->users->name }}プロフィール</h2>
+            <h2>{{ $profile->User->name }}プロフィール</h2>
         </div>
         <div class="row">
             <label class="col-md-2">氏名</label>
                 <div class="col-md-8">
-                    {{ $profile->users->name }}
+                    {{ $profile->User->name }}
                 </div>
         </div>
         <div class="row">
