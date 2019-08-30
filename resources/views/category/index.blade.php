@@ -41,16 +41,18 @@
             <div class="col-md-2">
                 <div class="row">
                 <p>新着スレッド一覧</p>
-                <div class="card newthread">
-                <div class="list-group">
-                  @foreach($threads as $thread)
-                      <a href="{{ action('ThreadController@show',['id' => $thread->id] ) }}">
-                          <h4 class="list-group-item-heading">{{ $thread->thread_title }}</h4>
-                      <p class="list-group-item-text">{{ $thread->Category->name }}</p>
-                  @endforeach
-                 </div>
-            {{ $threads->links() }}
-                </div>
+                    <div class="card newthread">
+                        <div class="list-group">
+                          @foreach($threads as $thread)
+                              <a href="{{ action('ThreadController@show',['id' => $thread->id] ) }}">
+                                  <h4 class="list-group-item-heading">{{ $thread->thread_title }}</h4>
+                              <p class="list-group-item-text">{{ $thread->Category->name }}</p>
+                          @endforeach
+                         </div>
+                        <div class="pagination">
+                        {{ $threads->links() }}
+                        </div>
+                    </div>
                 </div>
             
             </div>
