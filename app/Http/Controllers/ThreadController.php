@@ -12,14 +12,16 @@ class ThreadController extends Controller
 {
 	public function index()
 	{
-		$threads = Thread::orderBy('created_at', 'desc')->get();
+		$threads = Thread::orderBy('created_at', 'desc')->paginate(10);
 		return view('thread.index', ['threads' => $threads]);
 	}
 	
 	public function show($id)
 	{
-		$thread = Thread::find($id);
-		return view('thread.comment', ['thread' => $thread]);
+		$thread = Thread::findOrFail($id);
+		return view('thread.comment', [
+			'thread' => '$thread',
+			]);
 	}
 	
 	public function store(Request $request)
@@ -52,11 +54,5 @@ class ThreadController extends Controller
 			return redirect()->back()->withErrors($validator)->withInput();
 		}
 	}
-	
-	public function delete(Request $request)
-	{
-		$thread = thread::find($request->id);
-		$thread->delete();
-		return redirect('thread.index');
-	}
+
 }

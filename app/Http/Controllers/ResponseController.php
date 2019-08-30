@@ -12,32 +12,21 @@ class ResponseController extends Controller
 {
 	public function Response()
 	{
-		$responses = Response::orderBy('created_at', 'desc')->get();
+		$responses = Response::orderBy('created_at', 'desc')->paginate(10);
 		return view('thread.comment.response', ['responses' => $responses]);
 	}
 	
 	public function store(Request $request)
 	{
-		$rules = [
-			'response_text' => 'required',
-			];
+		$params = $request->validate([
+			'comment_id' => 'required|exists:comments,id',
+			'response_text' => 'required'
+			]);
 		
-		$messages = array(
-			'response_text.required' => '本文を正しく入力して下さい',
-			);
+		$comment = Comment::findOrFail('$params');
+		$comment->response()->create($params);
 		
-		$response->user_id = $request->user()->id;
+		return redirect()->route('thread.comment.response', ['comment' => $comment])->with('message', 'レスポンスを送信しました');
 		
-		$validator = $Varidator::make(Input::all(), $rules, $messages);
-		
-		if ($validator->passes()) {
-			$response = new Response;
-			$response->response_text = Input::get('response_text');
-			$response->comment_id = Input::get('comment_id');
-			$response->save();
-			return redirect()->back()->with('message', '投稿が完了しました');
-		} else {
-			return redirect()->back()->withErrors($validator)->withInput();
-		}
 	}
 }
