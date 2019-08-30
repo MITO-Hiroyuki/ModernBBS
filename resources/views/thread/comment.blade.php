@@ -12,7 +12,7 @@
 		
 		<hr />
 		
-		<h3>コメント一覧</h3>s
+		<h3>コメント一覧</h3>
 			@foreach ($thread->comment as $thread_comment)
 				<p>コメントユーザー：{{ optional($thread_comment->user_id)->name }}</p>
 				<p>{{ $thread_comment->comment_text }}</p>

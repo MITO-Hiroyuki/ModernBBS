@@ -18,7 +18,7 @@
     
 </head>
 <body>
-    <div class=container>
+ 
         <nav class="navbar navbar-expand-md navbar-dark bg-dark">
             <a class="navbar-brand" href="{{ url('/') }}">BE中学校</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04"
@@ -59,7 +59,7 @@
         </nav>
         
     @yield('content')
-</div>
+
 
 
     	<!-- Optional JavaScript -->
