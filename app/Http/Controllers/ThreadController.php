@@ -12,7 +12,7 @@ class ThreadController extends Controller
 {
 	public function index()
 	{
-		$threads = Thread::all();
+		$threads = Thread::orderBy('created_at', 'desc')->get();
 		return view('thread.index', ['threads' => $threads]);
 	}
 	

@@ -12,7 +12,7 @@ class CommentController extends Controller
 {
 		public function comment()
 	{
-		$comment = Comment::all();
+		$comments = Comment::orderBy('created_at', 'desc')->get();
 		return view('thread.comment', ['comments' => $comments]);
 	}
 	

@@ -12,8 +12,8 @@ class ResponseController extends Controller
 {
 	public function Response()
 	{
-		$response = Response::all();
-		return view('thread.response', ['responses' => $responses]);
+		$responses = Response::orderBy('created_at', 'desc')->get();
+		return view('thread.comment.response', ['responses' => $responses]);
 	}
 	
 	public function store(Request $request)
