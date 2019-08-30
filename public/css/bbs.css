@@ -6,33 +6,31 @@
   margin-bottom: 20px;
 }
 
-.card1 {
+.card-panel {
   color: #fff;
+}
+
+.card1 {
   background-color: #42AAC7;
 }
 
 .card2 {
-  color: #fff;
   background-color: #3DB680;
 }
 
 .card3 {
-  color: #fff;
   background-color: #FFEE55;
 }
 
 .card4 {
-  color: #fff;
   background-color: #F3C759;
 }
 
 .card5 {
-  color: #fff;
   background-color: #E6855E;
 }
 
 .card6 {
-  color: #fff;
   background-color: #CE579B;
 }
 
