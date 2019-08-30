@@ -3,19 +3,18 @@
 @section('content')
 	<div class="col-md-8 mx-auto">
 		
-			<small>投稿日：{{ date("Y年 m月 d日", strtotime($thread->created_at)) }}</small>
+		small>投稿日：{{ $thread->created_at->format('Y.m.d') }}</small>
 			
-		</h2>
-		<p>{{ link_to("/profile/{ optional($thread->user)->id}", '投稿者：{ optional($thread->user)->name }', array('class' => 'btn btn-primary')) }}</p>
-		<p>カテゴリー：{{ optional($thread->category)->name }}</p>
+		<p>{{ link_to("/profile/{ optional($thread->thread_profile_id)->id}", '投稿者：{ optional($thread->thread_profile_id)->name }', array('class' => 'btn btn-primary')) }}</p>
+		<p>カテゴリー：{{ optional($thread->category_id)->name }}</p>
 		<p>{{ $thread->body }}</p>
 		
 		<hr />
 		
 		<h3>コメント一覧</h3>
-			@foreach ($thread->comment as $thread_comment)
-				<p>コメントユーザー：{{ optional($thread_comment->user_id)->name }}</p>
-				<p>{{ $thread_comment->comment_text }}</p>
+			@foreach ($thread->comments as $comment)
+				<p>コメントユーザー：{{ optional($comment->user_id)->name }}</p>
+				<p>{{ $comment->comment_text }}</p>
 				
 						@if (@good)
 							{{ Form::model($comment, array('action' => array('GoodController@destroy', $comment->id, $good->id))) }}
@@ -32,7 +31,7 @@
 						@endif
 						
 				<p>レスポンス数：{{ $comment->response_count }}</p>
-				<p>{{ link_to("/comment/{comment->id}", 'レスポンスを読む', array('class' => 'btn btn-primary')) }}</p><br />
+				<p>{{ link_to("/response/{comment->id}", 'レスポンスを読む', array('class' => 'btn btn-primary')) }}</p><br />
 			@endforeach
 			
 		{{ Form::open(['route' => 'bbs.store'], array('class' => 'form')) }}

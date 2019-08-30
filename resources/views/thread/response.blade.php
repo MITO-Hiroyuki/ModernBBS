@@ -2,9 +2,7 @@
 @section('title', 'コメント表示')
 @section('content')
 	<div class="col-md-8 mx-auto">
-		<h2>
-			<small>投稿日：{{ date("Y年 m月 d日", strtotime($comment->created_at)) }}</small>
-		</h2>
+		<small>投稿日：{{ date("Y年m月d日", strtotime($thread->created_at)) }}</small>
 		<p>{{ $comment->comment_text }}</p>
 		
 			<button type="submit" class="btn btn-primary">いいね！</button>
