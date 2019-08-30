@@ -3,7 +3,7 @@
 
 @section('content')
     <div class="container">
-        <h1>MYプロフィール</h2>
+        <h1>MYプロフィール</h1>
         <div class="jumbotron">
             <div class="profile">
                 <div class="row">

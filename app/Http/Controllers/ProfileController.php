@@ -69,8 +69,11 @@ class ProfileController extends Controller
         $user_id = $user->id;
         $user_name = $user->name;
         $profile = Profile::where('user_id',$user_id)->get();
-        $profile = $profile[0];
+        if($profile->isEmpty()){
+            return view('profile.create');    
+        }
         
+        $profile = $profile[0];
         return view('profile.myprofile', ['profile' => $profile, 'user_name' => $user_name]);
         
     }
