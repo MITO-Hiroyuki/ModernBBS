@@ -12,7 +12,7 @@
 		<hr />
 		<h3>レスポンス一覧</h3>
 			@foreach($comment->response as $comment_response)
-				<p>{{ link_to("/profile/{$response->user->id}", 'レスポンスユーザー：{ $comment_response->user->name }', array('class => 'btn btn-primary')) }}</p>
+				<p>{{ link_to("/profile/{ optional($response->user)->id}", 'レスポンスユーザー：{ optional($comment_response->user)->name }', array('class' => 'btn btn-primary')) }}</p>
 				<p>{{ $comment_response->response_text }}</p><br />
 			@endforeach
 			
@@ -25,7 +25,7 @@
 			<div class="form-group">
 				<label for="response" class="">レスポンス</label>
 				<div class="">
-						{{ Form::textarea('response_text', null, array('class => '')) }}
+						{{ Form::textarea('response_text', null, array('class' => '')) }}
 				</div>
 			</div>
 			
