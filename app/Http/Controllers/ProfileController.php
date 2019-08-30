@@ -70,7 +70,7 @@ class ProfileController extends Controller
         $user_name = $user->name;
         $profile = Profile::where('user_id',$user_id)->get();
         if($profile->isEmpty()){
-            return view('profile.create');    
+            return redirect('bbs/profile/create');    
         }
         
         $profile = $profile[0];
