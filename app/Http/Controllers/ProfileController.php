@@ -81,6 +81,6 @@ class ProfileController extends Controller
         $profile = Profile::where('user_id',$user_id)->get();
         $profile = $profile[0];
         
-        return view('profile.profile', ['profile' => $profile,]);
+        return view('profile.show', ['profile' => $profile,]);
     }
 }
