@@ -15,36 +15,7 @@
 		<hr />
 		
 		<h3>コメント一覧</h3>
-<<<<<<< HEAD
-=======
-			@foreach ($thread->comment as $thread_comment)
-				<p>コメントユーザー：{{ optional($thread_comment->user_id)->name }}</p>
-				<p>{{ $thread_comment->comment_text }}</p>
-				
-						@if (@good)
-							{{ Form::model($comment, array('action' => array('GoodController@destroy', $comment->id, $good->id))) }}
-								<button type="submit">
-									<i class="fas fa-thumbs-up"></i>{{ $comment->good_count }}
-								</button>
-							{{!! Form::close() !!}
-						@else
-							{{ Form::model($comment, array('action' => array('GoodController@store', $comment->id))) }}
-								<button type="submit">
-									<i class="far fa-thumbs-up"></i>{{ $comment->good_count }}
-								</button>
-							{!! Form::close() !!}
-						@endif
-						
-				<p>レスポンス数：{{ $comment->response_count }}</p>
-				<p>{{ link_to("/comment/{comment->id}", 'レスポンスを読む', array('class' => 'btn btn-primary')) }}</p><br />
-			@endforeach
-			
-		{{ Form::open(['route' => 'bbs.store'], array('class' => 'form')) }}
-			
-			@foreach($errors->all() as $message)
-				<p class="bg-danger">{{ $message }}</p>
-			@endforeach
->>>>>>> kenji-develop
+
 		
 			@foreach($thread->comments as $comment)
 				<div>

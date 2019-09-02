@@ -14,7 +14,7 @@ class CategoryController extends Controller
         
         $categories = Category::all();
         list($category1, $category2, $category3, $category4, $category5, $category6) = $categories;
-        $threads = Thread::orderBy('created_at','desc')->paginate(5);
+        $threads = Thread::orderBy('created_at','desc')->simplePaginate(5);
         
         return view('category.index', ['category1' => $category1,
                                         'category2' => $category2,

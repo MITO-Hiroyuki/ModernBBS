@@ -49,7 +49,7 @@
                               <p class="list-group-item-text">{{ $thread->Category->name }}</p>
                           @endforeach
                          </div>
-                        <div class="pagination">
+                        <div class="newthread-pagination pagination-sm">
                         {{ $threads->links() }}
                         </div>
                     </div>
