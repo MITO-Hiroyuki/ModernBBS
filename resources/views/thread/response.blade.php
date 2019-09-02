@@ -42,7 +42,6 @@
 					</div>
 				</div>
 				
-				{{ Form::hidden('user_id', $user->id) }}
 				{{ Form::hidden('comment_id', $comment->id) }}
 				
 				<div class="from-group"></div>

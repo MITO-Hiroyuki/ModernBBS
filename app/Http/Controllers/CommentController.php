@@ -31,6 +31,21 @@ class CommentController extends Controller
 	
 	public function store()
 	{
+		$validator = Validator::make($request->all(), [
+			'comment_text' => 'required',
+		]);
+
+		if ($validator->fails()) {
+			return redirect('comment/show')
+						->withErrors($validator)
+						->withInput();
+		} else {
+			return redirect()
+						->back()
+						->with('message', '投稿が完了しました');
+		}
+		
+		/*
 		$rules = [
 			'comment_text' => 'required',
 			];
@@ -54,5 +69,6 @@ class CommentController extends Controller
 		} else {
 			return redirect()->back()->withErrors($validator)->withInput();
 		}
+		*/
 	}
 }

@@ -18,6 +18,21 @@ class ResponseController extends Controller
 	
 	public function store()
 	{
+		$validator = Validator::make($request->all(), [
+			'response_text' => 'required',
+		]);
+
+		if ($validator->fails()) {
+			return redirect('response/show')
+						->withErrors($validator)
+						->withInput();
+		} else {
+			return redirect()
+						->back()
+						->with('message', '投稿が完了しました');
+		}
+		
+		/*
 		$rules = [
 			'response_text' => 'required',
 			];
@@ -40,6 +55,6 @@ class ResponseController extends Controller
 		} else {
 			return redirect()->back()->withErrors($validator)->withInput();
 		}
-		
+		*/
 	}
 }

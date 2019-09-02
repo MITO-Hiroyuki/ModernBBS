@@ -13,7 +13,7 @@
 			<h2>タイトル：{{ $thread->thread_title }}
 				<small>投稿日：{{ date("Y年 m月 d日",strtotime($thread->created_at)) }}</small>
 			</h2>
-			<p><a class="card-link" href="{{ route('profile.show', ['thread' => $thread->profile->id]) }}" >投稿者：{{ $thread->user->name }}</a></p>
+			<p><a class="card-link" href="{{ route('profile.showThread', ['thread' => $thread->profile->id]) }}" >投稿者：{{ $thread->user->name }}</a></p>
 			<p>カテゴリー：{{ $thread->category->name }}</p>
 			<p>{{ $thread->body }}</p>
 			<p>{{ link_to("/thread/{$thread->id}", '続きを読む', array('class' => 'btn btn-primary')) }}</p>
