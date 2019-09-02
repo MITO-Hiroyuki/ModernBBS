@@ -24,10 +24,10 @@ class ThreadController extends Controller
 		return view('thread.comment')->with('thread', $thread);
 	}
 	
-	public function showThread($category_id)
+	public function showThread($id)
 	{
 		$comment = Comment::find($category_id);
-		return view('thread.index')->with('category', $category);
+		return view('thread.showThread')->with('category', $category);
 	}
 	
 	public function create()
