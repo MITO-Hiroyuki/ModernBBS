@@ -12,6 +12,7 @@
 		<hr />
 		
 		<h3>コメント一覧</h3>
+<<<<<<< HEAD
 		
 			@foreach($thread->comments as $comment)
 				<div>
@@ -51,6 +52,14 @@
 			@foreach($errors->all() as $message)
 				<p class="bg-danger">{{ $message }}</p>
 			@endforeach
+=======
+
+		
+			@foreach($thread->comments as $comment)
+				<div>
+					<p><a class="card-link" href="{{ route('profile.show', ['comment' => $comment->comment_profile_id->id]) }}" >コメント投稿者：{{ optional($comment->comment_profile_id)->name }}</a></p>
+					<p>{{ $comment->comment_text }}</p>
+>>>>>>> 1e4237c3f9b504fa5634e6960647ecd05d282446
 					
 			{{ Form::open(['route' => 'comment.store'], array('class' => '')) }}
 				

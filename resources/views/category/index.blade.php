@@ -8,32 +8,38 @@
                 <div class="row">
                     <div class="card-panel">
                         <div class="card card1">
-                            <h1 class="card-body">{{ $category1->name }}</h3>
+                            <h1 class="card-body"><a href="{{ action('ThreadController@show',['id' => $category1->category_id]) }}">
+                            {{ $category1->name }}</a></h1>
                         </div>
                     </div>
                     <div class="card-panel">
                         <div class="card card2">
-                            <h1 class="card-body">{{ $category2->name }}</h3>
+                            <h1 class="card-body"><a href="{{ action('ThreadController@show',['id' => $category2->category_id]) }}">
+                            {{ $category2->name }}</a></h1>
                         </div>
                     </div>
                     <div class="card-panel">
                         <div class="card card3">
-                            <h1 class="card-body">{{ $category3->name }}</h3>
+                             <h1 class="card-body"><a href="{{ action('ThreadController@show',['id' => $category3->category_id]) }}">
+                            {{ $category3->name }}</a></h1>
                         </div>
                     </div>
                     <div class="card-panel">
                         <div class="card card4">
-                            <h1 class="card-body">{{ $category4->name }}</h3>
+                            <h1 class="card-body"><a href="{{ action('ThreadController@show',['id' => $category4->category_id]) }}">
+                            {{ $category4->name }}</a></h1>
                         </div>
                     </div>
                     <div class="card-panel">
                         <div class="card card5">
-                            <h1 class="card-body">{{ $category5->name }}</h3>
+                            <h1 class="card-body"><a href="{{ action('ThreadController@show',['id' => $category5->category_id]) }}">
+                            {{ $category5->name }}</a></h1>
                         </div>
                     </div>
                     <div class="card-panel">
                         <div class="card card6">
-                            <h1 class="card-body">{{ $category6->name }}</h3>
+                            <h1 class="card-body"><a href="{{ action('ThreadController@show',['id' => $category6->category_id]) }}">
+                            {{ $category6->name }}</a></h1>
                         </div>
                     </div>
                 </div>
@@ -49,7 +55,7 @@
                               <p class="list-group-item-text">{{ $thread->Category->name }}</p>
                           @endforeach
                          </div>
-                        <div class="pagination">
+                        <div class="newthread-pagination pagination-sm">
                         {{ $threads->links() }}
                         </div>
                     </div>
