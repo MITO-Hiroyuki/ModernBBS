@@ -3,29 +3,58 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use App\User;
 use App\Thread;
 use App\Comment;
 use App\Response;
+use App\Category;
 
 class ThreadController extends Controller
 {
 	public function index()
 	{
-		$threads = Thread::orderBy('created_at', 'desc')->paginate(10);
-		return view('thread.index', ['threads' => $threads]);
+		$threads = Thread::all();
+		return view('thread.index')->with('threads', $threads);
 	}
 	
 	public function show($id)
 	{
-		$thread = Thread::findOrFail($id);
-		return view('thread.comment', [
-			'thread' => '$thread',
-			]);
+		$thread = Thread::find($id);
+		return view('thread.comment')->with('thread', $thread);
+	}
+	
+	public function showThread($category_id)
+	{
+		$comment = Comment::find($category_id);
+		return view('thread.index')->with('category', $category);
+	}
+	
+	public function create()
+	{
+		return view('thread.post');
 	}
 	
 	public function store(Request $request)
 	{
+		
+		$validator = Validator::make($request->all(), [
+			'thread_title' => 'required',
+			'body' => 'required',
+			'category_id' => 'required',
+		]);
+
+		if ($validator->fails()) {
+			return redirect('thread/create')
+						->withErrors($validator)
+						->withInput();
+		} else {
+			return redirect()
+						->back()
+						->with('message', '投稿が完了しました');
+		}
+		
+		/*
 		$rules = [
 			'thread_title' => 'required',
 			'body' => 'required',
@@ -38,12 +67,13 @@ class ThreadController extends Controller
 			'category_id.required' => 'カテゴリーを選択して下さい',
 			);
 		
-		$thread->user_id = $request->user()->id;
+		//$thread->user_id = $request->user()->id;
 		
 		$validator = $Varidator::make(Input::all(), $rules, $messages);
 		
 		if ($validator->passes()) {
 			$thread = new Thread;
+			$thread->user_id = Input::get('user_id');
 			$thread->thread_title = Input::get('thread_title');
 			$thread->body = Input::get('body');
 			$thread->category_id = Input::get('category_id');
@@ -53,6 +83,7 @@ class ThreadController extends Controller
 		} else {
 			return redirect()->back()->withErrors($validator)->withInput();
 		}
+		*/
 	}
 
 }

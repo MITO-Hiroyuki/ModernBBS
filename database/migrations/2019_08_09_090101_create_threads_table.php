@@ -15,11 +15,11 @@ class CreateThreadsTable extends Migration
     {
         Schema::create('threads', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('thread_profile_id');
-            $table->integer('category_id');
+            $table->unsignedInteger('user_id');
+            $table->string('category_id');
             $table->string('thread_title');
             $table->text('body');
-            $table->integer('comment_count');
+            $table->unsignedInteger('comment_count');
             $table->timestamps();
         });
     }

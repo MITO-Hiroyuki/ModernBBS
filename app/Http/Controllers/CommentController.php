@@ -10,18 +10,16 @@ use App\Response;
 
 class CommentController extends Controller
 {
-	public function comment()
+	public function show()
 	{
-		$comments = Comment::orderBy('created_at', 'desc')->paginate(10);
-		return view('thread.comment', ['comments' => $comments]);
+		$comments = Comment::all();
+		return view('thread.comment')->with('comments', $comments);
 	}
 	
-	public function show($comment_id)
+	public function showResponse($id)
 	{
-		$comment = Comment::findOrFail($comment_id);
-		return view ('comment.comment', [
-			'thread' => $thread,
-			]);
+		$comment = Comment::find($id);
+		return view('thread.response')->with('comment', $comment);
 	}
 	
 	public function good()
@@ -31,16 +29,30 @@ class CommentController extends Controller
 		return view('thread.response')->with(array('comment' => $comment, 'good' => $good));
 	}
 	
-	public function store(Request $request)
+	public function store()
 	{
-		$params = $request->validate([
-			'thread_id' => 'required|exists:threads,id',
-			'comment_text' => 'required'
-			]);
+		$rules = [
+			'comment_text' => 'required',
+			];
 		
-		$thread = Thread::findOrFail('$params');
-		$thread->comments()->create($params);
+		$messages = array(
+			'comment_text.required' => '本文を正しく入力して下さい',
+			);
 		
-		return redirect()->route('thread.comment', ['thread' => $thread])->with('messsage', 'コメントを送信しました');
+		//$comment->user_id = $request->user()->id;
+		
+		$validator = $Varidator::make(Input::all(), $rules, $messages);
+		
+		if ($validator->passes()) {
+			$comment = new Comment;
+			$comment->user_id = input::get('user_id');
+			$comment->comment_text = Input::get('comment_text');
+			$comment->thread_id = Input::get('thread_id');
+			$comment->response_count = 0;
+			$comment->save();
+			return redirect()->back()->with('message', '投稿が完了しました');
+		} else {
+			return redirect()->back()->withErrors($validator)->withInput();
+		}
 	}
 }

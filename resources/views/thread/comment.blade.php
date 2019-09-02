@@ -3,24 +3,21 @@
 @section('content')
 	<div class="col-md-8 mx-auto">
 		
-		<h2>{{ $thread->thread_title }}
-		<small>投稿日：{{ $thread->created_at->format('Y.m.d') }}</small>
+		<h2>タイトル：{{ $thread->thread_title }}
+				<small>投稿日：{{ date("Y年 m月 d日",strtotime($thread->created_at)) }}</small>
 		</h2>
-		<p>
-			<a class="card-link" href="{{ route('profile.show', ['comment' => $comment->comment_profile_id->id]) }}" >投稿者：{{ optional($thread->comment_profile_id)->name }}</a>
-		</p>
-		<p>カテゴリー：{{ optional($thread->category_id)->name }}</p>
+		<p><a class="card-link" href="{{ route('profile.show', ['thread' => $thread->profile->id]) }}" >投稿者：{{ $thread->user->name }}</a></p>
+		<p>カテゴリー：{{ $thread->category->name }}</p>
 		<p>{{ $thread->body }}</p>
-		
 		<hr />
 		
 		<h3>コメント一覧</h3>
-<<<<<<< HEAD
-=======
-			@foreach ($thread->comment as $thread_comment)
-				<p>コメントユーザー：{{ optional($thread_comment->user_id)->name }}</p>
-				<p>{{ $thread_comment->comment_text }}</p>
-				
+		
+			@foreach($thread->comments as $comment)
+				<div>
+					<p><a class="card-link" href="{{ route('profile.show', ['comment' => $comment->profile->id]) }}" >コメント投稿者：{{ $comment->user->name }}</a></p>
+					<p>{{ $comment->comment_text }}</p>
+					
 						@if (@good)
 							{{ Form::model($comment, array('action' => array('GoodController@destroy', $comment->id, $good->id))) }}
 								<button type="submit">
@@ -34,58 +31,46 @@
 								</button>
 							{!! Form::close() !!}
 						@endif
-						
-				<p>レスポンス数：{{ $comment->response_count }}</p>
-				<p>{{ link_to("/comment/{comment->id}", 'レスポンスを読む', array('class' => 'btn btn-primary')) }}</p><br />
+							
+					@if($comment->response->count())
+						<span>レスポンス数：{{ $comment->response->count() }}件</span>
+					@endif
+					<p>{{ link_to("/thread/{$comment->id}", 'レスポンスを読む', array('class' => 'btn btn-primary')) }}</p>
+				</div>
 			@endforeach
-			
-		{{ Form::open(['route' => 'bbs.store'], array('class' => 'form')) }}
+		
+		<div="">
+			<h3>コメント投稿</h3>
+				
+			@if(Session::has('message'))
+				<div class="bg-info">
+					<p>{{ Session::get('message') }}</p>
+				</div>
+			@endif
 			
 			@foreach($errors->all() as $message)
 				<p class="bg-danger">{{ $message }}</p>
 			@endforeach
->>>>>>> kenji-develop
-		
-			@foreach($thread->comments as $comment)
-				<div>
-					<p><a class="card-link" href="{{ route('profile.show', ['comment' => $comment->comment_profile_id->id]) }}" >コメント投稿者：{{ optional($comment->comment_profile_id)->name }}</a></p>
-					<p>{{ $comment->comment_text }}</p>
 					
-							@if (@good)
-								{{ Form::model($comment, array('action' => array('GoodController@destroy', $comment->id, $good->id))) }}
-									<button type="submit">
-										<i class="fas fa-thumbs-up"></i>{{ $comment->good_count }}
-									</button>
-								{{!! Form::close() !!}
-							@else
-								{{ Form::model($comment, array('action' => array('GoodController@store', $comment->id))) }}
-									<button type="submit">
-										<i class="far fa-thumbs-up"></i>{{ $comment->good_count }}
-									</button>
-								{!! Form::close() !!}
-							@endif
-							
-					<p>レスポンス数：{{ $comment->response_count }}</p>
-					<p><a class="card-link" href="{{ route('thread.comment.resposne', ['comment' => $comment]) }}">レスポンスを読む</a></p>
-				</div>
-			@endforeach
-		
-		<form class="" method="post" action="{{ route('comments.store') }}">
-			@csrf
-			<input name="thread_id" type="hidden" value="{{ $thread->id }}">
-			<div class="form-group">
-				<label for="comment_text">コメント</label>
-				<textarea id="comment_text" name="comment_text" class=form-control {{erros->has('comment_text') ? 'is-invalid' : '' }}" >
-					{{ old('comment_text') }}
-				</textarea>
-				@if($error->has('comment_text'))
-					<div class="invalid-feedback">
-						{{ $errors->first('comment_text') }}
+			{{ Form::open(['route' => 'comment.store'], array('class' => '')) }}
+				
+				<div class="form-group">
+					<label for="comment_text" class="">本文</label>
+					<div class="">
+						{{ Form::textarea('comment_text', null, array('class' => '')) }}
 					</div>
-				@endif
-			</div>
-			<input type="submit" class="btn btn-primary" value="コメント送信">
-		</form>
+				</div>
+				
+				{{ Form::hidden('user_id', $user->id) }}
+				{{ Form::hidden('thread_id', $thread->id) }}
+				
+				<div class="from-group">
+					<button type="submit" class="btn btn-primary"></button>コメント投稿</button>
+				</div>
+					
+			{{ Form::close() }}
+				
+		</div>
 		
 		<div class="d-flex justify-countent-center mb-5">
 			{{ $comments->links() }}
