@@ -39,6 +39,7 @@
                 </div>
                 <div class="row">
                     <a href="{{ action('ProfileController@get_profile') }}" role="button" class="btn btn-success">profile</a>
+                    <a href="{{ action('ProfileController@test') }}" role="button" class="btn btn-success">index</a>
                     <div class="col-md-2">
                         <a href="{{ action('ProfileController@edit',['id' => $profile->id]) }}" role="button" class="btn btn-primary">編集</a>
                     </div>

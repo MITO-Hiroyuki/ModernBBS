@@ -40,3 +40,6 @@ Route::group(['prefix' => 'bbs','middleware'=>'auth'], function()
 Route::get('category/index','CategoryController@index');
 
 Route::get('profile/profile', 'ProfileController@get_profile');
+
+
+Route::get('profile/pindex', 'ProfileController@test');

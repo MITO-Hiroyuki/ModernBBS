@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Profile;
+use App\User;
 
 class ProfileController extends Controller
 {
@@ -85,5 +86,12 @@ class ProfileController extends Controller
         $profile = $profile[0];
         
         return view('profile.show', ['profile' => $profile,]);
+    }
+    
+    public function test(Request $request){
+        
+        $users = User::all();
+        return view('profile.pindex', ['users' => $users]);
+        
     }
 }
