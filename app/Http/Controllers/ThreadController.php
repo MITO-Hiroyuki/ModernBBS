@@ -35,8 +35,26 @@ class ThreadController extends Controller
 		return view('thread.post');
 	}
 	
-	public function store()
+	public function store(Request $request)
 	{
+		
+		$validator = Validator::make($request->all(), [
+			'thread_title' => 'required',
+			'body' => 'required',
+			'category_id' => 'required',
+		]);
+
+		if ($validator->fails()) {
+			return redirect('thread/create')
+						->withErrors($validator)
+						->withInput();
+		} else {
+			return redirect()
+						->back()
+						->with('message', '投稿が完了しました');
+		}
+		
+		/*
 		$rules = [
 			'thread_title' => 'required',
 			'body' => 'required',
@@ -51,7 +69,7 @@ class ThreadController extends Controller
 		
 		//$thread->user_id = $request->user()->id;
 		
-		$validator = Validator::make(Input::all(), $rules, $messages);
+		$validator = $Varidator::make(Input::all(), $rules, $messages);
 		
 		if ($validator->passes()) {
 			$thread = new Thread;
@@ -65,6 +83,7 @@ class ThreadController extends Controller
 		} else {
 			return redirect()->back()->withErrors($validator)->withInput();
 		}
+		*/
 	}
 
 }
