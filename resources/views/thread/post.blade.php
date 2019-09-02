@@ -1,63 +1,56 @@
 @extends('layouts.default')
 @section('title', 'スレッド新規作成')
 @section('content')
-	<div class="container">
-		<div class="row">
-			<div class="col-md-8 mx-auto">
+	<div class="col-md-8 mx-auto">
+		<div="">
+			<h2>スレッド新規作成</h2>
 				
-				<h2>スレッド新規作成</h2>
+			@if(Session::has('message'))
+				<div class="bg-info">
+					<p>{{ Session::get('message') }}</p>
+				</div>
+			@endif
+			
+			@foreach($errors->all() as $message)
+				<p class="bg-danger">{{ $message }}</p>
+			@endforeach
 				
-				@if(Session::has('message'))
-					<div class="bg-info">
-						<p>{{ Session::get('message') }}</p>
+			{{ Form::open(['route' => 'thread.store'], array('class' => '')) }}
+			
+				<div class="form-group">
+					<label for="thread_title" class="">タイトル</label>
+					<div class="">
+						{{ Form::text('thread_title', null, array('class' => '')) }}
 					</div>
-				@endif
+				</div>
+					
+				<div class="form-group">
+					<label for="category_id" class="col-md-2">カテゴリー</label>
+					<div class="">
+						<select name="category_id" type="text" class="">
+							<option></option>
+							<option value="1" name="1">お知らせ</option>
+							<option value="2" name="2">宿題</option>
+							<option value="3" name="3">部活</option>
+							<option value="4" name="4">生徒</option>
+							<option value="5" name="5">友達</option>
+						</select>
+					</div>
+				</div>
+					
+				<div class="form-group">
+					<label for="body" class="">本文</label>
+					<div class="">
+						{{ Form::textarea('body', null, array('class' => '')) }}
+					</div>
+				</div>
 				
-				@if(count($errors) > 0)
-					<ul>
-						@foreach($errors->all() as $e)
-							<li>{{ $e }}</li>
-						@endforeach
-					</ul>
-				@endif
+				<div class="">
+					<button type="submit" class="btn btn-primary">スレッドを作成する</button>
+				</div>
 					
-				{{ Form::open(['route' => 'bbs.store'], array('class' => 'form')) }}
-					
-					<div class="form-group row">
-						<label for="title" class="col-md-2">タイトル</label>
-						<div class="col-md-10">
-							{{ Form::text('title', null, array('class' => '')) }}
-						</div>
-					</div>
-					
-					<div class="form-group row">
-						<label for="category_id" class="col-md-2">カテゴリー</label>
-						<div class="col-md-10">
-							<select name="category_id" type="text" class="">
-								<option></option>
-								<option value="1" name="1">お知らせ</option>
-								<option value="2" name="2">宿題</option>
-								<option value="3" name="3">部活</option>
-								<option value="4" name="4">生徒</option>
-								<option value="5" name="5">友達</option>
-							</select>
-						</div>
-					</div>
-					
-					<div class="form-group row">
-						<label for="content" class="col-md-2">本文</label>
-						<div class="col-md-10">
-							{{ Form::textarea('content', null, array('class' => '')) }}
-						</div>
-					</div>
-					
-					<div class="from-group">
-						<input type="submit" class="btn btn-primary" value="投稿">
-					</div>
-					
-				{{ Form::close() }}
+			{{ Form::close() }}
 				
-			</div>
 		</div>
 	</div>
 @endsection

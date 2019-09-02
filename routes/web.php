@@ -26,8 +26,11 @@ Route::group(['prefix' => 'bbs','middleware'=>'auth'], function()
     Route::post('profile/edit', 'ProfileController@update');
     Route::get('profile/show', 'ProfileController@description')->name('myprofile');
     Route::resource('thread', 'ThreadController');
+    Route::put('thread/{id}', 'ThreadController@showThread');
     Route::resource('comment', 'CommentController');
+    Route::put('comment/{id}', 'CommentController@show');
     Route::resource('response', 'ResponseController');
+    Route::put('response/{id}', 'ResponseController@show');
     Route::get('comment/{comment}/good', 'GoodController@store');
     Route::get('comment/{comment}/good/{good}', 'GoodController@destory');
     Route::post('comment/{comment}/good', 'GoodController@store');

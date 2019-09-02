@@ -15,8 +15,8 @@ class CreateResponsesTable extends Migration
     {
         Schema::create('responses', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('comment_id');
-            $table->integer('response_profile_id');
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('comment_id');
             $table->text('response_text');
             $table->timestamps();
         });

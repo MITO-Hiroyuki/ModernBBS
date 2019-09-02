@@ -10,23 +10,36 @@ use App\Response;
 
 class ResponseController extends Controller
 {
-	public function Response()
+	public function show()
 	{
-		$responses = Response::orderBy('created_at', 'desc')->paginate(10);
-		return view('thread.comment.response', ['responses' => $responses]);
+		$Responses = Response::all();
+		return view('thread.response')->with('responses', $responses);
 	}
 	
-	public function store(Request $request)
+	public function store()
 	{
-		$params = $request->validate([
-			'comment_id' => 'required|exists:comments,id',
-			'response_text' => 'required'
-			]);
+		$rules = [
+			'response_text' => 'required',
+			];
 		
-		$comment = Comment::findOrFail('$params');
-		$comment->response()->create($params);
+		$messages = array(
+			'response_text.required' => '本文を正しく入力して下さい',
+			);
 		
-		return redirect()->route('thread.comment.response', ['comment' => $comment])->with('message', 'レスポンスを送信しました');
+		//$response->user_id = $request->user()->id;
+		
+		$validator = $Varidator::make(Input::all(), $rules, $messages);
+		
+		if ($validator->passes()) {
+			$response = new Response;
+			$response->user_id = Input::get('user_id');
+			$response->response_text = Input::get('response_text');
+			$response->comment_id = Input::get('comment_id');
+			$response->save();
+			return redirect()->back()->with('message', '投稿が完了しました');
+		} else {
+			return redirect()->back()->withErrors($validator)->withInput();
+		}
 		
 	}
 }
