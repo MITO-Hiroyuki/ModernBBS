@@ -9,10 +9,9 @@ use App\Follow;
 
 class FollowController extends Controller
 {
-    public function store(Request $request)
+    public function store($id)
     {
-        
-        $followedUser = User::findOrFail($request->input('id'));
+        $followedUser = User::findOrFail($id);
         Follow::firstOrCreate([
             'user_id' => Auth::id(),
             'followed_user_id' => $followedUser->id,
@@ -22,10 +21,10 @@ class FollowController extends Controller
         
     }
     
-    public function destroy(Request $request)
+    public function destroy($id)
     {   
         
-        $followedUser = User::findOrFail($request->id);
+        $followedUser = User::findOrFail($id);
 
         $user = Auth::user();
         $user->follows()->detach($followedUser->id);

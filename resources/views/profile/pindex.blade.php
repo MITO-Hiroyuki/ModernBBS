@@ -9,9 +9,11 @@
                 <ul>
                     @foreach($users as $user)
                     <li>
+                        <a href="{{ action('ProfileController@get_profile', ['id' => $user->id]) }}">
                     {{ $user->name }}
-                    <a href="{{ action('FollowController@store', ['id' => $user->id]) }}" role="button" class="btn btn-success" type="submit">follow</a>
-                    <a href="{{ action('FollowController@destroy', ['id' => $user->id]) }}" role="button" class="btn btn-danger" type="submit">unfollow</a>
+                    </a>
+                    <a href="{{ action('FollowController@store', ['id' => $user->id]) }}" role="button" class="btn btn-success">follow</a>
+                    <a href="{{ action('FollowController@destroy', ['id' => $user->id]) }}" role="button" class="btn btn-danger">unfollow</a>
                     
                     </li>
                     @endforeach

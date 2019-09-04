@@ -43,5 +43,5 @@ Route::get('profile/profile', 'ProfileController@get_profile');
 
 
 Route::get('profile/pindex', 'ProfileController@test');
-Route::get('profile/store', 'FollowController@store');
-Route::get('profile/destroy', 'FollowController@destroy');
+Route::get('profile/store/{id}', 'FollowController@store');
+Route::get('profile/destroy/{id}', 'FollowController@destroy');
