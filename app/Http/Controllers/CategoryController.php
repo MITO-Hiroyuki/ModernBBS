@@ -25,4 +25,6 @@ class CategoryController extends Controller
                                         compact('threads')]);
         
     }
+    
+    
 }

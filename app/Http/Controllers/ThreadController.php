@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Thread;
 use App\Comment;
@@ -12,10 +13,12 @@ use App\Category;
 
 class ThreadController extends Controller
 {
-	public function index()
+	public function index($category_id)
 	{
-		$threads = Thread::all();
-		return view('thread.index')->with('threads', $threads);
+		$category_threads = Thread::where('category_id', $category_id)->get();
+		$user = $category_id->thread->user();
+		$category_threads = $user->load('category_threads');
+		return view('thread.index', ['category_threads' => $category_threads]);
 	}
 	
 	public function show($id)
@@ -26,24 +29,42 @@ class ThreadController extends Controller
 	
 	public function showThread($category_id)
 	{
-		$comment = Comment::find($category_id);
-		return view('thread.index')->with('category', $category);
+		$category_threads = Thread::where('category_id', $category_id)->get();
+		return view('thread.index', ['category_threads' => $category_threads]);
 	}
 	
-	public function create()
+	public function add()
 	{
 		return view('thread.post');
 	}
 	
+	public function create(Request $request)
+	{
+		$this->validate($request, Thread::$rules);
+		
+		$thread = new Thread;
+		$thread->user_id = Auth::user()->id;
+		$form = $request->all();
+		
+		unset($form['_token']);
+		unset($form['image']);
+		
+		$thread->fill($form);
+		$thread->save();
+		
+		return view('thread.post');
+	}
+	
+	/*
 	public function store(Request $request)
 	{
+		//dd($request->all());
 		
 		$validator = Validator::make($request->all(), [
 			'thread_title' => 'required',
 			'body' => 'required',
 			'category_id' => 'required',
 		]);
-
 		if ($validator->fails()) {
 			return redirect('thread/create')
 						->withErrors($validator)
@@ -53,37 +74,6 @@ class ThreadController extends Controller
 						->back()
 						->with('message', '投稿が完了しました');
 		}
-		
-		/*
-		$rules = [
-			'thread_title' => 'required',
-			'body' => 'required',
-			'category_id' => 'required',
-			];
-		
-		$messages = array(
-			'thread_title.required' => 'タイトルを正しく入力して下さい',
-			'body.required' => '本文を正しく入力して下さい',
-			'category_id.required' => 'カテゴリーを選択して下さい',
-			);
-		
-		//$thread->user_id = $request->user()->id;
-		
-		$validator = $Varidator::make(Input::all(), $rules, $messages);
-		
-		if ($validator->passes()) {
-			$thread = new Thread;
-			$thread->user_id = Input::get('user_id');
-			$thread->thread_title = Input::get('thread_title');
-			$thread->body = Input::get('body');
-			$thread->category_id = Input::get('category_id');
-			$thread->comment_count = 0;
-			$thread->save();
-			return redirect()->back()->with('message', '投稿が完了しました');
-		} else {
-			return redirect()->back()->withErrors($validator)->withInput();
-		}
-		*/
 	}
-
+	*/
 }
