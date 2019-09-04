@@ -12,7 +12,7 @@ class CreateFollowsTable extends Migration
      * @return void
      */
     public function up()
-    {       Schema::create('follow_users', function (Blueprint $table) {
+    {       Schema::create('follows', function (Blueprint $table) {
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('followed_user_id')->index();
         
