@@ -6,18 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Thread extends Model
 {
-	protected $fillable = [
-		'thread_title',
-		'body'
-		];
+	protected $guarded = array('id');
+	public static $rules = array(
+		'thread_title' => 'required',
+		'body' => 'required',
+		);
 	
 	public function User()
 	{
-		return $this->hasMany('App\User');
+		return $this->belongsTo('App\User');
 	}
 	public function Comment()
 	{
-		return $this->hasMany('App\Comment', 'thread_id');
+		return $this->belongsTo('App\Comment', 'thread_id');
 	}
 	
 	public function Category()

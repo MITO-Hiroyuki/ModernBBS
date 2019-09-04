@@ -10,7 +10,6 @@ $factory->define(App\Thread::class, function (Faker $faker) {
             'category_id' => $faker->numberBetween(1,6),
             'user_id' => $faker->numberBetween(1,2),
             'thread_title' => 'test',
-            'comment_count' => $faker->numberBetween(1,6),
             'body' => 'testtest',
     ];
 });
