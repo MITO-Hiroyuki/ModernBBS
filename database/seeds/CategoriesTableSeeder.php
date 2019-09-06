@@ -30,7 +30,7 @@ class CategoriesTableSeeder extends Seeder
             ],
             
             [
-                'name'=>'生徒'
+                'name'=>'カフェ'
             ],
             
             [

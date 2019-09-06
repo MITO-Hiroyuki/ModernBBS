@@ -10,6 +10,8 @@ class Category extends Model
 	//protected $fillable = 'name';
 	protected $dates = ['created_at','updated_at'];
 	
-	
-	
+	public function Thread()
+	{
+		return $this->belongsTo('App\Category');
+	}
 }

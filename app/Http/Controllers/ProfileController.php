@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Profile;
+use App\User;
 
 class ProfileController extends Controller
 {
@@ -69,8 +70,11 @@ class ProfileController extends Controller
         $user_id = $user->id;
         $user_name = $user->name;
         $profile = Profile::where('user_id',$user_id)->get();
-        $profile = $profile[0];
+        if($profile->isEmpty()){
+            return redirect('bbs/profile/create');    
+        }
         
+        $profile = $profile[0];
         return view('profile.myprofile', ['profile' => $profile, 'user_name' => $user_name]);
         
     }
@@ -81,6 +85,13 @@ class ProfileController extends Controller
         $profile = Profile::where('user_id',$user_id)->get();
         $profile = $profile[0];
         
-        return view('profile.profile', ['profile' => $profile,]);
+        return view('profile.show', ['profile' => $profile,]);
+    }
+    
+    public function test(Request $request){
+        
+        $users = User::all();
+        return view('profile.pindex', ['users' => $users]);
+        
     }
 }

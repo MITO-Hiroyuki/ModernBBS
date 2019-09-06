@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Category;
 use App\Thread;
 use App\Profile;
+use App\User;
 
 class CategoryController extends Controller
 {
@@ -13,7 +14,7 @@ class CategoryController extends Controller
         
         $categories = Category::all();
         list($category1, $category2, $category3, $category4, $category5, $category6) = $categories;
-        $threads = Thread::orderBy('created_at','desc')->paginate(10);
+        $threads = Thread::orderBy('created_at','desc')->simplePaginate(5);
         return view('category.index', ['category1' => $category1,
                                         'category2' => $category2,
                                         'category3' => $category3,
@@ -24,4 +25,6 @@ class CategoryController extends Controller
                                         compact('threads')]);
         
     }
+    
+    
 }

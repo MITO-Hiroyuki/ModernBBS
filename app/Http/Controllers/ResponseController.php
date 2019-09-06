@@ -10,14 +10,29 @@ use App\Response;
 
 class ResponseController extends Controller
 {
-	public function Response()
+	public function show()
 	{
-		$response = Response::all();
-		return view('thread.response', ['responses' => $responses]);
+		$Responses = Response::all();
+		return view('thread.response')->with('responses', $responses);
 	}
 	
-	public function store(Request $request)
+	public function store()
 	{
+		$validator = Validator::make($request->all(), [
+			'response_text' => 'required',
+		]);
+
+		if ($validator->fails()) {
+			return redirect('response/show')
+						->withErrors($validator)
+						->withInput();
+		} else {
+			return redirect()
+						->back()
+						->with('message', '投稿が完了しました');
+		}
+		
+		/*
 		$rules = [
 			'response_text' => 'required',
 			];
@@ -26,12 +41,13 @@ class ResponseController extends Controller
 			'response_text.required' => '本文を正しく入力して下さい',
 			);
 		
-		$response->user_id = $request->user()->id;
+		//$response->user_id = $request->user()->id;
 		
 		$validator = $Varidator::make(Input::all(), $rules, $messages);
 		
 		if ($validator->passes()) {
 			$response = new Response;
+			$response->user_id = Input::get('user_id');
 			$response->response_text = Input::get('response_text');
 			$response->comment_id = Input::get('comment_id');
 			$response->save();
@@ -39,5 +55,6 @@ class ResponseController extends Controller
 		} else {
 			return redirect()->back()->withErrors($validator)->withInput();
 		}
+		*/
 	}
 }

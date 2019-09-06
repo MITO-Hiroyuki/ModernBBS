@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.bbs')
 @section('title', 'プロフィールの新規作成')
 
 @section('content')

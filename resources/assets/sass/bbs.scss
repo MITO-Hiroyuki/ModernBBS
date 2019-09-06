@@ -1,0 +1,88 @@
+.navbar {
+  margin-bottom: 20px;
+}
+
+.card-panel{
+    
+    color: #fff;
+    margin-bottom: 30px;
+    margin-left: 10px;
+    
+}
+
+.card-panel .card{
+    width: 300px;
+    height: 250px;
+    
+    
+}
+
+.card-panel .card-body{
+    letter-spacing: .2em;
+  display: flex;
+	align-items: center;
+    text-align: center;
+    justify-content: center;
+    
+}
+
+.card1{
+    
+    background-color: #42AAC7;
+}
+
+.card2{
+    
+    background-color: #3DB680;
+    
+    
+}
+
+.card3{
+    
+    background-color: #FFEE55;
+    
+}
+
+.card4{
+    
+    background-color: #F3C759;
+    
+}
+
+.card5{
+    
+    background-color: #E6855E;
+}
+
+.card6{
+   
+    background-color: #CE579B;
+}
+
+.newthread .list-group{
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.newthread .pagination {
+
+   padding: 10px;
+   
+}
+
+.jumbotron .profile{
+    letter-spacing: .1em;
+}
+
+
+
+.jumbotron .h3{
+    letter-spacing: .1em;
+    line-height: 1.7;
+
+}
+.jumbotron .h5{
+    letter-spacing: .1em;
+    line-height: 1.7;
+}

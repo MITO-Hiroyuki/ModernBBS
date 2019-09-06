@@ -4,60 +4,64 @@
 @section('content')
     <div class="container">
         <div class="row">
+            <div class="col-md-10">
+                <div class="row">
+                    <div class="card-panel">
+                        <div class="card card1">
+                            <h1 class="card-body"><a href="{{ action('ThreadController@showThread', $category1->category_id) }}">
+                            {{ $category1->name }}</a></h1>
+                        </div>
+                    </div>
+                    <div class="card-panel">
+                        <div class="card card2">
+                            <h1 class="card-body"><a href="{{ action('ThreadController@showThread', $category2->category_id) }}">
+                            {{ $category2->name }}</a></h1>
+                        </div>
+                    </div>
+                    <div class="card-panel">
+                        <div class="card card3">
+                             <h1 class="card-body"><a href="{{ action('ThreadController@showThread',$category3->category_id) }}">
+                            {{ $category3->name }}</a></h1>
+                        </div>
+                    </div>
+                    <div class="card-panel">
+                        <div class="card card4">
+                            <h1 class="card-body"><a href="{{ action('ThreadController@showThread', $category4->category_id) }}">
+                            {{ $category4->name }}</a></h1>
+                        </div>
+                    </div>
+                    <div class="card-panel">
+                        <div class="card card5">
+                            <h1 class="card-body"><a href="{{ action('ThreadController@showThread', $category5->category_id) }}">
+                            {{ $category5->name }}</a></h1>
+                        </div>
+                    </div>
+                    <div class="card-panel">
+                        <div class="card card6">
+                            <h1 class="card-body"><a href="{{ action('ThreadController@showThread', $category6->category_id) }}">
+                            {{ $category6->name }}</a></h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="row">
+                <p>新着スレッド一覧</p>
+                    <div class="card newthread">
+                        <div class="list-group">
+                          @foreach($threads as $thread)
+                              <a href="{{ action('ThreadController@show',['id' => $thread->id] ) }}">
+                                  <h4 class="list-group-item-heading">{{ $thread->thread_title }}</h4>
+                              <p class="list-group-item-text">{{ $thread->Category->name }}</p>
+                          @endforeach
+                         </div>
+                        <div class="newthread-pagination pagination-sm">
+                        {{ $threads->links() }}
+                        </div>
+                    </div>
+                </div>
             
-
-                <!--Bootstrap4 offset(Bootstrap3"col-md-offset-1")-->
-                        <div class="panel col-md-3 col-md-offset-1">
-                            <h3 class="card-title text-center">{{ $category1->name }}</h3>
-                        </div>
-                        <div class="panel col-md-3 col-md-offset-1">
-                            <h3 class="card-title text-center">{{ $category2->name }}</h3>
-                        </div>
-                        <div class="panel col-md-3 col-md-offset-1">
-                            <h3 class="card-title text-center">{{ $category3->name }}</h3>
-                        </div>
-                        
-                        <div class="panel col-md-3 col-md-offset-1">
-                            <h3 class="card-title text-center">{{ $category4->name }}</h3>
-                        </div>
-                        <div class="panel col-md-3 col-md-offset-1">
-                            <h3 class="card-title text-center">{{ $category5->name }}</h3>
-                        </div>
-                        <div class="panel col-md-3 col-md-offset-1">
-                            <h3 class="card-title text-center">{{ $category6->name }}</h3>
-                        </div>
-                        
-                        
-
-
+            </div>
         </div>
-        <div class="row">
-        <h5>新着スレッド一覧</h5>
-      <div class="table-responsive">
-        <table class="table table-bordered table-striped">
-          <thead>
-            <tr>
-              <th>タイトル</th>
-              <th>カテゴリー</th>
-              <th>投稿者</th>
-              <th>投稿日</th>
-            </tr>
-          </thead>
-          @foreach($threads as $thread)
-          <tbody>
-            <tr>
-              <td>{{ $thread->thread_title }}</td>
-              <td>{{ $thread->Category->name }}</td>
-              <td>test</td>
-              <td>{{ $thread->created_at }}</td>
-            </tr>
-          </tbody>
-          @endforeach
-        </table>
-        <div class="text-center">
-        {{ $threads->links() }}
-        </div>
-        </div>
-    </div>
     </div>
 @endsection

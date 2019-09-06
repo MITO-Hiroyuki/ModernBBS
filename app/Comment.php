@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-	protected $fillable = ['comment_text', 'user_id', 'thread_id', 'comment_profile_id'];
+	protected $fillable = [
+		'comment_text',
+		];
 	
 	public function User()
 	{
@@ -15,12 +17,12 @@ class Comment extends Model
 	
 	public function Thread()
 	{
-		return $this->belongsTo('App\Thread');
+		return $this->hasMany('App\Thread');
 	}
 	
 	public function Response()
 	{
-		return $this->hasMany('App\Response', 'response_id');
+		return $this->hasMany('App\Response');
 	}
 	
 	public function Good()

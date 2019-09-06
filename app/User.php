@@ -31,4 +31,20 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Thread');
     }
+    
+    public function Comment()
+    {
+        return $this->hasMany('App\Comment');
+    }
+    
+    public function Response()
+    {
+        return $this->hasMany('App\Response');
+    }
+    
+    public function follows()
+    {
+        return $this->belongsToMany(self::class, 'follows', 'user_id', 'followed_user_id')
+        ->using(Follow::class);
+    }
 }

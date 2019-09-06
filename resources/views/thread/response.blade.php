@@ -1,39 +1,60 @@
 @extends('layouts.default')
-@section('title', 'コメント表示')
+@section('title', 'コメント／レスポンス表示')
 @section('content')
 	<div class="col-md-8 mx-auto">
-		<h2>
-			<small>投稿日：{{ date("Y年 m月 d日", strtotime($comment->created_at)) }}</small>
-		</h2>
+		
+		<small>投稿日：{{ date("Y年m月d日", strtotime($comment->created_at)) }}</small>
+		<p>
+			<a class="card-link" href="{{ route('profile.show', ['comment' => $comment->profile->id]) }}" >投稿者：{{ $comment->profile->name }}</a>
+		</p>
 		<p>{{ $comment->comment_text }}</p>
 		
-			<button type="submit" class="btn btn-primary">いいね！</button>
-		
 		<hr />
+		
 		<h3>レスポンス一覧</h3>
+		
 			@foreach($comment->response as $comment_response)
-				<p>{{ link_to("/profile/{$response->user->id}", 'レスポンスユーザー：{ $comment_response->user->name }', array('class => 'btn btn-primary')) }}</p>
-				<p>{{ $comment_response->response_text }}</p><br />
+				<div>
+					<p><a class="card-link" href="{{ route('profile.show', ['response' => $response->profile->id]) }}" >コメント投稿者：{{ $response->user->name }}</a></p>
+					<p>{{ $response->response_text }}</p><br />
+				</div>
 			@endforeach
 			
-		{[ Form::open(['route' => 'bbs.store'], array('class' => 'form')) }}
+		<div="">
+			<h3>レスポンス投稿</h3>
+				
+			@if(Session::has('message'))
+				<div class="bg-info">
+					<p>{{ Session::get('message') }}</p>
+				</div>
+			@endif
 			
 			@foreach($errors->all() as $message)
 				<p class="bg-danger">{{ $message }}</p>
 			@endforeach
-		
-			<div class="form-group">
-				<label for="response" class="">レスポンス</label>
-				<div class="">
-						{{ Form::textarea('response_text', null, array('class => '')) }}
+					
+			{{ Form::open(['route' => 'response.store'], array('class' => '')) }}
+				
+				<div class="form-group">
+					<label for="response_text" class="">本文</label>
+					<div class="">
+						{{ Form::textarea('response_text', null, array('class' => '')) }}
+					</div>
 				</div>
-			</div>
-			
-			<div class="form-group">
-				<button type="submit" class="btn btn-primary">レスポンスを送信する</button>
-			</div>
-			
-		{{ Form::close() }}
+				
+				{{ Form::hidden('comment_id', $comment->id) }}
+				
+				<div class="from-group"></div>
+					<button type="submit" class="btn btn-primary"></button>コメント投稿</button>
+				</div>
+					
+			{{ Form::close() }}
+				
+		</div>
+		
+		<div class="d-flex justify-countent-center mb-5">
+			{{ $responses->links() }}
+		</div>
 		
 	</div>
 	
