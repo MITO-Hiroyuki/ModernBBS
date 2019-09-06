@@ -11,8 +11,13 @@
 		@foreach($category_threads as $category_thread)
 			<h2>{{ $category_thread->thread_title }}</h2>
 			<p>投稿日：{{ date("Y年 m月 d日",strtotime($category_thread->created_at)) }}</p>
+			<p><a href="{{ action('ProfileController@get_profile', $category_thread->profile_id) }}">
+				投稿者：
+				@if ($category_thread->user != null)
+					{{ $category_thread->user->get()[0]->name }}
+				@endif
+			</a></p>
 			<p>{{ $category_thread->body }}</p>
-			<p>{{ link_to("/profile/show/{$category_thread->profile_id}", "投稿者：{ $category_thread->user->name }", array('class' => 'btn btn-primary')) }}</p>
 			<p>{{ link_to("/bbs/comment/index/{$category_thread->id}", 'コメントを読む', array('class' => 'btn btn-primary')) }}</p>
 			<hr />
 		@endforeach

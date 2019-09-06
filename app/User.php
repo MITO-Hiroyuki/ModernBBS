@@ -27,17 +27,17 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
     
-    public function Thread()
+    public function thread()
     {
         return $this->hasMany('App\Thread');
     }
     
-    public function Comment()
+    public function comment()
     {
         return $this->hasMany('App\Comment');
     }
     
-    public function Response()
+    public function response()
     {
         return $this->hasMany('App\Response');
     }

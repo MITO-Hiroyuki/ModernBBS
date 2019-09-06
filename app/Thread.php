@@ -12,21 +12,21 @@ class Thread extends Model
 		'body' => 'required',
 		);
 	
-	public function User()
+	public function user()
 	{
 		return $this->belongsTo('App\User');
 	}
-	public function Comment()
+	public function comment()
 	{
 		return $this->belongsTo('App\Comment', 'thread_id');
 	}
 	
-	public function Category()
+	public function category()
 	{
 		return $this->belongsTo('App\Category', 'category_id');
 	}
 	
-	public function Profile()
+	public function profile()
 	{
 		return $this->hasMany('App\Profile');
 	}
