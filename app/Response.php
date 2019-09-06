@@ -10,12 +10,12 @@ class Response extends Model
 		'response_text',
 		];
 	
-	public function User()
+	public function user()
 	{
 		return $this->belongsTo('App\User');
 	}
 	
-	public function Comment()
+	public function comment()
 	{
 		return $this->belongsTo('App\Comment');
 	}

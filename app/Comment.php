@@ -10,27 +10,27 @@ class Comment extends Model
 		'comment_text',
 		];
 	
-	public function User()
+	public function user()
 	{
 		return $this->belongsTo('App\User');
 	}
 	
-	public function Thread()
+	public function thread()
 	{
 		return $this->hasMany('App\Thread');
 	}
 	
-	public function Response()
+	public function response()
 	{
 		return $this->hasMany('App\Response');
 	}
 	
-	public function Good()
+	public function good()
 	{
 		return $this->hasMany('App\Good');
 	}
 	
-	public function Good_by()
+	public function good_by()
 	{
 		return Good::where('user_id', Auth::user()->id)->first();
 	}

@@ -20,7 +20,7 @@
                     </div>
                     <div class="card-panel">
                         <div class="card card3">
-                             <h1 class="card-body"><a href="{{ action('ThreadController@showThread',$category3->category_id) }}">
+                             <h1 class="card-body"><a href="{{ action('ThreadController@showThread', $category3->category_id) }}">
                             {{ $category3->name }}</a></h1>
                         </div>
                     </div>
