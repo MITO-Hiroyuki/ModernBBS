@@ -7,40 +7,40 @@
             <div class="col-md-10">
                 <div class="row">
                     <div class="card-panel">
-                        <div class="card card1">
-                            <h1 class="card-body"><a href="{{ action('ThreadController@showThread', $category1->category_id) }}">
-                            {{ $category1->name }}</a></h1>
-                        </div>
+                        <a href="{{ action('ThreadController@showThread', $category1->category_id) }}" class="card card1 text-white" >
+                            <h1 class="card-body">
+                            {{ $category1->name }}</h1>
+                        </a>
                     </div>
                     <div class="card-panel">
-                        <div class="card card2">
-                            <h1 class="card-body"><a href="{{ action('ThreadController@showThread', $category2->category_id) }}">
-                            {{ $category2->name }}</a></h1>
-                        </div>
+                        <a href="{{ action('ThreadController@showThread', $category2->category_id) }}" class="card card2 text-white" >
+                            <h1 class="card-body">
+                            {{ $category2->name }}</h1>
+                        </a>
                     </div>
                     <div class="card-panel">
-                        <div class="card card3">
-                             <h1 class="card-body"><a href="{{ action('ThreadController@showThread', $category3->category_id) }}">
-                            {{ $category3->name }}</a></h1>
-                        </div>
+                        <a href="{{ action('ThreadController@showThread', $category3->category_id) }}" class="card card3 text-white" >
+                            <h1 class="card-body">
+                            {{ $category3->name }}</h1>
+                        </a>
                     </div>
                     <div class="card-panel">
-                        <div class="card card4">
-                            <h1 class="card-body"><a href="{{ action('ThreadController@showThread', $category4->category_id) }}">
-                            {{ $category4->name }}</a></h1>
-                        </div>
+                        <a href="{{ action('ThreadController@showThread', $category4->category_id) }}" class="card card4 text-white" >
+                            <h1 class="card-body">
+                            {{ $category4->name }}</h1>
+                        </a>
                     </div>
                     <div class="card-panel">
-                        <div class="card card5">
-                            <h1 class="card-body"><a href="{{ action('ThreadController@showThread', $category5->category_id) }}">
-                            {{ $category5->name }}</a></h1>
-                        </div>
+                        <a href="{{ action('ThreadController@showThread', $category5->category_id) }}" class="card card5 text-white" >
+                            <h1 class="card-body">
+                            {{ $category5->name }}</h1>
+                        </a>
                     </div>
                     <div class="card-panel">
-                        <div class="card card6">
-                            <h1 class="card-body"><a href="{{ action('ThreadController@showThread', $category6->category_id) }}">
-                            {{ $category6->name }}</a></h1>
-                        </div>
+                        <a href="{{ action('ThreadController@showThread', $category6->category_id) }}" class="card card6 text-white" >
+                            <h1 class="card-body">
+                            {{ $category6->name }}</h1>
+                        </a>
                     </div>
                 </div>
             </div>
