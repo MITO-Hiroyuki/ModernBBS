@@ -29,18 +29,22 @@ class User extends Authenticatable
     
     public function thread()
     {
-        return $this->hasMany('App\Thread');
+        return $this->belogsTo('App\Thread');
     }
     
     public function comment()
     {
-        return $this->hasMany('App\Comment');
+        return $this->belongsTo('App\Comment');
     }
     
     public function response()
     {
-        return $this->hasMany('App\Response');
+        return $this->belongsTo('App\Response');
     }
+    
+    public function profile(){
+       return $this->belongsTo('App\Profile');
+   }
     
     public function follows()
     {

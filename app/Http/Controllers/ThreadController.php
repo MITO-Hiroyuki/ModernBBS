@@ -34,8 +34,6 @@ class ThreadController extends Controller
 	public function showThread($category_id)
 	{
 		$category_threads = Thread::where('category_id', $category_id)->get();
-		//$user = $category_id->thread->user();
-		//$category_threads = $user->load('category_threads');
 		return view('thread.index', ['category_threads' => $category_threads]);
 	}
 	
@@ -50,6 +48,7 @@ class ThreadController extends Controller
 		
 		$thread = new Thread;
 		$thread->user_id = Auth::user()->id;
+		$thread->profile_id = Auth::user()->id;
 		$form = $request->all();
 		
 		unset($form['_token']);
@@ -60,26 +59,4 @@ class ThreadController extends Controller
 		
 		return view('thread.post');
 	}
-	
-	/*
-	public function store(Request $request)
-	{
-		//dd($request->all());
-		
-		$validator = Validator::make($request->all(), [
-			'thread_title' => 'required',
-			'body' => 'required',
-			'category_id' => 'required',
-		]);
-		if ($validator->fails()) {
-			return redirect('thread/create')
-						->withErrors($validator)
-						->withInput();
-		} else {
-			return redirect()
-						->back()
-						->with('message', '投稿が完了しました');
-		}
-	}
-	*/
 }

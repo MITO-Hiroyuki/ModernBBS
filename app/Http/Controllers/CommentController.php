@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\Profile;
 use App\Thread;
 use App\Comment;
 use App\Response;
@@ -22,7 +23,6 @@ class CommentController extends Controller
 	public function good()
 	{
 		$good = $comment->$good()->where('user_id', Auth::user()->id)->first();
-		
 		return view('thread.response')->with(array('comment' => $comment, 'good' => $good));
 	}
 	
@@ -38,6 +38,7 @@ class CommentController extends Controller
 		$comment = new Comment;
 		$comment->user_id = Auth::user()->id;
 		$comment->thread_id = Thread()->id;
+		$comment->profile_id = Auth::user()->profile()->id;
 		$form = $request->all();
 		
 		unset($form['_token']);
