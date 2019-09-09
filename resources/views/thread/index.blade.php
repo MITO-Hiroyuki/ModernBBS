@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('layouts.bbs')
 @section('title', 'スレッド一覧')
 @section('content')
 	<div class="col-md-8 mx-auto">
@@ -14,7 +14,7 @@
 			<p><a href="{{ action('ProfileController@get_profile', $category_thread->profile_id) }}">
 				投稿者：
 				@if ($category_thread->user != null)
-					{{ $category_thread->user->get()[0]->name }}
+					{{ $category_thread->user->name }}
 				@endif
 			</a></p>
 			<p>{{ $category_thread->body }}</p>

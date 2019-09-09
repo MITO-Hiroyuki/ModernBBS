@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('layouts.bbs')
 @section('title', 'スレッド新規作成')
 @section('content')
 	<div class="col-md-8 mx-auto">
