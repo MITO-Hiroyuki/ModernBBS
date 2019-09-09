@@ -25,18 +25,23 @@ Route::group(['prefix' => 'bbs','middleware'=>'auth'], function()
 	Route::get('profile/edit', 'ProfileController@edit');
 	Route::post('profile/edit', 'ProfileController@update');
 	Route::get('profile/show', 'ProfileController@description')->name('myprofile');
+	
 	Route::resource('thread', 'ThreadController');
 	Route::get('thread/create', 'ThreadController@add');
 	Route::post('thread/create', 'ThreadController@create'); 
 	Route::get('thread/index/{id}', 'ThreadController@showThread');
-	Route::resource('comment', 'CommentController');
-	//Route::put('comment/{id}', 'CommentController@show');
-	Route::resource('response', 'ResponseController');
-	//Route::put('response/{id}', 'ResponseController@show');
-	Route::get('comment/{comment}/good', 'GoodController@store');
-	Route::get('comment/{comment}/good/{good}', 'GoodController@destory');
-	Route::post('comment/{comment}/good', 'GoodController@store');
-	Route::post('comment/{comment}/good/{good}', 'GoodController@destory');
+	
+	Route::get('comment/comment/{id}', 'ThreadController@show');
+	Route::get('comment/comment', 'CommentController@add');
+	Route::post('comment/comment', 'CommentController@create'); 
+	Route::get('comment/comment/{comment}/good', 'GoodController@store');
+	Route::get('comment/comment/{comment}/good/{good}', 'GoodController@destory');
+	Route::post('comment/comment/{comment}/good', 'GoodController@store');
+	Route::post('comment/comment/{comment}/good/{good}', 'GoodController@destory');
+	
+	Route::get('response/response/{id}', 'CommentController@show');
+	Route::get('response/response', 'CommentController@add');
+	Route::post('response/response/', 'CommentController@create'); 
 });
 
 Route::get('category/index','CategoryController@index');

@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Thread;
 use App\Comment;
@@ -12,8 +15,8 @@ class CommentController extends Controller
 {
 	public function show()
 	{
-		$responses = Response::where('comment_id', $comment_id)->get();
-		return view('thread.response', ['responses' => $responses]);
+		$comment = comment::findOrFail($comment_id);
+		return view('thread.response', ['comment' => $comment]);
 	}
 	
 	public function good()
@@ -28,12 +31,13 @@ class CommentController extends Controller
 		return redirect()->back();
 	}
 	
-	public function create()
+	public function create(Request $request)
 	{
 		$this->validate($request, Comment::$rules);
 		
 		$comment = new Comment;
 		$comment->user_id = Auth::user()->id;
+		$comment->thread_id = thread()->id;
 		$form = $request->all();
 		
 		unset($form['_token']);
@@ -42,6 +46,6 @@ class CommentController extends Controller
 		$comment->fill($form);
 		$comment->save();
 		
-		return redirect()->back()->with('message', '投稿が完了しました');
+		return redirect()->back();
 	}
 }

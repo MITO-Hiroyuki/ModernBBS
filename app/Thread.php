@@ -28,6 +28,6 @@ class Thread extends Model
 	
 	public function profile()
 	{
-		return $this->hasMany('App\Profile');
+		return $this->belongsTo('App\Profile', 'profile_id');
 	}
 }

@@ -18,7 +18,7 @@
 				@endif
 			</a></p>
 			<p>{{ $category_thread->body }}</p>
-			<p>{{ link_to("/bbs/comment/index/{$category_thread->id}", 'コメントを読む', array('class' => 'btn btn-primary')) }}</p>
+			<p>{{ link_to("/bbs/comment/comment/{$category_thread->id}", 'コメントを読む', array('class' => 'btn btn-primary')) }}</p>
 			<hr />
 		@endforeach
 	</div>

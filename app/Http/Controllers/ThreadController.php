@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
@@ -27,7 +28,7 @@ class ThreadController extends Controller
 		return view('thread.comment', ['comments' => $comments]);
 		*/
 		$thread = Thread::findOrFail($thread_id);
-		return view('thread.show', ['thread' => $thread,]);
+		return view('thread.comment', ['thread' => $thread]);
 	}
 	
 	public function showThread($category_id)

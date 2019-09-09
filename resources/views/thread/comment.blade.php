@@ -3,6 +3,7 @@
 @section('content')
 	<div class="col-md-8 mx-auto">
 		
+		<!--
 		<h2>タイトル：{{ $thread->thread_title }}</h2>
 		<p>投稿日：{{ date("Y年 m月 d日",strtotime($thread->created_at)) }}</p>
 		<p><a href="{{ action('ProfileController@get_profile', $thread->profile_id) }}">
@@ -11,12 +12,13 @@
 					{{ $thread->user->get()[0]->name }}
 				@endif
 			</a></p>
-		<p>{{ $>thread->body }}</p>
+		<p>{{ $thread->body }}</p>
 		<hr />
+		-->
 		
 		<h3>コメント一覧</h3>
 		
-			@foreach($thread->comments as $comment)
+			@foreach((array)$thread->commets as $comment)
 				<div>
 					<p><a class="card-link" href="{{ route('profile.show', ['comment' => $comment->profile->id]) }}" >コメント投稿者：{{ $comment->user->name }}</a></p>
 					<p>{{ $comment->comment_text }}</p>
@@ -67,10 +69,6 @@
 				
 			</form>
 			
-		</div>
-		
-		<div class="d-flex justify-countent-center mb-5">
-			{{ $comments->links() }}
 		</div>
 		
 	</div>
