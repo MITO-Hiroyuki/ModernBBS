@@ -3,17 +3,15 @@
 @section('content')
 	<div class="col-md-8 mx-auto">
 		
-		<small>投稿日：{{ date("Y年m月d日", strtotime($comment->created_at)) }}</small>
-		<p>
-			<a class="card-link" href="{{ route('profile.show', ['comment' => $comment->profile->id]) }}" >投稿者：{{ $comment->profile->name }}</a>
-		</p>
+		<p>投稿日：{{ date("Y年m月d日", strtotime($comment->created_at)) }}</p>
+		<p><a class="card-link" href="{{ route('profile.show', ['comment' => $comment->profile->id]) }}" >投稿者：{{ $comment->profile->name }}</a></p>
 		<p>{{ $comment->comment_text }}</p>
 		
 		<hr />
 		
 		<h3>レスポンス一覧</h3>
 		
-			@foreach($comment->response as $comment_response)
+			@foreach($comment->responses as $response)
 				<div>
 					<p><a class="card-link" href="{{ route('profile.show', ['response' => $response->profile->id]) }}" >レスポンス投稿者：{{ $response->user->name }}</a></p>
 					<p>{{ $response->response_text }}</p><br />
