@@ -18,6 +18,10 @@ class CategoriesTableSeeder extends Seeder
             ],
             
             [
+                'name'=>'授業'
+            ],
+            
+            [
                 'name'=>'宿題'
             ],
             
@@ -26,11 +30,7 @@ class CategoriesTableSeeder extends Seeder
             ],
             
             [
-                'name'=>'友達'
-            ],
-            
-            [
-                'name'=>'カフェ'
+                'name'=>'しゃべり場'
             ],
             
             [
