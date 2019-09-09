@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Profile;
 use App\User;
+use App\Follow;
 
 class ProfileController extends Controller
 {
@@ -93,5 +94,11 @@ class ProfileController extends Controller
         $users = User::all();
         return view('profile.pindex', ['users' => $users]);
         
+    }
+    
+    public function get_follows(Request $request){
+        $user_id = Auth::id();
+        $follows = Follow::where('user_id', $user_id)->get();
+        return view('profile.follows', ['follows' => $follows]);
     }
 }

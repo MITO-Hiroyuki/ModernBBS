@@ -3,10 +3,15 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Relations\Pivot;
+use App\User;
 
 class Follow extends Pivot 
 {
     protected $table = 'follows';
     public $timestamps = false;
     protected $guarded = [];
+    
+    public function FollowUsers(){
+        return $this->belongsTo('App\User','followed_user_id');
+    }
 }
