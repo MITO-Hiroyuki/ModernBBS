@@ -37,7 +37,7 @@ class CommentController extends Controller
 		
 		$comment = new Comment;
 		$comment->user_id = Auth::user()->id;
-		$comment->thread_id = thread()->id;
+		$comment->thread_id = Thread()->id;
 		$form = $request->all();
 		
 		unset($form['_token']);
