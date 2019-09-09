@@ -3,15 +3,20 @@
 @section('content')
 	<div class="col-md-8 mx-auto">
 		
-		<h2>タイトル：{{ $comment->thread->thread_title }}</h2>
-		<p>投稿日：{{ date("Y年 m月 d日",strtotime($comment->thread->created_at)) }}</p>
-		<p><a class="card-link" href="{{ route('profile.show', ['comment' => $comment->profile->id) }}"></a>投稿者：{{ $comment->thread->user->name }}</a></p>
-		<p>{{ $comment->thread->body }}</p>
+		<h2>タイトル：{{ $thread->thread_title }}</h2>
+		<p>投稿日：{{ date("Y年 m月 d日",strtotime($thread->created_at)) }}</p>
+		<p><a href="{{ action('ProfileController@get_profile', $thread->profile_id) }}">
+				投稿者：
+				@if ($thread->user != null)
+					{{ $thread->user->get()[0]->name }}
+				@endif
+			</a></p>
+		<p>{{ $>thread->body }}</p>
 		<hr />
 		
 		<h3>コメント一覧</h3>
 		
-			@foreach($comments as $comment)
+			@foreach($thread->comments as $comment)
 				<div>
 					<p><a class="card-link" href="{{ route('profile.show', ['comment' => $comment->profile->id]) }}" >コメント投稿者：{{ $comment->user->name }}</a></p>
 					<p>{{ $comment->comment_text }}</p>
