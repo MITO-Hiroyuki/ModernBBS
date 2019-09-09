@@ -15,21 +15,22 @@ class ThreadController extends Controller
 {
 	public function index($category_id)
 	{
-		$category_threads = Thread::where('category_id', $category_id)->get();
-		$user = $category_id->thread->user();
-		$category_threads = $user->load('category_threads');
-		return view('thread.index', ['category_threads' => $category_threads]);
+		return view('thread.post');
 	}
 	
 	public function show($id)
 	{
-		$thread = Thread::find($id);
-		return view('thread.comment')->with('thread', $thread);
+		$comments = Comment::where('thread_id', $thread_id)->get();
+		$user = $thread_id->thread->user();
+		$comments = $user->load('comments');
+		return view('thread.comment', ['comments' => $comments]);
 	}
 	
 	public function showThread($category_id)
 	{
 		$category_threads = Thread::where('category_id', $category_id)->get();
+		//$user = $category_id->thread->user();
+		//$category_threads = $user->load('category_threads');
 		return view('thread.index', ['category_threads' => $category_threads]);
 	}
 	

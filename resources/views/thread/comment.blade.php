@@ -3,17 +3,15 @@
 @section('content')
 	<div class="col-md-8 mx-auto">
 		
-		<h2>タイトル：{{ $thread->thread_title }}
-				<small>投稿日：{{ date("Y年 m月 d日",strtotime($thread->created_at)) }}</small>
-		</h2>
-		<p><a class="card-link" href="{{ route('profile.show', ['thread' => $thread->profile->id]) }}" >投稿者：{{ $thread->user->name }}</a></p>
-		<p>カテゴリー：{{ $thread->category->name }}</p>
-		<p>{{ $thread->body }}</p>
+		<h2>タイトル：{{ $comment->thread->thread_title }}</h2>
+		<p>投稿日：{{ date("Y年 m月 d日",strtotime($comment->thread->created_at)) }}</p>
+		<p><a class="card-link" href="{{ route('profile.show', ['comment' => $comment->profile->id) }}"></a>投稿者：{{ $comment->thread->user->name }}</a></p>
+		<p>{{ $comment->thread->body }}</p>
 		<hr />
 		
 		<h3>コメント一覧</h3>
 		
-			@foreach($thread->comments as $comment)
+			@foreach($comments as $comment)
 				<div>
 					<p><a class="card-link" href="{{ route('profile.show', ['comment' => $comment->profile->id]) }}" >コメント投稿者：{{ $comment->user->name }}</a></p>
 					<p>{{ $comment->comment_text }}</p>
@@ -35,40 +33,35 @@
 					@if($comment->response->count())
 						<span>レスポンス数：{{ $comment->response->count() }}件</span>
 					@endif
-					<p>{{ link_to("/thread/{$comment->id}", 'レスポンスを読む', array('class' => 'btn btn-primary')) }}</p>
+					<p>{{ link_to("/thread/response/{$comment->id}", 'レスポンスを読む', array('class' => 'btn btn-primary')) }}</p>
 				</div>
 			@endforeach
 		
 		<div="">
 			<h3>コメント投稿</h3>
-				
-			@if(Session::has('message'))
-				<div class="bg-info">
-					<p>{{ Session::get('message') }}</p>
-				</div>
+			
+			<form action="{{ action('CommentController@create') }}" method="post" enctype="multipart/form-date">
+			@csrf
+			
+			@if (count($errors) > 0)
+				<ul>
+					@foreach($errors->all() as $e)
+						<li>{{ $e }}</li>
+					@endforeach
+				</ul>
 			@endif
 			
-			@foreach($errors->all() as $message)
-				<p class="bg-danger">{{ $message }}</p>
-			@endforeach
-					
-			{{ Form::open(['route' => 'comment.store'], array('class' => '')) }}
-				
 				<div class="form-group">
-					<label for="comment_text" class="">本文</label>
-					<div class="">
-						{{ Form::textarea('comment_text', null, array('class' => '')) }}
-					</div>
+					<label for="comment_text" class="">コメント</label>
+					<textarea class="form-control" name="comment_text">{{ old('comment_text') }}</textarea>
 				</div>
 				
-				{{ Form::hidden('thread_id', $thread->id) }}
-				
-				<div class="from-group">
-					<button type="submit" class="btn btn-primary"></button>コメント投稿</button>
+				<div class="">
+					<button type="submit" class="btn btn-primary">コメント投稿</button>
 				</div>
-					
-			{{ Form::close() }}
 				
+			</form>
+			
 		</div>
 		
 		<div class="d-flex justify-countent-center mb-5">

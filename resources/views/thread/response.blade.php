@@ -15,41 +15,35 @@
 		
 			@foreach($comment->response as $comment_response)
 				<div>
-					<p><a class="card-link" href="{{ route('profile.show', ['response' => $response->profile->id]) }}" >コメント投稿者：{{ $response->user->name }}</a></p>
+					<p><a class="card-link" href="{{ route('profile.show', ['response' => $response->profile->id]) }}" >レスポンス投稿者：{{ $response->user->name }}</a></p>
 					<p>{{ $response->response_text }}</p><br />
 				</div>
 			@endforeach
 			
 		<div="">
 			<h3>レスポンス投稿</h3>
-				
-			@if(Session::has('message'))
-				<div class="bg-info">
-					<p>{{ Session::get('message') }}</p>
-				</div>
+			
+			<form action="{{ action('ResponseController@create') }}" method="post" enctype="multipart/form-date">
+			@csrf
+			
+			@if (count($errors) > 0)
+				<ul>
+					@foreach($errors->all() as $e)
+						<li>{{ $e }}</li>
+					@endforeach
+				</ul>
 			@endif
 			
-			@foreach($errors->all() as $message)
-				<p class="bg-danger">{{ $message }}</p>
-			@endforeach
-					
-			{{ Form::open(['route' => 'response.store'], array('class' => '')) }}
-				
 				<div class="form-group">
-					<label for="response_text" class="">本文</label>
-					<div class="">
-						{{ Form::textarea('response_text', null, array('class' => '')) }}
-					</div>
+					<label for="response_text" class="">レスポンス</label>
+					<textarea class="form-control" name="response_text">{{ old('response_text') }}</textarea>
 				</div>
 				
-				{{ Form::hidden('comment_id', $comment->id) }}
-				
-				<div class="from-group"></div>
-					<button type="submit" class="btn btn-primary"></button>コメント投稿</button>
+				<div class="">
+					<button type="submit" class="btn btn-primary">レスポンス投稿</button>
 				</div>
-					
-			{{ Form::close() }}
 				
+			</form>
 		</div>
 		
 		<div class="d-flex justify-countent-center mb-5">

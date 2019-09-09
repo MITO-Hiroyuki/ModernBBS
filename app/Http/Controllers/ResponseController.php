@@ -16,6 +16,11 @@ class ResponseController extends Controller
 		return view('thread.response')->with('responses', $responses);
 	}
 	
+	public function create()
+	{
+		
+	}
+	
 	public function store()
 	{
 		$validator = Validator::make($request->all(), [
@@ -31,30 +36,5 @@ class ResponseController extends Controller
 						->back()
 						->with('message', '投稿が完了しました');
 		}
-		
-		/*
-		$rules = [
-			'response_text' => 'required',
-			];
-		
-		$messages = array(
-			'response_text.required' => '本文を正しく入力して下さい',
-			);
-		
-		//$response->user_id = $request->user()->id;
-		
-		$validator = $Varidator::make(Input::all(), $rules, $messages);
-		
-		if ($validator->passes()) {
-			$response = new Response;
-			$response->user_id = Input::get('user_id');
-			$response->response_text = Input::get('response_text');
-			$response->comment_id = Input::get('comment_id');
-			$response->save();
-			return redirect()->back()->with('message', '投稿が完了しました');
-		} else {
-			return redirect()->back()->withErrors($validator)->withInput();
-		}
-		*/
 	}
 }

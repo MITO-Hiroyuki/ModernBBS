@@ -12,14 +12,8 @@ class CommentController extends Controller
 {
 	public function show()
 	{
-		$comments = Comment::all();
-		return view('thread.comment')->with('comments', $comments);
-	}
-	
-	public function showResponse($id)
-	{
-		$comment = Comment::find($id);
-		return view('thread.response')->with('comment', $comment);
+		$responses = Response::where('comment_id', $comment_id)->get();
+		return view('thread.response', ['responses' => $responses]);
 	}
 	
 	public function good()
@@ -29,46 +23,25 @@ class CommentController extends Controller
 		return view('thread.response')->with(array('comment' => $comment, 'good' => $good));
 	}
 	
-	public function store()
+	public function add()
 	{
-		$validator = Validator::make($request->all(), [
-			'comment_text' => 'required',
-		]);
-
-		if ($validator->fails()) {
-			return redirect('comment/show')
-						->withErrors($validator)
-						->withInput();
-		} else {
-			return redirect()
-						->back()
-						->with('message', '投稿が完了しました');
-		}
+		return redirect()->back();
+	}
+	
+	public function create()
+	{
+		$this->validate($request, Comment::$rules);
 		
-		/*
-		$rules = [
-			'comment_text' => 'required',
-			];
+		$comment = new Comment;
+		$comment->user_id = Auth::user()->id;
+		$form = $request->all();
 		
-		$messages = array(
-			'comment_text.required' => '本文を正しく入力して下さい',
-			);
+		unset($form['_token']);
+		unset($form['image']);
 		
-		//$comment->user_id = $request->user()->id;
+		$comment->fill($form);
+		$comment->save();
 		
-		$validator = $Varidator::make(Input::all(), $rules, $messages);
-		
-		if ($validator->passes()) {
-			$comment = new Comment;
-			$comment->user_id = input::get('user_id');
-			$comment->comment_text = Input::get('comment_text');
-			$comment->thread_id = Input::get('thread_id');
-			$comment->response_count = 0;
-			$comment->save();
-			return redirect()->back()->with('message', '投稿が完了しました');
-		} else {
-			return redirect()->back()->withErrors($validator)->withInput();
-		}
-		*/
+		return redirect()->back()->with('message', '投稿が完了しました');
 	}
 }
