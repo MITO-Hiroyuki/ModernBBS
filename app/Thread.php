@@ -16,9 +16,15 @@ class Thread extends Model
 	{
 		return $this->belongsTo('App\User');
 	}
+	
 	public function comment()
 	{
 		return $this->hasMany('App\Comment', 'thread_id');
+	}
+	
+	public function good()
+	{
+		return $this->hasMany('App\Good');
 	}
 	
 	public function category()

@@ -17,6 +17,7 @@ class CommentController extends Controller
 	public function show()
 	{
 		$comment = comment::findOrFail($comment_id);
+		$good = $comment->goods()->where('user_id', Auth::user()->id)->first();
 		return view('thread.response', ['comment' => $comment]);
 	}
 	

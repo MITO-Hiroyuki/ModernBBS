@@ -15,9 +15,12 @@ class CreateGoodsTable extends Migration
 	{
 		Schema::create('goods', function (Blueprint $table) {
 			$table->increments('id');
-			$table->integer('user_id');
-			$table->integer('comment_id');
+			$table->unsignedInteger('user_id');
+			$table->unsignedInteger('comment_id');
 			$table->timestamps();
+			
+			$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+			$table->foreign('comment_id')->references('id')->on('comments')->onDelete('cascade');
 		});
 	}
 
@@ -28,6 +31,6 @@ class CreateGoodsTable extends Migration
 	 */
 	public function down()
 	{
-		Schema::dropIfExists('goods');
+		Schema::drop('goods');
 	}
 }
