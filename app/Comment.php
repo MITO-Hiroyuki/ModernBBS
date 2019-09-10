@@ -26,7 +26,7 @@ class Comment extends Model
 	
 	public function response()
 	{
-		return $this->belongsTo('App\Comment', 'response_id');
+		return $this->hasMany('App\Comment', 'response_id');
 	}
 	
 	public function profile()

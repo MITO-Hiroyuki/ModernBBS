@@ -3,20 +3,26 @@
 @section('content')
 	<div class="col-md-8 mx-auto">
 		
-		<!--
-		<p>投稿日：{{ date("Y年m月d日", strtotime($comment->created_at)) }}</p>
-		<p><a class="card-link" href="{{ route('profile.show', ['comment' => $comment->profile->id]) }}" >投稿者：{{ $comment->profile->name }}</a></p>
-		<p>{{ $comment->comment_text }}</p>
-		<hr />
-		-->
+		<div class="">
+			<p><a href="{{ route('profile.show', ['comment' => $comment->profile_id]) }}" >投稿者：{{ $comment->profile->name }}</a></p>
+			<p>{{ $comment->comment_text }}</p>
+			<p>投稿日：{{ date("Y年m月d日", strtotime($comment->created_at)) }}</p>
+		</div>
 		
 		<h3>レスポンス一覧</h3>
 		
 			@foreach((array)$comment->responses as $response)
-				<div>
-					<p><a class="card-link" href="{{ route('profile.show', ['response' => $response->profile->id]) }}" >レスポンス投稿者：{{ $response->user->name }}</a></p>
+				<div class="card-headrer">
+					<p><a class="card-link" href="{{ route('profile.show', ['response' => $response->profile_id]) }}" >レスポンス投稿者：{{ $response->user->name }}</a></p>
+				</div>
+				<div class="card-body">
 					<p>{{ $response->response_text }}</p><br />
 				</div>
+				
+				<div class="card-hooter">
+					<p>投稿日：{{ date("Y年 m月 d日",strtotime($response->created_at)) }}</p>
+				</div>
+				
 			@endforeach
 			
 		<div="">

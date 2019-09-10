@@ -37,8 +37,9 @@ class CommentController extends Controller
 		
 		$comment = new Comment;
 		$comment->user_id = Auth::user()->id;
-		$comment->thread_id = Thread()->id;
-		$comment->profile_id = Auth::user()->profile()->id;
+		$comment->thread_id = $comment->id;
+		//$comment->thread_id = Thread()->id;
+		$comment->profile_id = Auth::user()->id;
 		$form = $request->all();
 		
 		unset($form['_token']);
@@ -47,6 +48,6 @@ class CommentController extends Controller
 		$comment->fill($form);
 		$comment->save();
 		
-		return redirect()->back();
+		return redirect()->back()->with('message', '投稿が完了しました');
 	}
 }

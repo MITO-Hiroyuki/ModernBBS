@@ -24,7 +24,7 @@ class ResponseController extends Controller
 		
 		$response = new Response;
 		$response->user_id = Auth::user()->id;
-		$response->profile_id = Auth::user()->profile()->id;
+		$response->profile_id = Auth::user()->profile_id;
 		$form = $request->all();
 		
 		unset($form['_token']);
