@@ -16,13 +16,16 @@
 				</ul>
 			@endif
 			
-				<div class="form-group">
-					<label for="thread_title" class="">タイトル</label>
-					<input type="thread_title" class="form-control" name="thread_title" value="{{ old('thread_title') }}">
+				<div class="form-group row">
+					<label for="thread_title" class="col-md-2 col-form-label">タイトル</label>
+					<div class="col-md-6">
+						<input type="thread_title" class="form-control" name="thread_title" value="{{ old('thread_title') }}">
+					</div>
 				</div>
 					
-				<div class="form-group">
-					<label for="category_id" class="col-md-2">カテゴリー</label>
+				<div class="form-group row">
+					<label for="category_id" class="col-md-2 col-form-label">カテゴリー</label>
+					<div class="col-md-6">
 						<select name="category_id" type="text" class="category_id">
 							<option></option>
 							<option value="1" name="1">お知らせ</option>
@@ -31,11 +34,14 @@
 							<option value="4" name="4">生徒</option>
 							<option value="5" name="5">友達</option>
 						</select>
+					</div>
 				</div>
 					
-				<div class="form-group">
-					<label for="body" class="">本文</label>
-					<textarea class="form-control" name="body">{{ old('body') }}</textarea>
+				<div class="form-group row">
+					<label for="body" class="col-md-2 col-form-label">本文</label>
+					<div class="col-md-6">
+						<textarea class="form-control" name="body">{{ old('body') }}</textarea>
+					</div>
 				</div>
 				
 				<div class="">

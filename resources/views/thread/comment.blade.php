@@ -4,15 +4,15 @@
 	<div class="col-md-8 mx-auto">
 		
 		<!--
-		<h2>タイトル：{{ $thread->thread_title }}</h2>
-		<p>投稿日：{{ date("Y年 m月 d日",strtotime($thread->created_at)) }}</p>
-		<p><a href="{{ action('ProfileController@get_profile', $thread->profile_id) }}">
+		<h2>タイトル：{{ $thread->thread->thread_title }}</h2>
+		<p>投稿日：{{ date("Y年 m月 d日",strtotime($thread->thread->created_at)) }}</p>
+		<p><a href="{{ action('ProfileController@get_profile', $thread->thread->profile_id) }}">
 				投稿者：
-				@if ($thread->user != null)
-					{{ $thread->user->get()[0]->name }}
+				@if ($thread->thread->user != null)
+					{{ $thread->thread->user->get()[0]->name }}
 				@endif
 			</a></p>
-		<p>{{ $thread->body }}</p>
+		<p>{{ $thread->thread->body }}</p>
 		<hr />
 		-->
 		
@@ -26,7 +26,8 @@
 							投稿者：
 							@if ($comment->user != null)
 								{{ $comment->user->name }}
-							@endif</a>
+							@endif
+							</a>
 						</div>
 						<div class="">
 							投稿日：{{ date("Y年 m月 d日",strtotime($comment->created_at)) }}
