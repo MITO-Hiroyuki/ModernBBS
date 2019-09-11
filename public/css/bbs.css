@@ -18,6 +18,8 @@ ul {
 }
 
 .card-panel .card-body {
+  
+  font-weight: 900;
   letter-spacing: .2em;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -31,28 +33,43 @@ ul {
           justify-content: center;
 }
 
+.card-panel a{	
+  -webkit-transition: all 0.3s ease;	
+    -moz-transition: all 0.3s ease;	
+    -o-transition: all 0.3s ease;	
+    transition: all  0.3s ease;	
+    text-decoration: none;	
+    opacity: 0.7;	
+}	
+
+.card-panel a:hover {	
+
+  opacity: 1;	
+
+}
+
 .card1 {
-  background-color: #42AAC7;
+  background-color: #2c4899;
 }
 
 .card2 {
-  background-color: #3DB680;
+  background-color: #3b5fcc;
 }
 
 .card3 {
-  background-color: #FFEE55;
+  background-color: #4a77ff;
 }
 
 .card4 {
-  background-color: #F3C759;
+  background-color: #990e2a;
 }
 
 .card5 {
-  background-color: #E6855E;
+  background-color: #cc1237;
 }
 
 .card6 {
-  background-color: #CE579B;
+  background-color: #ff1745;
 }
 
 .newthread .list-group {
