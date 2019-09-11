@@ -8,7 +8,7 @@
             <div class="profile">
                 <div class="row">
                         <div class="h3 display-4">
-                            {{ $user_name }}
+                            {{ $user->name }}
                         </div>
                 </div>
                 <div class="row">

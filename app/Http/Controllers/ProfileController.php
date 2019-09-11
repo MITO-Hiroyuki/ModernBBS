@@ -70,14 +70,13 @@ class ProfileController extends Controller
         
         $user = Auth::user();
         $user_id = $user->id;
-        $user_name = $user->name;
         $profile = Profile::where('user_id',$user_id)->get();
         if($profile->isEmpty()){
             return redirect('bbs/profile/create');    
         }
         
         $profile = $profile[0];
-        return view('profile.myprofile', ['profile' => $profile, 'user_name' => $user_name]);
+        return view('profile.myprofile', ['profile' => $profile, 'user' => $user]);
         
     }
     
@@ -86,9 +85,14 @@ class ProfileController extends Controller
         $user_id = $request->id;
         $profile = Profile::where('user_id',$user_id)->get();
         $profile = $profile[0];
+        $user = Auth::user();
         
+        if($profile->user_id == $user->id){
+            return redirect()->route('myprofile');
+        }
         return view('profile.show', ['profile' => $profile,]);
-    }
+        
+}
     
     public function get_classmates(Request $request){
         
