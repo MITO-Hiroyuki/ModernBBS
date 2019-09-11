@@ -46,6 +46,7 @@
                 </div>
             </div>
         </div>
-        <a href="{{ action('ProfileController@test') }}" role="button" class="btn btn-success">index</a>
+        <p><a href="{{ action('ProfileController@test') }}" role="button" class="btn btn-success">index</a></p>
+        <p><a href="{{ action('ProfileController@get_threads') }}" role="button" class="btn btn-primary">mythreads</a></p>
     </div>
 @endsection

@@ -14,4 +14,8 @@ class Follow extends Pivot
     public function FollowUsers(){
         return $this->belongsTo('App\User','followed_user_id');
     }
+    
+    public function threads(){
+        return $this->hasMany('App\Thread','user_id','followed_user_id');
+    }
 }

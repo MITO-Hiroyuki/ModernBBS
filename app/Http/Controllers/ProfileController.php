@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Profile;
 use App\User;
 use App\Follow;
+use App\Thread;
 
 class ProfileController extends Controller
 {
@@ -100,5 +101,12 @@ class ProfileController extends Controller
         $user_id = Auth::id();
         $follows = Follow::where('user_id', $user_id)->get();
         return view('profile.follows', ['follows' => $follows]);
+    }
+    
+    public function get_threads(Request $request){
+        $user_id = Auth::id();
+        $follows = Follow::where('user_id', $user_id)->get();
+        $threads = [];
+        return view('profile.mythreads', ['follows' => $follows]);
     }
 }

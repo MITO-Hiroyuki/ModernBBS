@@ -25,6 +25,9 @@ Route::group(['prefix' => 'bbs','middleware'=>'auth'], function()
 	Route::get('profile/edit', 'ProfileController@edit');
 	Route::post('profile/edit', 'ProfileController@update');
 	Route::get('profile/show', 'ProfileController@description')->name('myprofile');
+	Route::get('profile/pindex', 'ProfileController@test');
+	Route::get('profile/follows', 'ProfileController@get_follows');
+	Route::get('profile/mythreads', 'ProfileController@get_threads');
 	
 	Route::resource('thread', 'ThreadController');
 	Route::get('thread/create', 'ThreadController@add');
@@ -49,7 +52,6 @@ Route::get('category/index','CategoryController@index');
 Route::get('profile/profile', 'ProfileController@get_profile');
 
 
-Route::get('profile/pindex', 'ProfileController@test');
+
 Route::get('profile/store/{id}', 'FollowController@store');
 Route::get('profile/destroy/{id}', 'FollowController@destroy');
-Route::get('profile/follows', 'ProfileController@get_follows');
