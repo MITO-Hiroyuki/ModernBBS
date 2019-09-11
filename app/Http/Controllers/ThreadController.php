@@ -11,6 +11,7 @@ use App\Thread;
 use App\Comment;
 use App\Response;
 use App\Category;
+use App\Follow;
 
 class ThreadController extends Controller
 {
@@ -29,7 +30,10 @@ class ThreadController extends Controller
 	public function showThread($category_id)
 	{
 		$category_threads = Thread::where('category_id', $category_id)->get();
-		return view('thread.index', ['category_threads' => $category_threads]);
+		$user_id = Auth::id();
+
+		return view('thread.index', ['category_threads' => $category_threads,
+									'user_id' => $user_id]);
 	}
 	
 	public function add()

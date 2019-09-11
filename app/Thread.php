@@ -36,4 +36,9 @@ class Thread extends Model
 	{
 		return $this->belongsTo('App\Profile', 'profile_id');
 	}
+	
+	public function follows()
+	{
+		return $this->hasMany('App\Follow','followed_user_id','user_id');
+	}
 }
