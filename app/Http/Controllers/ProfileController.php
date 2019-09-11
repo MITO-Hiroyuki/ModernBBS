@@ -93,7 +93,7 @@ class ProfileController extends Controller
     public function get_classmates(Request $request){
         
         $users = User::all();
-        return view('profile.pindex', ['users' => $users]);
+        return view('profile.index', ['users' => $users]);
         
     }
     
