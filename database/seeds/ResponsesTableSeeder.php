@@ -17,7 +17,7 @@ class ResponsesTableSeeder extends Seeder
 		{
 		$response = new Response;
 		$response->user_id = 1;
-		$response->profile_id =1;
+		$response->profile_id = 1;
 		$response->comment_id = 1;
 		$response->response_text = $response_text;
 		$response->created_at = time();

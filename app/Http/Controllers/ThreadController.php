@@ -22,10 +22,8 @@ class ThreadController extends Controller
 	public function show($thread_id)
 	{
 		$thread = Thread::findOrFail($thread_id);
-		$good = $thread->good()->where('user_id', Auth::user()->id)->first();
-		return view('thread.comment', ['thread' => $thread,]);
-		//$threads = Thread::where('id', $id)->get();
-		//return view('thread.comment', ['threads' => $threads]);
+		//$good = $thread->good()->where('user_id', Auth::user()->id)->first();
+		return view('thread.comment', ['thread' => $thread]);
 	}
 	
 	public function showThread($category_id)

@@ -14,10 +14,9 @@ use App\Response;
 
 class CommentController extends Controller
 {
-	public function show()
+	public function show($comment_id)
 	{
-		$comment = comment::findOrFail($comment_id);
-		$good = $comment->goods()->where('user_id', Auth::user()->id)->first();
+		$comment = Comment::findOrFail($comment_id);
 		return view('thread.response', ['comment' => $comment]);
 	}
 	
@@ -49,6 +48,6 @@ class CommentController extends Controller
 		$comment->fill($form);
 		$comment->save();
 		
-		return redirect()->back()->with('message', '投稿が完了しました');
+		return redirect()->back();
 	}
 }

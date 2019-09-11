@@ -18,9 +18,14 @@ class Comment extends Model
 		return $this->belongsTo('App\User');
 	}
 	
+	public function thread()
+	{
+		return $this->belongsTo('App\Thread');
+	}
+	
 	public function response()
 	{
-		return $this->hasMany('App\Comment', 'response_id');
+		return $this->hasMany('App\Response');
 	}
 	
 	public function profile()

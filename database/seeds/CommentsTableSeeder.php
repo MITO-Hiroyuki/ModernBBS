@@ -15,9 +15,9 @@ class CommentsTableSeeder extends Seeder
 		$comment_text = 'このコメントはテストです。';
 		for( $i = 1 ; $i <= 10 ; $i++)
 		{
-		$comment = new comment;
+		$comment = new Comment;
 		$comment->user_id = 1;
-		$comment->profile_id =1;
+		$comment->profile_id = 1;
 		$comment->thread_id = 1;
 		$comment->comment_text = $comment_text;
 		$comment->created_at = time();

@@ -18,7 +18,7 @@ class Response extends Model
 	
 	public function comment()
 	{
-		return $this->belongsTo('App\Comment', 'thread_id');
+		return $this->hasMany('App\Comment', 'comment_id');
 	}
 	
 	public function profile()

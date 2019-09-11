@@ -24,6 +24,7 @@ class ResponseController extends Controller
 		
 		$response = new Response;
 		$response->user_id = Auth::user()->id;
+		$response->comment_id = $response->id;
 		$response->profile_id = Auth::user()->profile_id;
 		$form = $request->all();
 		
@@ -33,6 +34,6 @@ class ResponseController extends Controller
 		$response->fill($form);
 		$response->save();
 		
-		return redirect()->back()->with('message', '投稿が完了しました');
+		return redirect()->back();
 	}
 }

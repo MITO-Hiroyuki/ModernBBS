@@ -3,6 +3,7 @@
 @section('content')
 	<div class="col-md-8 mx-auto">
 		
+		<!--
 		<h2>タイトル：{{ $thread->thread_title }}</h2>
 		<p>投稿日：{{ date("Y年 m月 d日",strtotime($thread->created_at)) }}</p>
 		<p><a href="{{ action('ProfileController@get_profile', $thread->profile_id) }}">
@@ -13,6 +14,7 @@
 			</a></p>
 		<p>{{ $thread->body }}</p>
 		<hr />
+		-->
 		
 		<h3>コメント一覧</h3>
 		
@@ -30,22 +32,6 @@
 					
 					<div class="card-body">
 						<p>{{ $comment->comment_text }}</p>
-						
-						@if ($good)
-							{{ Form::model($comment, array('action' => array('GoodController@destroy', $comment->id, $good->id))) }}
-							<button type="button" class="btn btn-primary">
-								Good!
-								<span class="badge badge-primary">{{ $comment->good_count }}</span>
-							</button>
-							{{!! Form::close() !!}
-						@else
-							{{ Form::model($comment, array('action' => array('GoodController@store', $comment->id))) }}
-							<button type="button" class="btn btn-success">
-								Good!
-								<span class="badge badge-success">{{ $comment->good_count }}</span>
-							</button>
-							{{!! Form::close() !!}
-						@endif
 						
 						<span class="badge badge-primary">
 							{{ link_to("/bbs/response/response/{$comment->id}", 'レスポンスを読む', array('class' => 'btn btn-primary')) }}

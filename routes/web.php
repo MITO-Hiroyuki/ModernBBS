@@ -40,8 +40,8 @@ Route::group(['prefix' => 'bbs','middleware'=>'auth'], function()
 	Route::post('comment/comment/{comment}/good/{good}', 'GoodController@destory');
 	
 	Route::get('response/response/{id}', 'CommentController@show');
-	Route::get('response/response', 'CommentController@add');
-	Route::post('response/response/', 'CommentController@create'); 
+	Route::get('response/response', 'ResponseController@add');
+	Route::post('response/response/', 'ResponseController@create'); 
 });
 
 Route::get('category/index','CategoryController@index');
