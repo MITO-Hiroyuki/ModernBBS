@@ -4,11 +4,13 @@
 	<div class="col-md-8 mx-auto">
 		
 		<div class="">
-			<a href="{{ action('ThreadController@create') }}"><button type="button">新規情報投稿</button></a>
-			<hr />
+			<a href="{{ action('ThreadController@create') }}">
+				<button type="button" class="btn btn-primary btn-lg btn-block">新規スレッド投稿</button>
+			</a>
 		</div>
 		
 		@foreach($category_threads as $category_thread)
+		<div class="mt-4">
 			<div class="card-header">
 				<h2>{{ $category_thread->thread_title }}</h2>
 			</div>
@@ -34,6 +36,7 @@
 				</a></p>
 				<p>投稿日：{{ date("Y年 m月 d日",strtotime($category_thread->created_at)) }}</p>
 			</div>
+		</div>
 			
 		@endforeach
 	</div>
