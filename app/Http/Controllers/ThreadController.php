@@ -15,9 +15,10 @@ use App\Follow;
 
 class ThreadController extends Controller
 {
-	public function index($category_id)
+	public function index()
 	{
-		return view('thread.post');
+		$thread = Thread::all();
+		return view('thread.comment', ['thread' => $thread]);
 	}
 	
 	public function show($thread_id)

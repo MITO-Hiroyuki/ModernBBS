@@ -5,13 +5,13 @@
 		
 		<!--
 		<div class="">
-			<p><a href="{{ action('ProfileController@get_profile', $comment->comment->profile_id) }}">
+			<p><a href="{{ action('ProfileController@get_profile', $comment->profile_id) }}">
 				投稿者：
-				@if ($comment->comment->user != null)
-					{{ $comment->comment->user->get()[0]->name }}
+				@if ($comment->user != null)
+					{{ $comment->user->get()[0]->name }}
 				@endif
 			</a></p>
-			<p>{{ $comment->comment->comment_text }}</p>
+			<p>{{ $comment->comment_text }}</p>
 			<p>投稿日：{{ date("Y年m月d日", strtotime($comment->created_at)) }}</p>
 		</div>
 		-->
