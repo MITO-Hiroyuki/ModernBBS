@@ -15,15 +15,14 @@
                     </thead>
                     <tbody>
                         @foreach($users as $user)
-                        @if($user->id == Auth::id())
-                         @continue
-                        @endif
                         <tr>
                             <th><a href="{{ action('ProfileController@get_profile', ['id' => $user->id]) }}">
                                 {{ $user->name }}
                             </a>
                             </th>
-                            @if(Auth::user()->follows->where('id',$user->id)->isEmpty())
+                            @if($user->id == Auth::id())
+                             @continue
+                            @elseif(Auth::user()->follows->where('id',$user->id)->isEmpty())
                             <td>
                             <a href="{{ action('FollowController@store', ['id' => $user->id]) }}" role="button" class="btn btn-success">follow</a>
                             </td>
