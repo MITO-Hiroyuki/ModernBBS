@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('layouts.bbs')
 @section('title', 'コメント／レスポンス表示')
 @section('content')
 	<div class="col-md-8 mx-auto">
@@ -16,13 +16,17 @@
 			@foreach($comment->response as $response)
 				<div class="card">
 					<div class="card-header">
-						<p><a href="{{ action('ProfileController@get_profile', $response->profile_id) }}">
+						<div class="">
+							<a href="{{ action('ProfileController@get_profile', $response->profile_id) }}">
 							投稿者：
 							@if ($response->user != null)
 								{{ $response->user->name }}
 							@endif
-						</a></p>
-						<p>投稿日：{{ date("Y年 m月 d日",strtotime($response->created_at)) }}</p>
+							</a>
+						</div>
+						<div class="">
+							投稿日：{{ date("Y年 m月 d日",strtotime($response->created_at)) }}
+						</div>
 					</div>
 					<div class="card-body">
 						<p>{{ $response->response_text }}</p><br />

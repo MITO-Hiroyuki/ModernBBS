@@ -21,13 +21,16 @@
 			@foreach($thread->comment as $comment)
 				<div class="card">
 					<div class="card-header">
-						<p><a href="{{ action('ProfileController@get_profile', $comment->profile_id) }}">
+						<div class="">
+							<a href="{{ action('ProfileController@get_profile', $comment->profile_id) }}">
 							投稿者：
 							@if ($comment->user != null)
 								{{ $comment->user->name }}
-							@endif
-						</a></p>
-						<p>投稿日：{{ date("Y年 m月 d日",strtotime($comment->created_at)) }}</p>
+							@endif</a>
+						</div>
+						<div class="">
+							投稿日：{{ date("Y年 m月 d日",strtotime($comment->created_at)) }}
+						</div>
 					</div>
 					
 					<div class="card-body">
