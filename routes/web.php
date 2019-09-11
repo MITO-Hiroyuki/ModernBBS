@@ -25,7 +25,7 @@ Route::group(['prefix' => 'bbs','middleware'=>'auth'], function()
 	Route::get('profile/edit', 'ProfileController@edit');
 	Route::post('profile/edit', 'ProfileController@update');
 	Route::get('profile/show', 'ProfileController@description')->name('myprofile');
-	Route::get('profile/pindex', 'ProfileController@test');
+	Route::get('profile/index', 'ProfileController@get_classmates');
 	Route::get('profile/follows', 'ProfileController@get_follows');
 	Route::get('profile/mythreads', 'ProfileController@get_threads');
 	
