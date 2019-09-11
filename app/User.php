@@ -37,11 +37,6 @@ class User extends Authenticatable
         return $this->belongsTo('App\Comment');
     }
     
-    public function good()
-    {
-        return $this->hasMany(Good::class);
-    }
-    
     public function response()
     {
         return $this->belongsTo('App\Response');

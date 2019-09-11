@@ -1,11 +1,15 @@
+ul {
+  list-style: none;
+}
+
 .navbar {
   margin-bottom: 20px;
 }
 
 .card-panel {
+  color: #fff;
   margin-bottom: 30px;
   margin-left: 10px;
-  
 }
 
 .card-panel .card {
@@ -14,12 +18,6 @@
 }
 
 .card-panel .card-body {
-  
-  font-family: "Yu Gothic";
-  src: local("Yu Gothic Medium");
-  font-weight: 900;
-
-  
   letter-spacing: .2em;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -31,47 +29,30 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  
-}
-
-
-.card-panel a{
-  -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    transition: all  0.3s ease;
-    text-decoration: none;
-    opacity: 0.7;
-}
-
-.card-panel a:hover {
-  
-  opacity: 1;
-    
 }
 
 .card1 {
-  background-color: #2c4899;
+  background-color: #42AAC7;
 }
 
 .card2 {
-  background-color: #3b5fcc;
+  background-color: #3DB680;
 }
 
 .card3 {
-  background-color: #4a77ff;
+  background-color: #FFEE55;
 }
 
 .card4 {
-  background-color: #990e2a;
+  background-color: #F3C759;
 }
 
 .card5 {
-  background-color: #cc1237;
+  background-color: #E6855E;
 }
 
 .card6 {
-  background-color: #ff1745;
+  background-color: #CE579B;
 }
 
 .newthread .list-group {
