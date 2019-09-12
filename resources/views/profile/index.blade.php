@@ -24,7 +24,7 @@
                              @continue
                             @elseif(Auth::user()->follows->where('id',$user->id)->isEmpty())
                             <td>
-                            <a href="{{ action('FollowController@store', ['id' => $user->id]) }}" role="button" class="btn btn-success">follow</a>
+                            <a href="{{ action('FollowController@store', ['id' => $user->id]) }}" role="button" class="btn btn-success button-block">follow</a>
                             </td>
                             @elseif(Auth::user()->follows->where('id',$user->id)->isNotEmpty())
                             <td>
