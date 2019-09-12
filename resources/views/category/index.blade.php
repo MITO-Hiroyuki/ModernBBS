@@ -4,7 +4,7 @@
 @section('content')
 	<div class="container mb-4">
 		<div class="row">
-			<div class="col-md-10">
+			<div class="col-10">
 				<div class="row">
 					<div class="card-panel">
 						<a href="{{ action('ThreadController@showThread', $category1->category_id) }}" class="card card1 text-white" >
@@ -44,23 +44,31 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-2">
-				<div class="row">
-				<p>新着スレッド一覧</p>
-					<div class="card newthread">
-						<div class="list-group">
-							@foreach($threads as $post)
-								<h4 class="list-group-item-heading">{{ $post->thread_title }}</h4>
-								<p class="list-group-item-text">{{ $post->category->name }}</p>
-								<span>{{ link_to("/bbs/comment/comment/{$post->id}", '閲覧する', array('class' => 'btn btn-primary')) }}</span>
-							@endforeach
-						</div>
-						<div class="newthread-pagination pagination-sm">
-							{{ $threads->links() }}
-						</div>
-					</div>
-				</div>
 			
+			<div class="col-xs-3">
+				<div class="card">
+					<div class="card-header bg-primary text-white">
+						新スレッド一覧
+					</div>
+					@foreach($threads as $post)
+						<div class="card-body">
+							<h5 class="card-title text-center">{{ $post->thread_title }}</h5>
+						</div>
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item">
+								{{ $post->category->name }}
+							</li>
+							<a href="{{ action('ThreadController@show', ['id' => $post->id]) }}">
+							<li class="list-group-item">
+								閲覧する
+							</li>
+							</a>
+						</ul>
+					@endforeach
+				</div>
+				<div class="newthread-pagination">
+					{{ $threads->links() }}
+				</div>
 			</div>
 			
 		</div>

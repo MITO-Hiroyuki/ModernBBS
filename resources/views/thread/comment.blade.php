@@ -28,11 +28,10 @@
 			@foreach($thread->comment as $comment)
 				<div class="card mt-2">
 					<div class="card-header">
-						<div class="">
-							<a href="{{ action('ProfileController@get_profile', $comment->profile_id) }}">
-							投稿者：
-							@if ($comment->user != null)
-								{{ $comment->user->name }}
+						<a href="{{ action('ProfileController@get_profile', $comment->profile_id) }}">
+						投稿者：
+						@if ($comment->user != null)
+							{{ $comment->user->name }}
 						@endif
 						</a>
 						&nbsp;
@@ -41,23 +40,34 @@
 					
 					<div class="card-body">
 						<p>{{ $comment->comment_text }}</p>
+					</div>
+					
+					<div class="card-footer">
 						<span>
 							{{ link_to("/bbs/response/response/{$comment->id}", 'レスポンスを読む', array('class' => 'btn btn-primary')) }}
 						</span>
 						<div class="float-right">
 							@if($comment->good->where('user_id',Auth::id())->isEmpty())
-							<p>
-							<a href="{{ action('GoodController@store', ['id' => $comment->id]) }}" role="button" class="btn btn-primary"><i class="far fa-thumbs-up"></i>いいね!
-							<span class="badge badge-light">{{ count($comment->good)}}</span></a></p>
+								<a href="{{ action('GoodController@store', ['id' => $comment->id]) }}" role="button" class="btn btn-primary">
+									<i class="far fa-thumbs-up"></i>いいね!
+									<span class="badge badge-light">
+										{{ count($comment->good)}}
+									</span>
+								</a>
 							@elseif($comment->good->where('user_id',Auth::id())->isNotEmpty())
-							<a href="{{ action('GoodController@destroy', ['id' => $comment->id]) }}" role="button" class="btn btn-primary"><i class="fas fa-thumbs-up"></i>いいね!
-							<span class="badge badge-light">{{ count($comment->good)}}</span></a></p>
+								<a href="{{ action('GoodController@destroy', ['id' => $comment->id]) }}" role="button" class="btn btn-primary">
+									<i class="fas fa-thumbs-up"></i>いいね!
+									<span class="badge badge-light">
+										{{ count($comment->good)}}
+									</span>
+								</a>
 							@endif
 						</div>
 					</div>
+						
 				</div>
 			@endforeach
-		
+			
 		<div class="mt-4">
 			<h4>コメント投稿</h4>
 			

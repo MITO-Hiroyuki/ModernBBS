@@ -23,12 +23,6 @@ class ThreadController extends Controller
 	
 	public function show($thread_id)
 	{
-		/*
-		$threads = thread::where('thread_id', $thread_id)->get();
-		$user = $thread_id->thread->user();
-		$comments = $user->load('comments');
-		return view('thread.comment', ['comments' => $comments]);
-		*/
 		$thread = Thread::findOrFail($thread_id);
 		return view('thread.comment', ['thread' => $thread]);
 	}
