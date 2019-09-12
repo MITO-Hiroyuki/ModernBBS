@@ -1,28 +1,35 @@
-@extends('layouts.default')
+@extends('layouts.bbs')
 @section('title', 'コメント／レスポンス表示')
 @section('content')
 	<div class="col-md-8 mx-auto">
 		
-		<!--
 		<div class="">
-			<p><a href="{{ action('ProfileController@get_profile', $comment->profile_id) }}" >投稿者：{{ $comment->profile->name }}</a></p>
+			<p><a href="{{ action('ProfileController@get_profile', $comment->profile_id) }}">
+				投稿者：
+				@if ($comment->user != null)
+					{{ $comment->user->get()[0]->name }}
+				@endif
+			</a></p>
 			<p>{{ $comment->comment_text }}</p>
 			<p>投稿日：{{ date("Y年m月d日", strtotime($comment->created_at)) }}</p>
 		</div>
-		-->
 		
 		<h3>レスポンス一覧</h3>
 		
 			@foreach($comment->response as $response)
-				<div class="card">
+				<div class="card mt-2">
 					<div class="card-header">
-						<p><a href="{{ action('ProfileController@get_profile', $response->profile_id) }}">
+						<div class="">
+							<a href="{{ action('ProfileController@get_profile', $response->profile_id) }}">
 							投稿者：
 							@if ($response->user != null)
 								{{ $response->user->name }}
 							@endif
-						</a></p>
-						<p>投稿日：{{ date("Y年 m月 d日",strtotime($response->created_at)) }}</p>
+							</a>
+						</div>
+						<div class="">
+							投稿日：{{ date("Y年 m月 d日",strtotime($response->created_at)) }}
+						</div>
 					</div>
 					<div class="card-body">
 						<p>{{ $response->response_text }}</p><br />

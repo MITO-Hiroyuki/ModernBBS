@@ -3,8 +3,7 @@
 @section('content')
 	<div class="col-md-8 mx-auto">
 		
-		<!--
-		<h2>タイトル：{{ $thread->thread_title }}</h2>
+		<h2>{{ $thread->thread_title }}</h2>
 		<p>投稿日：{{ date("Y年 m月 d日",strtotime($thread->created_at)) }}</p>
 		<p><a href="{{ action('ProfileController@get_profile', $thread->profile_id) }}">
 				投稿者：
@@ -14,26 +13,28 @@
 			</a></p>
 		<p>{{ $thread->body }}</p>
 		<hr />
-		-->
 		
 		<h3>コメント一覧</h3>
 		
 			@foreach($thread->comment as $comment)
-				<div class="card">
+				<div class="card mt-2">
 					<div class="card-header">
-						<p><a href="{{ action('ProfileController@get_profile', $comment->profile_id) }}">
+						<div class="">
+							<a href="{{ action('ProfileController@get_profile', $comment->profile_id) }}">
 							投稿者：
 							@if ($comment->user != null)
 								{{ $comment->user->name }}
 							@endif
-						</a></p>
-						<p>投稿日：{{ date("Y年 m月 d日",strtotime($comment->created_at)) }}</p>
+							</a>
+						</div>
+						<div class="">
+							投稿日：{{ date("Y年 m月 d日",strtotime($comment->created_at)) }}
+						</div>
 					</div>
 					
 					<div class="card-body">
 						<p>{{ $comment->comment_text }}</p>
-						
-						<span class="badge badge-primary">
+						<span>
 							{{ link_to("/bbs/response/response/{$comment->id}", 'レスポンスを読む', array('class' => 'btn btn-primary')) }}
 						</span>
 					</div>

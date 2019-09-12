@@ -49,14 +49,14 @@
 				<p>新着スレッド一覧</p>
 					<div class="card newthread">
 						<div class="list-group">
-						  @foreach($threads as $thread)
-							  <a href="{{ action('ThreadController@show',['id' => $thread->id] ) }}">
-								  <h4 class="list-group-item-heading">{{ $thread->thread_title }}</h4>
-							  <p class="list-group-item-text">{{ $thread->Category->name }}</p>
-						  @endforeach
-						 </div>
+							@foreach($threads as $post)
+								<h4 class="list-group-item-heading">{{ $post->thread_title }}</h4>
+								<p class="list-group-item-text">{{ $post->category->name }}</p>
+								<span>{{ link_to("/bbs/comment/comment/{$post->id}", '閲覧する', array('class' => 'btn btn-primary')) }}</span>
+							@endforeach
+						</div>
 						<div class="newthread-pagination pagination-sm">
-						{{ $threads->links() }}
+							{{ $threads->links() }}
 						</div>
 					</div>
 				</div>
