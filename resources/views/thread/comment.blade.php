@@ -5,7 +5,7 @@
 		
 		<h2>{{ $thread->thread_title }}</h2>
 		<p>投稿日：{{ date("Y年 m月 d日",strtotime($thread->created_at)) }}</p>
-		<p><a href="{{ action('ProfileController@get_profile', $thread->profile_id) }}">
+		<p><a href="{{ action('ProfileController@get_profile', ['id' => $thread->profile_id]) }}">
 				投稿者：
 				@if ($thread->user != null)
 					{{ $thread->user->get()[0]->name }}
@@ -20,7 +20,7 @@
 				<div class="card mt-2">
 					<div class="card-header">
 						<div class="">
-							<a href="{{ action('ProfileController@get_profile', $comment->profile_id) }}">
+							<a href="{{ action('ProfileController@get_profile', ['id' => $comment->profile_id]) }}">
 							投稿者：
 							@if ($comment->user != null)
 								{{ $comment->user->name }}
@@ -37,6 +37,16 @@
 						<span>
 							{{ link_to("/bbs/response/response/{$comment->id}", 'レスポンスを読む', array('class' => 'btn btn-primary')) }}
 						</span>
+						<div class="float-right">
+							@if($comment->good->where('user_id',Auth::id())->isEmpty())
+							<p>
+							<a href="{{ action('GoodController@store', ['id' => $comment->id]) }}" role="button" class="btn btn-primary"><i class="far fa-thumbs-up"></i>いいね!
+							<span class="badge badge-light">{{ count($comment->good)}}</span></a></p>
+							@elseif($comment->good->where('user_id',Auth::id())->isNotEmpty())
+							<a href="{{ action('GoodController@destroy', ['id' => $comment->id]) }}" role="button" class="btn btn-primary"><i class="fas fa-thumbs-up"></i>いいね!
+							<span class="badge badge-light">{{ count($comment->good)}}</span></a></p>
+							@endif
+						</div>
 					</div>
 				</div>
 			@endforeach

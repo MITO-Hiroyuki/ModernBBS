@@ -38,9 +38,9 @@ Route::group(['prefix' => 'bbs','middleware'=>'auth'], function()
 	Route::get('comment/comment', 'CommentController@add');
 	Route::post('comment/comment', 'CommentController@create'); 
 	Route::get('comment/comment/{comment}/good', 'GoodController@store');
-	Route::get('comment/comment/{comment}/good/{good}', 'GoodController@destory');
+	Route::get('comment/comment/{comment}/notgood', 'GoodController@destroy');
 	Route::post('comment/comment/{comment}/good', 'GoodController@store');
-	Route::post('comment/comment/{comment}/good/{good}', 'GoodController@destory');
+	Route::post('comment/comment/{comment}/notgood', 'GoodController@destroy');
 	
 	Route::get('response/response/{id}', 'CommentController@show');
 	Route::get('response/response', 'ResponseController@add');
@@ -55,3 +55,4 @@ Route::get('profile/profile', 'ProfileController@get_profile');
 
 Route::get('profile/store/{id}', 'FollowController@store');
 Route::get('profile/destroy/{id}', 'FollowController@destroy');
+
