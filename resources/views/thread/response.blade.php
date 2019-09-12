@@ -3,33 +3,37 @@
 @section('content')
 	<div class="col-md-8 mx-auto">
 		
-		<div class="">
-			<p><a href="{{ action('ProfileController@get_profile', $comment->profile_id) }}">
-				投稿者：
-				@if ($comment->user != null)
-					{{ $comment->user->get()[0]->name }}
-				@endif
-			</a></p>
-			<p>{{ $comment->comment_text }}</p>
-			<p>投稿日：{{ date("Y年m月d日", strtotime($comment->created_at)) }}</p>
+		<div class="card">
+			<div class="card-header">
+				<a href="{{ action('ProfileController@get_profile', $comment->profile_id) }}">
+					投稿者：
+					@if ($comment->user != null)
+						{{ $comment->user->get()[0]->name }}
+					@endif
+				</a>
+				&nbsp;
+				投稿日：{{ date("Y年m月d日", strtotime($comment->created_at)) }}
+			</div>
+			<div class="card-body">
+				<p>{{ $comment->comment_text }}</p>
+			</div>
 		</div>
 		
-		<h3>レスポンス一覧</h3>
+		<div class="mt-4">
+			<h3>レスポンス一覧</h3>
+		</div>
 		
 			@foreach($comment->response as $response)
 				<div class="card mt-2">
 					<div class="card-header">
-						<div class="">
-							<a href="{{ action('ProfileController@get_profile', $response->profile_id) }}">
-							投稿者：
-							@if ($response->user != null)
+						<a href="{{ action('ProfileController@get_profile', $response->profile_id) }}">
+						投稿者：
+						@if ($response->user != null)
 								{{ $response->user->name }}
-							@endif
-							</a>
-						</div>
-						<div class="">
-							投稿日：{{ date("Y年 m月 d日",strtotime($response->created_at)) }}
-						</div>
+						@endif
+						</a>
+						&nbsp;
+						投稿日：{{ date("Y年 m月 d日",strtotime($response->created_at)) }}
 					</div>
 					<div class="card-body">
 						<p>{{ $response->response_text }}</p><br />
@@ -38,8 +42,8 @@
 				
 			@endforeach
 			
-		<div="">
-			<h3>レスポンス投稿</h3>
+		<div class="mt-4">
+			<h4>レスポンス投稿</h4>
 			
 			<form action="{{ action('ResponseController@create') }}" method="post" enctype="multipart/form-date">
 			@csrf
@@ -54,8 +58,7 @@
 				
 				<input name="comment_id" type="hidden" value="{{ $comment->id }}">
 				
-				<div class="form-group">
-					<label for="response_text" class="">レスポンス</label>
+				<div class="form-group mt-2">
 					<textarea class="form-control" name="response_text">{{ old('response_text') }}</textarea>
 				</div>
 				

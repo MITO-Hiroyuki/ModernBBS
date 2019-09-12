@@ -10,7 +10,8 @@
 		</div>
 		
 		@foreach($category_threads as $category_thread)
-		<div class="mt-4">
+		<div class="card mt-4">
+			
 			<div class="card-header">
 				<h2>{{ $category_thread->thread_title }}</h2>
 			</div>
@@ -27,14 +28,15 @@
 			  	@endif
 			</div>
 			
-			<div class="card-hooter">
-				<p><a href="{{ action('ProfileController@get_profile', ['id' => $category_thread->profile_id]) }}">
+			<div class="card-footer">
+				<a href="{{ action('ProfileController@get_profile', ['id' => $category_thread->profile_id]) }}">
 					投稿者：
 					@if ($category_thread->user != null)
 						{{ $category_thread->user->name }}
 					@endif
-				</a></p>
-				<p>投稿日：{{ date("Y年 m月 d日",strtotime($category_thread->created_at)) }}</p>
+				</a>
+				&nbsp;
+				投稿日：{{ date("Y年 m月 d日",strtotime($category_thread->created_at)) }}
 			</div>
 		</div>
 			

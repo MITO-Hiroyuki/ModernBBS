@@ -3,33 +3,39 @@
 @section('content')
 	<div class="col-md-8 mx-auto">
 		
-		<h2>{{ $thread->thread_title }}</h2>
-		<p>投稿日：{{ date("Y年 m月 d日",strtotime($thread->created_at)) }}</p>
-		<p><a href="{{ action('ProfileController@get_profile', $thread->profile_id) }}">
-				投稿者：
-				@if ($thread->user != null)
-					{{ $thread->user->get()[0]->name }}
-				@endif
-			</a></p>
-		<p>{{ $thread->body }}</p>
-		<hr />
+		<div class="card">
+			<div class="card-header">
+				<h2>{{ $thread->thread_title }}</h2>
+				<a href="{{ action('ProfileController@get_profile', $thread->profile_id) }}">
+							投稿者：
+							@if ($thread->user != null)
+								{{ $thread->user->get()[0]->name }}
+							@endif
+				</a>
+				&nbsp;
+				投稿日：{{ date("Y年 m月 d日",strtotime($thread->created_at)) }}
+			</div>
+			<div class="card-body">
+				<p>{{ $thread->body }}</p>
+			</div>
+			
+		</div>
 		
-		<h3>コメント一覧</h3>
+		<div class="mt-4">
+			<h3>コメント一覧</h3>
+		</div>
 		
 			@foreach($thread->comment as $comment)
 				<div class="card mt-2">
 					<div class="card-header">
-						<div class="">
-							<a href="{{ action('ProfileController@get_profile', $comment->profile_id) }}">
-							投稿者：
-							@if ($comment->user != null)
+						<a href="{{ action('ProfileController@get_profile', $comment->profile_id) }}">
+						投稿者：
+						@if ($comment->user != null)
 								{{ $comment->user->name }}
-							@endif
-							</a>
-						</div>
-						<div class="">
-							投稿日：{{ date("Y年 m月 d日",strtotime($comment->created_at)) }}
-						</div>
+						@endif
+						</a>
+						&nbsp;
+						投稿日：{{ date("Y年 m月 d日",strtotime($comment->created_at)) }}
 					</div>
 					
 					<div class="card-body">
@@ -41,8 +47,8 @@
 				</div>
 			@endforeach
 		
-		<div class="">
-			<h3>コメント投稿</h3>
+		<div class="mt-4">
+			<h4>コメント投稿</h4>
 			
 			<form action="{{ action('CommentController@create') }}" method="post" enctype="multipart/form-date">
 			@csrf
@@ -57,8 +63,7 @@
 				
 				<input name="thread_id" type="hidden" value="{{ $thread->id }}">
 				
-				<div class="form-group">
-					<label for="comment_text">コメント</label>
+				<div class="form-group mt-2">
 					<textarea class="form-control" name="comment_text">{{ old('comment_text') }}</textarea>
 				</div>
 				
