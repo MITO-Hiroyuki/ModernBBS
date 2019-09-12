@@ -3,7 +3,6 @@
 @section('content')
 	<div class="col-md-8 mx-auto">
 		
-		<!--
 		<div class="">
 			<p><a href="{{ action('ProfileController@get_profile', $comment->profile_id) }}">
 				投稿者：
@@ -14,12 +13,11 @@
 			<p>{{ $comment->comment_text }}</p>
 			<p>投稿日：{{ date("Y年m月d日", strtotime($comment->created_at)) }}</p>
 		</div>
-		-->
 		
 		<h3>レスポンス一覧</h3>
 		
 			@foreach($comment->response as $response)
-				<div class="card">
+				<div class="card mt-2">
 					<div class="card-header">
 						<div class="">
 							<a href="{{ action('ProfileController@get_profile', $response->profile_id) }}">
