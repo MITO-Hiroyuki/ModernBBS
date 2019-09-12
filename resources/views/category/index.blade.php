@@ -47,21 +47,16 @@
 			
 			<div class="col-xs-3">
 				<div class="card">
-					<div class="card-header bg-primary text-white">
+					<div class="card-header bg-primary text-white" style="text-align:center;">
 						新スレッド一覧
 					</div>
 					@foreach($threads as $post)
-						<div class="card-body">
-							<h5 class="card-title text-center">{{ $post->thread_title }}</h5>
-						</div>
 						<ul class="list-group list-group-flush">
-							<li class="list-group-item">
-								{{ $post->category->name }}
+							<li class="list-group-item" style="text-align:center;">
+								<div class="title_in_card">{{ $post->thread_title }}</div>
 							</li>
-							<a href="{{ action('ThreadController@show', ['id' => $post->id]) }}">
-							<li class="list-group-item">
-								閲覧する
-							</li>
+							<a href="{{ action('ThreadController@show', ['id' => $post->id]) }}" class="list-group-item list-group-item-action" style="text-align:center;">
+								投稿を見る
 							</a>
 						</ul>
 					@endforeach

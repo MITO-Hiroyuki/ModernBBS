@@ -18,13 +18,13 @@
 			
 			<div class="card-body">
 				<p>{{ $category_thread->body }}</p>
-				
 				@if($category_thread->follows->where('user_id',$user_id)->isNotEmpty())
-			  	<p>{{ link_to("/bbs/comment/comment/{$category_thread->id}", 'コメントを読む', array('class' => 'btn btn-primary')) }}</p>
+			  	{{ link_to("/bbs/comment/comment/{$category_thread->id}", 'コメントを読む', array('class' => 'btn btn-primary')) }}
 			  	@elseif($category_thread->user_id == $user_id)
-			  	<p>{{ link_to("/bbs/comment/comment/{$category_thread->id}", 'コメントを読む', array('class' => 'btn btn-primary')) }}</p>
+			  	{{ link_to("/bbs/comment/comment/{$category_thread->id}", 'コメントを読む', array('class' => 'btn btn-primary')) }}
 			  	@else
-			  	<p><a href="{{ action('FollowController@store', ['id' => $category_thread->user_id]) }}" role="button" class="btn btn-success">follow</a></p>
+			  	{{ link_to("/bbs/comment/comment/{$category_thread->id}", 'コメントを読む', array('class' => 'btn btn-primary')) }}
+			  	<a href="{{ action('FollowController@store', ['id' => $category_thread->user_id]) }}" role="button" class="btn btn-success">follow</a>
 			  	@endif
 			</div>
 			

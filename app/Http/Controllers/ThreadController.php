@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -31,7 +30,6 @@ class ThreadController extends Controller
 	{
 		$category_threads = Thread::where('category_id', $category_id)->get();
 		$user_id = Auth::id();
-
 		return view('thread.index', ['category_threads' => $category_threads,
 									'user_id' => $user_id]);
 	}
