@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
 use App\Good;
 use App\Comment;
@@ -21,15 +21,15 @@ class GoodController extends Controller
 		
 		$comment = Comment::findOrFail($commentId);
 		
-		return redirect()->action('CommentController@show', $comment->id);
+		return back()->withInput();
 	}
 	
-	public function destroy($commentId, $likeId)
+	public function destroy($commentId)
 	{
-		$comment = Comment::findOrFail($postId);
-		$comment->good_by()->findOrFail($likeId)->delete();
-		
-	return redirect()->action('CommentController@show', $comment->id);
+		$good = Good::where('comment_id',$commentId)->firstOrFail();
+		$coment = Comment::findOrFail($commentId);
+		Good::where('user_id',Auth::id())->where('comment_id',$commentId)->delete();
+		return back()->withInput();
 	}
 	
 }

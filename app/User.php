@@ -37,11 +37,6 @@ class User extends Authenticatable
         return $this->belongsTo('App\Comment');
     }
     
-    public function good()
-    {
-        return $this->hasMany(Good::class);
-    }
-    
     public function response()
     {
         return $this->belongsTo('App\Response');
@@ -56,4 +51,5 @@ class User extends Authenticatable
         return $this->belongsToMany(self::class, 'follows', 'user_id', 'followed_user_id')
         ->using(Follow::class);
     }
+    
 }

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Profile;
 use App\User;
 use App\Follow;
+use App\Thread;
 
 class ProfileController extends Controller
 {
@@ -69,14 +70,13 @@ class ProfileController extends Controller
         
         $user = Auth::user();
         $user_id = $user->id;
-        $user_name = $user->name;
         $profile = Profile::where('user_id',$user_id)->get();
         if($profile->isEmpty()){
             return redirect('bbs/profile/create');    
         }
         
         $profile = $profile[0];
-        return view('profile.myprofile', ['profile' => $profile, 'user_name' => $user_name]);
+        return view('profile.myprofile', ['profile' => $profile, 'user' => $user]);
         
     }
     
@@ -85,14 +85,19 @@ class ProfileController extends Controller
         $user_id = $request->id;
         $profile = Profile::where('user_id',$user_id)->get();
         $profile = $profile[0];
+        $user = Auth::user();
         
+        if($profile->user_id == $user->id){
+            return redirect()->route('myprofile');
+        }
         return view('profile.show', ['profile' => $profile,]);
-    }
+        
+}
     
-    public function test(Request $request){
+    public function get_classmates(Request $request){
         
         $users = User::all();
-        return view('profile.pindex', ['users' => $users]);
+        return view('profile.index', ['users' => $users]);
         
     }
     
@@ -100,5 +105,12 @@ class ProfileController extends Controller
         $user_id = Auth::id();
         $follows = Follow::where('user_id', $user_id)->get();
         return view('profile.follows', ['follows' => $follows]);
+    }
+    
+    public function get_threads(Request $request){
+        $user_id = Auth::id();
+        $follows = Follow::where('user_id', $user_id)->get();
+        $threads = [];
+        return view('profile.mythreads', ['follows' => $follows]);
     }
 }

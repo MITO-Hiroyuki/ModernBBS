@@ -25,6 +25,9 @@ Route::group(['prefix' => 'bbs','middleware'=>'auth'], function()
 	Route::get('profile/edit', 'ProfileController@edit');
 	Route::post('profile/edit', 'ProfileController@update');
 	Route::get('profile/show', 'ProfileController@description')->name('myprofile');
+	Route::get('profile/index', 'ProfileController@get_classmates');
+	Route::get('profile/follows', 'ProfileController@get_follows');
+	Route::get('profile/mythreads', 'ProfileController@get_threads');
 	
 	Route::resource('thread', 'ThreadController');
 	Route::get('thread/create', 'ThreadController@add');
@@ -35,9 +38,9 @@ Route::group(['prefix' => 'bbs','middleware'=>'auth'], function()
 	Route::get('comment/comment', 'CommentController@add');
 	Route::post('comment/comment', 'CommentController@create'); 
 	Route::get('comment/comment/{comment}/good', 'GoodController@store');
-	Route::get('comment/comment/{comment}/good/{good}', 'GoodController@destory');
+	Route::get('comment/comment/{comment}/notgood', 'GoodController@destroy');
 	Route::post('comment/comment/{comment}/good', 'GoodController@store');
-	Route::post('comment/comment/{comment}/good/{good}', 'GoodController@destory');
+	Route::post('comment/comment/{comment}/notgood', 'GoodController@destroy');
 	
 	Route::get('response/response/{id}', 'CommentController@show');
 	Route::get('response/response', 'ResponseController@add');
@@ -49,7 +52,7 @@ Route::get('category/index','CategoryController@index');
 Route::get('profile/profile', 'ProfileController@get_profile');
 
 
-Route::get('profile/pindex', 'ProfileController@test');
+
 Route::get('profile/store/{id}', 'FollowController@store');
 Route::get('profile/destroy/{id}', 'FollowController@destroy');
-Route::get('profile/follows', 'ProfileController@get_follows');
+
