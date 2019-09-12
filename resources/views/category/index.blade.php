@@ -2,7 +2,7 @@
 @section('title', 'ModernBBS')
 
 @section('content')
-	<div class="container">
+	<div class="container mb-4">
 		<div class="row">
 			<div class="col-md-10">
 				<div class="row">
@@ -62,6 +62,7 @@
 				</div>
 			
 			</div>
+			
 		</div>
 	</div>
 @endsection
