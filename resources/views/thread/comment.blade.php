@@ -6,7 +6,7 @@
 		<div class="card">
 			<div class="card-header">
 				<h2>{{ $thread->thread_title }}</h2>
-				<a href="{{ action('ProfileController@get_profile', ['id' => $thread->profile_id) }}">
+				<a href="{{ action('ProfileController@get_profile', $thread->profile_id) }}">
 							投稿者：
 							@if ($thread->user != null)
 								{{ $thread->user->get()[0]->name }}
@@ -28,16 +28,10 @@
 			@foreach($thread->comment as $comment)
 				<div class="card mt-2">
 					<div class="card-header">
-<<<<<<< HEAD
-						<a href="{{ action('ProfileController@get_profile', $comment->profile_id) }}">
-						投稿者：
-						@if ($comment->user != null)
-=======
 						<div class="">
-							<a href="{{ action('ProfileController@get_profile', ['id' => $comment->profile_id]) }}">
+							<a href="{{ action('ProfileController@get_profile', $comment->profile_id) }}">
 							投稿者：
 							@if ($comment->user != null)
->>>>>>> e6006a5f31b5ad2b2ddeaaca6677d71c6439db79
 								{{ $comment->user->name }}
 						@endif
 						</a>
