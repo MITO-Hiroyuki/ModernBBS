@@ -123,6 +123,7 @@ return [
         'hobby' => '趣味',
         'gender' => '性別',
         'introduction' => '自己紹介',
+        'description' => 'コミュニティ概要'
         ],
 
 ];
