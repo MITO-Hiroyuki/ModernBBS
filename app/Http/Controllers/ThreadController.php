@@ -28,7 +28,7 @@ class ThreadController extends Controller
 	
 	public function showThread($category_id)
 	{
-		$category_threads = Thread::where('category_id', $category_id)->get();
+		$category_threads = Thread::where('category_id', $category_id)->paginate(5);
 		$user_id = Auth::id();
 		return view('thread.index', ['category_threads' => $category_threads,
 									'user_id' => $user_id]);

@@ -41,5 +41,10 @@
 		</div>
 			
 		@endforeach
+		
+		<div class="pagination justify-content-center mt-4">
+			{{ $category_threads->links() }}
+		</div>
+		
 	</div>
 @endsection
