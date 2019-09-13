@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','t_s_filter',
     ];
 
     /**
@@ -26,4 +26,30 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    
+    public function thread()
+    {
+        return $this->belogsTo('App\Thread');
+    }
+    
+    public function comment()
+    {
+        return $this->belongsTo('App\Comment');
+    }
+    
+    public function response()
+    {
+        return $this->belongsTo('App\Response');
+    }
+    
+    public function profile(){
+       return $this->belongsTo('App\Profile');
+   }
+    
+    public function follows()
+    {
+        return $this->belongsToMany(self::class, 'follows', 'user_id', 'followed_user_id')
+        ->using(Follow::class);
+    }
+    
 }
