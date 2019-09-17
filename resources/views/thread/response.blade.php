@@ -43,7 +43,6 @@
 			@endforeach
 			
 		<div class="mt-4">
-			<h4>レスポンス投稿</h4>
 			
 			<form action="{{ action('ResponseController@create') }}" method="post" enctype="multipart/form-date">
 			@csrf

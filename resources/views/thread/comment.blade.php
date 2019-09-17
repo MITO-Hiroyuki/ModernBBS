@@ -69,7 +69,6 @@
 			@endforeach
 			
 		<div class="mt-4">
-			<h4>コメント投稿</h4>
 			
 			<form action="{{ action('CommentController@create') }}" method="post" enctype="multipart/form-date">
 			@csrf

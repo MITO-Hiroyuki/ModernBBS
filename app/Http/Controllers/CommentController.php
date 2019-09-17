@@ -38,7 +38,6 @@ class CommentController extends Controller
 		$comment = new Comment;
 		$comment->user_id = Auth::user()->id;
 		$comment->thread_id = $comment->id;
-		//$comment->thread_id = Thread()->id;
 		$comment->profile_id = Auth::user()->id;
 		$form = $request->all();
 		
