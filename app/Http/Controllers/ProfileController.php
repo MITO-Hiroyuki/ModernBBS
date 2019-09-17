@@ -111,6 +111,11 @@ class ProfileController extends Controller
         $user_id = Auth::id();
         $follows = Follow::where('user_id', $user_id)->get();
         $threads = [];
-        return view('profile.mythreads', ['follows' => $follows]);
+        foreach($follows as $follow){
+            foreach($follow->threads as $thread){
+            array_push($threads,$thread);
+            }
+        };
+        return view('profile.mythreads', ['threads' => $threads, 'user_id' => $user_id]);
     }
 }
