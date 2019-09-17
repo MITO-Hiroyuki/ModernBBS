@@ -29,7 +29,7 @@
             <div class="collapse navbar-collapse" id="navbarsExample04">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ action('CategoryController@index') }}">HOME
+                        <a class="nav-link" href="{{ action('ThreadController@create') }}">新規スレッド投稿
                             <span class="sr-only">(current)</span>
                         </a>
                     </li>
