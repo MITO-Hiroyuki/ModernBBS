@@ -40,11 +40,11 @@
 			@foreach($thread->comment as $comment)
 				<div class="card mt-2">
 					<div class="card-header">
-						<a href="{{ action('ProfileController@get_profile', $comment->profile_id) }}">
-						投稿者：
-						@if ($comment->user != null)
-							{{ $comment->user->name }}
-						@endif
+						<a href="{{ action('ProfileController@get_profile', ['id' => $comment->profile_id]) }}">
+							投稿者：
+							@if ($comment->user != null)
+								{{ $comment->user->name }}
+							@endif
 						</a>
 						&nbsp;
 						投稿日：{{ date("Y年 m月 d日",strtotime($comment->created_at)) }}
@@ -61,14 +61,14 @@
 						<div class="float-right">
 							@if($comment->good->where('user_id',Auth::id())->isEmpty())
 								<a href="{{ action('GoodController@store', ['id' => $comment->id]) }}" role="button" class="btn btn-primary">
-									<i class="far fa-thumbs-up"></i>いいね!
+									<i class="far fa-thumbs-up"></i>いいね！
 									<span class="badge badge-light">
 										{{ count($comment->good)}}
 									</span>
 								</a>
 							@elseif($comment->good->where('user_id',Auth::id())->isNotEmpty())
 								<a href="{{ action('GoodController@destroy', ['id' => $comment->id]) }}" role="button" class="btn btn-primary">
-									<i class="fas fa-thumbs-up"></i>いいね!
+									<i class="fas fa-thumbs-up"></i>いいね！
 									<span class="badge badge-light">
 										{{ count($comment->good)}}
 									</span>
