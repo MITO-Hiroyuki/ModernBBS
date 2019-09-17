@@ -3,7 +3,22 @@
 @section('content')
 	<div class="col-md-8 mx-auto">
 		
-		<div class="card">
+		<ul class="nav nav-tabs">
+			<li class="nav-item">
+				<a class="nav-link" href="{{ action('CategoryController@index') }}">カテゴリー</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link">スレッド</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link">コメント</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link active">レスポンス</a>
+			</li>
+		</ul>
+		
+		<div class="card mt-4">
 			<div class="card-header">
 				<a href="{{ action('ProfileController@get_profile', $comment->profile_id) }}">
 					投稿者：
