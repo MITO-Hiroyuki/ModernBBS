@@ -42,12 +42,12 @@
                     <li><a class="nav-link" href="{{ route('login') }}">{{ __('messages.Login') }}</a></li>
                     <li class="ml-5"><a class="nav-link" href="{{ route('register') }}">{{ __('messages.Register') }}</a></li>
                     @else
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown dropleft">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true"
                           aria-expanded="false">{{ Auth::user()->name }}</a>
-                        <div class="dropdown-menu" aria-labelledby="dropdown04">
+                        <div class="dropdown-menu text-center" aria-labelledby="dropdown04">
                             <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            Logout</a>
+                            {{ __('messages.Logout') }}</a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             {{ csrf_field() }}
                             </form>
