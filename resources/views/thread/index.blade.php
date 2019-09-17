@@ -3,7 +3,16 @@
 @section('content')
 	<div class="col-md-8 mx-auto">
 		
-		<div class="">
+		<ul class="nav nav-tabs">
+			<li class="nav-item">
+				<a class="nav-link" href="{{ action('CategoryController@index') }}">カテゴリー</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link active">スレッド</a>
+			</li>
+		</ul>
+		
+		<div class="mt-4">
 			<a href="{{ action('ThreadController@create') }}">
 				<button type="button" class="btn btn-primary btn-lg btn-block">新規スレッド投稿</button>
 			</a>
