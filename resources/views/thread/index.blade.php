@@ -28,13 +28,13 @@
 			<div class="card-body">
 				<p>{{ $category_thread->body }}</p>
 				@if($category_thread->follows->where('user_id',$user_id)->isNotEmpty())
-			  	{{ link_to("/bbs/comment/comment/{$category_thread->id}", 'コメントを読む', array('class' => 'btn btn-primary')) }}
-			  	@elseif($category_thread->user_id == $user_id)
-			  	{{ link_to("/bbs/comment/comment/{$category_thread->id}", 'コメントを読む', array('class' => 'btn btn-primary')) }}
-			  	@else
-			  	{{ link_to("/bbs/comment/comment/{$category_thread->id}", 'コメントを読む', array('class' => 'btn btn-primary')) }}
-			  	<a href="{{ action('FollowController@store', ['id' => $category_thread->user_id]) }}" role="button" class="btn btn-success">フォロー</a>
-			  	@endif
+				{{ link_to("/bbs/comment/comment/{$category_thread->id}", 'コメントを読む', array('class' => 'btn btn-primary')) }}
+				@elseif($category_thread->user_id == $user_id)
+				{{ link_to("/bbs/comment/comment/{$category_thread->id}", 'コメントを読む', array('class' => 'btn btn-primary')) }}
+				@else
+				{{ link_to("/bbs/comment/comment/{$category_thread->id}", 'コメントを読む', array('class' => 'btn btn-primary')) }}
+				<a href="{{ action('FollowController@store', ['id' => $category_thread->user_id]) }}" role="button" class="btn btn-success">フォロー</a>
+				@endif
 			</div>
 			
 			<div class="card-footer">
