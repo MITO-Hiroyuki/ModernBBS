@@ -29,10 +29,10 @@
 						<select name="category_id" type="text" class="category_id">
 							<option></option>
 							<option value="1" name="1">お知らせ</option>
-							<option value="2" name="2">宿題</option>
-							<option value="3" name="3">部活</option>
-							<option value="4" name="4">生徒</option>
-							<option value="5" name="5">友達</option>
+							<option value="2" name="2">授業</option>
+							<option value="3" name="3">宿題</option>
+							<option value="4" name="4">部活</option>
+							<option value="5" name="5">しゃべり場</option>
 						</select>
 					</div>
 				</div>
