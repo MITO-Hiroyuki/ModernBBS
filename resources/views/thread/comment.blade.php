@@ -8,7 +8,7 @@
 				<a class="nav-link" href="{{ action('CategoryController@index') }}">カテゴリー</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link">スレッド</a>
+				<a class="nav-link" href="{{ action('ThreadController@showThread', $thread->category_id) }}">スレッド</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link active">コメント</a>
