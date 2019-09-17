@@ -34,6 +34,9 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ action('ProfileController@get_classmates') }}">クラスメイト一覧</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ action('ProfileController@description') }}">MYプロフィール</a>
                     </li>
                 </ul>
