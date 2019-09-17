@@ -11,7 +11,7 @@
 				<a class="nav-link" href="{{ action('ThreadController@showThread', $comment->thread->category_id) }}">スレッド</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="{{ action('CommentController@show', $commment->id) }}">コメント</a></a>
+				<a class="nav-link" href="{{ action('CommentController@show', $comment->thread_id) }}">コメント</a></a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link active">レスポンス</a>
@@ -58,7 +58,6 @@
 			@endforeach
 			
 		<div class="mt-4">
-			
 			<form action="{{ action('ResponseController@create') }}" method="post" enctype="multipart/form-date">
 			@csrf
 			
