@@ -33,7 +33,7 @@
 			  	{{ link_to("/bbs/comment/comment/{$category_thread->id}", 'コメントを読む', array('class' => 'btn btn-primary')) }}
 			  	@else
 			  	{{ link_to("/bbs/comment/comment/{$category_thread->id}", 'コメントを読む', array('class' => 'btn btn-primary')) }}
-			  	<a href="{{ action('FollowController@store', ['id' => $category_thread->user_id]) }}" role="button" class="btn btn-success">follow</a>
+			  	<a href="{{ action('FollowController@store', ['id' => $category_thread->user_id]) }}" role="button" class="btn btn-success">フォロー</a>
 			  	@endif
 			</div>
 			
