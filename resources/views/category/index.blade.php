@@ -52,7 +52,7 @@
 					</div>
 					@foreach($threads as $post)
 						<ul class="list-group list-group-flush">
-							<li class="list-group-item" style="text-align:center;">
+							<li class="list-group-item list-group-item-primary" style="text-align:center;">
 								<div class="title_in_card">{{ $post->thread_title }}</div>
 							</li>
 							<a href="{{ action('ThreadController@show', ['id' => $post->id]) }}" class="list-group-item list-group-item-action" style="text-align:center;">
@@ -61,7 +61,7 @@
 						</ul>
 					@endforeach
 				</div>
-				<div class="newthread-pagination">
+				<div class="newthread pagination">
 					{{ $threads->links() }}
 				</div>
 			</div>

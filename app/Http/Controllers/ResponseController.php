@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\Profile;
 use App\Thread;
 use App\Comment;
 use App\Response;
