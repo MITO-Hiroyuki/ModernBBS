@@ -6,6 +6,7 @@
     "type": "project",
     "require": {
         "php": ">=7.3.6",
+        "ext-intl": "*",
         "kanazaca/counter-cache": "1.0.*",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "~1.0",
