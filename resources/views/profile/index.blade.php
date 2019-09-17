@@ -9,17 +9,17 @@
                 <table class="table col-md-12">
                     <thead>
                         <tr>
-                            <th>名前</th>
+                            <td>名前</td>
                             <td>follow</td>
                         </tr>    
                     </thead>
                     <tbody>
                         @foreach($users as $user)
                         <tr>
-                            <th><a href="{{ action('ProfileController@get_profile', ['id' => $user->id]) }}">
+                            <td><a href="{{ action('ProfileController@get_profile', ['id' => $user->id]) }}">
                                 {{ $user->name }}
                             </a>
-                            </th>
+                            </td>
                             @if($user->id == Auth::id())
                              @continue
                             @elseif(Auth::user()->follows->where('id',$user->id)->isEmpty())
