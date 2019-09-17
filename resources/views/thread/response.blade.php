@@ -20,7 +20,7 @@
 		
 		<div class="card mt-4">
 			<div class="card-header">
-				<a href="{{ action('ProfileController@get_profile', $comment->profile_id) }}">
+				<a href="{{ action('ProfileController@get_profile', ['id' => $comment->profile_id]) }}">
 					投稿者：
 					@if ($comment->user != null)
 						{{ $comment->user->get()[0]->name }}
@@ -41,7 +41,7 @@
 			@foreach($comment->response as $response)
 				<div class="card mt-2">
 					<div class="card-header">
-						<a href="{{ action('ProfileController@get_profile', $response->profile_id) }}">
+						<a href="{{ action('ProfileController@get_profile', ['id' => $response->profile_id]) }}">
 						投稿者：
 						@if ($response->user != null)
 								{{ $response->user->name }}
