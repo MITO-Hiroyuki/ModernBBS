@@ -4,7 +4,7 @@
 @section('content')
     <div class="container">
             <h1>{{ $profile->User->name }}のプロフィール</h1>
-        <div class="jumbotron">
+        <div class="jumbotron text-center">
             <div class="profile">
                 <div class="h3 display-4">
                     {{ $profile->User->name }}
