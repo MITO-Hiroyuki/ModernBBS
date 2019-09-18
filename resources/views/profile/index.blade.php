@@ -9,26 +9,26 @@
                 <table class="table col-md-12">
                     <thead>
                         <tr>
-                            <th>名前</th>
+                            <td>名前</td>
                             <td>follow</td>
                         </tr>    
                     </thead>
                     <tbody>
                         @foreach($users as $user)
                         <tr>
-                            <th><a href="{{ action('ProfileController@get_profile', ['id' => $user->id]) }}">
+                            <td><a href="{{ action('ProfileController@get_profile', ['id' => $user->id]) }}">
                                 {{ $user->name }}
                             </a>
-                            </th>
+                            </td>
                             @if($user->id == Auth::id())
                              @continue
                             @elseif(Auth::user()->follows->where('id',$user->id)->isEmpty())
                             <td>
-                            <a href="{{ action('FollowController@store', ['id' => $user->id]) }}" role="button" class="btn btn-success button-block">follow</a>
+                            <a href="{{ action('FollowController@store', ['id' => $user->id]) }}" role="button" class="btn btn-success btn-block">follow</a>
                             </td>
                             @elseif(Auth::user()->follows->where('id',$user->id)->isNotEmpty())
                             <td>
-                            <a href="{{ action('FollowController@destroy', ['id' => $user->id]) }}" role="button" class="btn btn-danger">unfollow</a>
+                            <a href="{{ action('FollowController@destroy', ['id' => $user->id]) }}" role="button" class="btn btn-danger btn-block">unfollow</a>
                             </td>
                             @endif
                         </tr>

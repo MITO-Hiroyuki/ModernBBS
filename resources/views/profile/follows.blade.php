@@ -9,7 +9,7 @@
                     <thead>
                         <tr>
                             <th>名前</th>
-                            <td></td>
+                            <td>unfollow</td>
                         </tr>    
                     </thead>
                     <tbody>

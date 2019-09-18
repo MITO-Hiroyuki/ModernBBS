@@ -9,8 +9,7 @@
 			</a>
 		</div>
 		
-		@foreach($follows as $follow)
-		@foreach($follow->threads as $thread)
+		@foreach($threads as $thread)
 		
 			<div class="card mt-4">
 				
@@ -20,14 +19,9 @@
 			
 				<div class="card-body">
 					<p>{{ $thread->body }}</p>
-					@if($thread->follows->where('user_id',$user_id)->isNotEmpty())
+					
 					{{ link_to("/bbs/comment/comment/{$thread->id}", 'コメントを読む', array('class' => 'btn btn-primary')) }}
-					@elseif($thread->user_id == $user_id)
-					{{ link_to("/bbs/comment/comment/{$thread->id}", 'コメントを読む', array('class' => 'btn btn-primary')) }}
-					@else
-					{{ link_to("/bbs/comment/comment/{$thread->id}", 'コメントを読む', array('class' => 'btn btn-primary')) }}
-					<a href="{{ action('FollowController@store', ['id' => $thread->user_id]) }}" role="button" class="btn btn-success">follow</a>
-					@endif
+
 				</div>
 				
 				<div class="card-footer">
@@ -42,7 +36,6 @@
 				</div>
 				
 			</div>
-		@endforeach
 		@endforeach
 		
 	</div>

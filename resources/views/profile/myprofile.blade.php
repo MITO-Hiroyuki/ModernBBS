@@ -3,11 +3,16 @@
 
 @section('content')
     <div class="container">
-        <h1>MYプロフィール</h1>
-        <div class="jumbotron">
+        <div class="row">
+            <h1 class="col-md-4">MYプロフィール</h1>
+            <p class="mx-auto col-md-4"><a href="{{ action('ProfileController@get_threads') }}" role="button" class="btn btn-primary btn-block">followスレッド一覧</a></p>
+            <p class="mx-auto col-md-4"><a href="{{ action('ProfileController@get_follows') }}" role="button" class="btn btn-success btn-block">follow一覧</a> </p>
+        </div>
+        
+        <div class="jumbotron text-center">
             <div class="profile">
                 <div class="row">
-                        <div class="h3 display-4">
+                        <div class="h3 col-md-12 display-4">
                             {{ $user->name }}
                         </div>
                 </div>
@@ -33,20 +38,16 @@
                 </div>
                 <div class="row">
                     <label class="h5 col-md-2">自己紹介</label>
-                        <div class="h3 col-md-10">
+                        <div class="h3 col-md-8">
                             {{ $profile->introduction }}
                         </div>
                 </div>
                 <div class="row">
-                    
-                    <a href="{{ action('ProfileController@get_follows') }}" role="button" class="btn btn-success">follows</a>
-                    <div class="col-md-2">
-                        <a href="{{ action('ProfileController@edit',['id' => $profile->id]) }}" role="button" class="btn btn-primary">編集</a>
+                    <div class="col-md-6 mx-auto">
+                        <a href="{{ action('ProfileController@edit',['id' => $profile->id]) }}" role="button" class="btn btn-primary btn-block">プロフィール編集</a>
                     </div>
                 </div>
             </div>
         </div>
-        <p><a href="{{ action('ProfileController@get_classmates') }}" role="button" class="btn btn-success">index</a></p>
-        <p><a href="{{ action('ProfileController@get_threads') }}" role="button" class="btn btn-primary">mythreads</a></p>
     </div>
 @endsection
