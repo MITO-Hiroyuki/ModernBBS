@@ -60,17 +60,7 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <!--Bootstrap3 offset -->
-                            <div class="row offset-md-1">
-                                <div class="col-md-4">
-                                    <label><input type="radio" value="1" name="t_s_filter" checked >生徒</label>
-                                </div>
-                                <div class="col-md-4">
-                                    <label><input type="radio" value="2" name="t_s_filter" >教員</label>
-                                </div>
-                            </div>
-                        </div>
+                            <input type="hidden" value="1" name="t_s_filter">
                         <div class="form-group">
                             <!--Bootstrap3 offset -->
                             <div class="col-md-6 col-md-offset-4">
