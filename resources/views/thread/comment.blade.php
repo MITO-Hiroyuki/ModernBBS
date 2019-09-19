@@ -18,7 +18,7 @@
 		<div class="card mt-4">
 			<div class="card-header">
 				<h2>{{ $thread->thread_title }}</h2>
-				<a href="{{ action('ProfileController@get_profile', $thread->profile_id) }}">
+				<a href="{{ action('ProfileController@get_profile', ['id' => $thread->profile_id]) }}">
 							投稿者：
 							@if ($thread->user != null)
 								{{ $thread->user->get()[0]->name }}

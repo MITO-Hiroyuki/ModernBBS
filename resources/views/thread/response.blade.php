@@ -11,7 +11,7 @@
 				<a class="nav-link" href="{{ action('ThreadController@showThread', $comment->thread->category_id) }}">スレッド</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="{{ action('CommentController@show', $comment->thread_id) }}">コメント</a></a>
+				<a class="nav-link" href="{{ action('ThreadController@show', $comment->thread_id) }}">コメント</a></a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link active">レスポンス</a>
