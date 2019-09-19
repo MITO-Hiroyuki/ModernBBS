@@ -23,26 +23,13 @@
 					
 				<div class="form-group">
 					<label for="category_id" class="col-md-2 col-form-label">カテゴリー</label>
-<<<<<<< HEAD
-					<div class="col-md-6">
-						<select name="category_id" type="text" class="category_id">
-							<option></option>
+					<select multiple name="category_id" type="text" class="form-control">
 							<option value="1" name="1">お知らせ</option>
 							<option value="2" name="2">授業</option>
 							<option value="3" name="3">宿題</option>
 							<option value="4" name="4">部活</option>
 							<option value="5" name="5">しゃべり場</option>
-						</select>
-					</div>
-=======
-					<select multiple name="category_id" type="text" class="form-control">
-						<option value="1" name="1">お知らせ</option>
-						<option value="2" name="2">授業</option>
-						<option value="3" name="3">宿題</option>
-						<option value="4" name="4">部活</option>
-						<option value="5" name="5">しゃべり場</option>
 					</select>
->>>>>>> origin
 				</div>
 					
 				<div class="form-group">
