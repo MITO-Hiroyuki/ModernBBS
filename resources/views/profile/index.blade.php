@@ -21,6 +21,7 @@
                             </a>
                             </td>
                             @if($user->id == Auth::id())
+                             <td></td>
                              @continue
                             @elseif(Auth::user()->follows->where('id',$user->id)->isEmpty())
                             <td>

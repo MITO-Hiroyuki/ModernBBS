@@ -16,29 +16,35 @@
 				</ul>
 			@endif
 			
-				<div class="form-group">
+				<div class="form-group row">
 					<label for="thread_title" class="col-md-2 col-form-label">タイトル</label>
-					<input type="thread_title" class="form-control" name="thread_title" value="{{ old('thread_title') }}">
+					<div class="col-md-6">
+						<input type="thread_title" class="form-control" name="thread_title" value="{{ old('thread_title') }}">
+					</div>
 				</div>
 					
-				<div class="form-group">
+				<div class="form-group row">
 					<label for="category_id" class="col-md-2 col-form-label">カテゴリー</label>
-					<select multiple name="category_id" type="text" class="form-control">
-						<option value="1" name="1">お知らせ</option>
-						<option value="2" name="2">授業</option>
-						<option value="3" name="3">宿題</option>
-						<option value="4" name="4">部活</option>
-						<option value="5" name="5">しゃべり場</option>
-					</select>
+					<div class="col-md-6">
+						<select name="category_id" type="text" class="category_id">
+							<option></option>
+							<option value="1" name="1">お知らせ</option>
+							<option value="2" name="2">授業</option>
+							<option value="3" name="3">宿題</option>
+							<option value="4" name="4">部活</option>
+							<option value="5" name="5">しゃべり場</option>
+						</select>
+					</div>
 				</div>
 					
-				<div class="form-group">
+				<div class="form-group row">
 					<label for="body" class="col-md-2 col-form-label">本文</label>
-
-					<textarea class="form-control" name="body" rows="5">{{ old('body') }}</textarea>
+					<div class="col-md-6">
+						<textarea class="form-control" name="body">{{ old('body') }}</textarea>
+					</div>
 				</div>
 				
-				<div style="text-align: center">
+				<div class="">
 					<button type="submit" class="btn btn-primary">スレッドを作成する</button>
 				</div>
 				
